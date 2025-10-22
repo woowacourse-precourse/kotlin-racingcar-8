@@ -1,12 +1,11 @@
-package racingcar.domain
-
-import racingcar.main
+package racingcar.util
 
 import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.util.Parser
+import racingcar.domain.ErrorType
+import racingcar.main
 
 class ParserTest: NsTest() {
     @Test
@@ -14,7 +13,7 @@ class ParserTest: NsTest() {
         val input = "a,b,c"
         val result = Parser.splitWithDelimiters(input)
 
-        assertThat(result).isEqualTo(listOf("a", "b", "c"))
+        Assertions.assertThat(result).isEqualTo(listOf("a", "b", "c"))
     }
 
     @Test
@@ -22,7 +21,7 @@ class ParserTest: NsTest() {
         val input = "a,b+c:d"
         val result = Parser.splitWithDelimiters(input, delimiters = listOf(',', '+', ':'))
 
-        assertThat(result).isEqualTo(listOf("a", "b", "c", "d"))
+        Assertions.assertThat(result).isEqualTo(listOf("a", "b", "c", "d"))
     }
 
     @Test
@@ -30,7 +29,7 @@ class ParserTest: NsTest() {
         val input = "a b c"
         val result = Parser.splitWithDelimiters(input)
 
-        assertThat(result).isEqualTo(listOf("a b c"))
+        Assertions.assertThat(result).isEqualTo(listOf("a b c"))
     }
 
     @Test
@@ -38,7 +37,7 @@ class ParserTest: NsTest() {
         val input = "10"
         val result = Parser.parseInt(input)
 
-        assertThat(result).isEqualTo(10)
+        Assertions.assertThat(result).isEqualTo(10)
     }
 
     @Test
@@ -46,7 +45,7 @@ class ParserTest: NsTest() {
         val input = "-10"
         val result = Parser.parseInt(input)
 
-        assertThat(result).isEqualTo(-10)
+        Assertions.assertThat(result).isEqualTo(-10)
     }
 
     @Test
@@ -56,7 +55,7 @@ class ParserTest: NsTest() {
             Parser.parseInt(input)
         }
 
-        assertThat(result.message).isEqualTo(ErrorType.INVALID_NUMBER.message)
+        Assertions.assertThat(result.message).isEqualTo(ErrorType.INVALID_NUMBER.message)
     }
 
     override fun runMain() {
