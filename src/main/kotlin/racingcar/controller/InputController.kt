@@ -12,12 +12,12 @@ class InputController {
 
     // 이름을 가지고 Car리스트를 만드는 함수
     fun createCarList(names: String): List<Car> {
-        val carlist = mutableListOf<Car>()
+        val carList = mutableListOf<Car>()
         val nameList = nameSplit(names)
         for (name in nameList) {
-            carlist.add(Car(name))
+            carList.add(Car(name))
         }
-        return carlist
+        return carList
     }
 
     // 입력 받는 움직임 횟수를 정수로 반환해주는 함수
