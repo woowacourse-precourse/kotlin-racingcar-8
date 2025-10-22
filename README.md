@@ -10,6 +10,6 @@
 - [ ]  process(Car)
 - [ ]  generateRandomValue
 - [ ]  increasePosition
-- [ ]  printPosition
+- [x]  printPosition
 - [ ]  findMaxValue
-- [ ]  printResult
+- [x]  printWinners
