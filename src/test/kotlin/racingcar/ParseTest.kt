@@ -7,26 +7,26 @@ import org.junit.jupiter.api.assertThrows
 class ParseTest {
 
     @Test
-    fun ValidName(){
+    fun validName(){
         val input = "pobi, woni, jun"
         val result = parse(input)
         assertThat(result).containsExactly("pobi", "woni", "jun")
     }
 
     @Test
-    fun EmptyInput(){
+    fun emptyInput(){
         val input = ""
         assertThrows<IllegalArgumentException> { parse(input) }
     }
 
     @Test
-    fun EmptyName(){
+    fun emptyName(){
         val input = "pobi, , jun"
         assertThrows<IllegalArgumentException> { parse(input) }
     }
 
     @Test
-    fun LongName(){
+    fun longName(){
         val input = "pobi, woniwoni, jun"
         assertThrows<IllegalArgumentException> { parse(input) }
     }
