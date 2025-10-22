@@ -16,6 +16,12 @@ class Race(
     private val cars: List<Car>,
     private val tryCount: Int
 ) {
+    fun run() {
+        repeat(tryCount) {
+            runSingleRound()
+        }
+    }
+
     fun runSingleRound() {
         cars.forEach { car ->
             val value = Randoms.pickNumberInRange(0, 9)
@@ -71,7 +77,7 @@ fun main() {
         val tryCount = readTryCount()
 
         val race = Race(cars, tryCount)
-        race.runSingleRound()
+        race.run()
 
     } catch (e: IllegalArgumentException) {
         println(e.message)
