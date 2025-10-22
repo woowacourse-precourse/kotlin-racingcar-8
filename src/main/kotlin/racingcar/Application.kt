@@ -17,8 +17,11 @@ class Race(
     private val tryCount: Int
 ) {
     fun run() {
+        println("실행 결과")
+
         repeat(tryCount) {
             runSingleRound()
+            printCarPositions()
         }
     }
 
@@ -29,6 +32,17 @@ class Race(
                 car.move()
             }
         }
+    }
+
+    fun printCarPositions() {
+        cars.forEach { car ->
+            print("${car.name} : ")
+            repeat(car.position) {
+                print("-")
+            }
+            println()
+        }
+        println()
     }
 }
 
