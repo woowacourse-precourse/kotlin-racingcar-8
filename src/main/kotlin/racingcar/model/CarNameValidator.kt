@@ -1,6 +1,6 @@
 package racingcar.model
 
-class CarNameValidator {
+object CarNameValidator {
     fun validateCarName(carNames: List<String>) {
         carNames.forEach { name ->
             require(name.length <= 5)
