@@ -28,7 +28,7 @@ object InputView {
 
         val input = Console.readLine()
 
-        if (input.trim().isEmpty()) throw IllegalArgumentException(ErrorType.EMPTY_INPUT.message)
+        if (input.isBlank()) throw IllegalArgumentException(ErrorType.EMPTY_INPUT.message)
         return input
     }
 }
