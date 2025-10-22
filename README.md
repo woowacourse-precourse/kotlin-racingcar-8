@@ -4,8 +4,8 @@
 - [x]  readNoneEmptyLine
 - [x]  splitWithDelimiters
 - [x]  parseInt
-- [ ]  validationCarNames
-- [ ]  validationRound
+- [x]  validateCarName
+- [x]  validateRound
 - [ ]  process(Game)
 - [ ]  process(Car)
 - [ ]  generateRandomValue
