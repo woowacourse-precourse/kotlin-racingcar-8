@@ -19,4 +19,13 @@ class CarTest {
 
     @Test
     @DisplayName("무작위 숫자가 3 이하이면 자동차는 멈춘다.")
+    fun stopWhenUnderThree(){
+        val car = Car("jun")
+
+        car.moveForward(5)
+        car.moveForward(3)
+        car.moveForward(9)
+
+        assertThat (car.position).isEqualTo(2)
+    }
 }
