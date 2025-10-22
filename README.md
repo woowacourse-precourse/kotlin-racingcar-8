@@ -6,10 +6,9 @@
 - [x]  parseInt
 - [x]  validateCarName
 - [x]  validateRound
-- [ ]  process(Game)
-- [ ]  process(Car)
-- [ ]  generateRandomValue
-- [ ]  increasePosition
-- [x]  printPosition
+- [x]  tryMove(Car)
+- [x]  isNotLessThanThreshold
+- [x]  increasePosition
+- [x]  printCarStatus
 - [ ]  findMaxValue
 - [x]  printWinners

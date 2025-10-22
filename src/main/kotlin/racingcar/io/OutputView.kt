@@ -1,15 +1,16 @@
 package racingcar.io
 
+import racingcar.domain.Car
+
 object OutputView {
     /**
      * 차량의 이름과 위치를 정해진 형태로 출력한다.
      *
-     * @param name 출력할 차량의 이름
-     * @param position 출력할 차량의 위치
+     * @param Car 출력할 차량의 이름
      */
-    fun printPosition(name: String, position: Int) {
-        val progressBar = "-".repeat(position)
-        println("$name : $progressBar")
+    fun printCarStatus(car: Car) {
+        val progressBar = "-".repeat(car.getPosition())
+        println("${car.name} : $progressBar")
     }
 
     /**

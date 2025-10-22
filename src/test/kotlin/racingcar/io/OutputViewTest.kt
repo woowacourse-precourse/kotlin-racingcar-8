@@ -6,18 +6,19 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import racingcar.domain.Car
 
 class OutputViewTest : NsTest() {
     @Test
-    fun `printPosition 정상 출력`() {
-        val testInputs = mapOf(
-            Pair("pobi", 4),
-            Pair("woni", 3),
-            Pair("jun", 4),
+    fun `printCarStatus 정상 출력`() {
+        val testInputs = listOf(
+            Car("pobi", 4),
+            Car("woni", 3),
+            Car("jun", 4),
         )
 
-        for ((name, position) in testInputs) {
-            OutputView.printPosition(name, position)
+        for (car in testInputs) {
+            OutputView.printCarStatus(car)
         }
 
         assertSimpleTest {
@@ -30,10 +31,10 @@ class OutputViewTest : NsTest() {
     // : println의 끝 쪽 공백이 삭제되어 "pobi : "가 아닌 "pobi :" 값이 output()에 저장되어버리는 문제 발생
     // 지금 당장으로선 해결이 어려울 것으로 보이므로, 추후 해결 예정
     @Test
-    fun `printPosition position이 0일 때 출력`() {
-        val testInput = Pair("pobi", 0)
+    fun `printCarStatus position이 0일 때 출력`() {
+        val testInput = Car("pobi", 0)
 
-        OutputView.printPosition(testInput.first, testInput.second)
+        OutputView.printCarStatus(testInput)
 
         assertSimpleTest {
             run()
