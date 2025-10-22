@@ -27,3 +27,25 @@ jun : -
 - 자동차 이름이 5자를 초과인 경우
 - 쉼표로 구분한 각 이름이 비어있거나 공백일 경우 (예: pobi,,jun)
 - 시도할 횟수가 1 미만의 숫자인 경우 (또는 숫자가 아닌 경우)
+
+## 설계 🧩
+```
+racingcar
+├── controller
+│   └── RaceController.kt
+│
+├── domain
+│   ├── Car.kt
+│   └── Race.kt
+│
+├── view
+│   ├── InputView.kt
+│   └── ResultView.kt
+│
+├── util
+│   ├── InputParser.kt
+│   ├── InputValidator.kt
+│   └── RandomUtils.kt
+│
+└── Application.kt (main 함수)
+```
