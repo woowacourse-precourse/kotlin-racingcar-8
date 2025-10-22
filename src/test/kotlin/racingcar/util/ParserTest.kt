@@ -1,13 +1,11 @@
 package racingcar.util
 
-import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.ErrorType
-import racingcar.main
 
-class ParserTest: NsTest() {
+class ParserTest {
     @Test
     fun `splitWithDelimiters 기본 구분자 입력 케이스`() {
         val input = "a,b,c"
@@ -56,9 +54,5 @@ class ParserTest: NsTest() {
         }
 
         Assertions.assertThat(result.message).isEqualTo(ErrorType.INVALID_NUMBER.message)
-    }
-
-    override fun runMain() {
-        main()
     }
 }
