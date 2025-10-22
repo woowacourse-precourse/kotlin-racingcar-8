@@ -1,6 +1,7 @@
 package racingcar.io
 
 import racingcar.main
+import racingcar.domain.ErrorType
 
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
@@ -32,7 +33,7 @@ class InputViewTest: NsTest() {
             InputView.readNoneEmptyLine(InputMessageType.CAR)
         }
 
-        assertThat(error.message).isEqualTo(InputError.EMPTY.message)
+        assertThat(error.message).isEqualTo(ErrorType.EMPTY_INPUT.message)
     }
 
     override fun runMain() {

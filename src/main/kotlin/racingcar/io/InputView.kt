@@ -1,6 +1,7 @@
 package racingcar.io
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.domain.ErrorType
 
 /**
  * 사용자 입력 안내 메시지 타입을 정의하는 열거형.
@@ -12,17 +13,6 @@ import camp.nextstep.edu.missionutils.Console
 enum class InputMessageType(val message: String) {
     CAR("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
     ROUND("시도할 횟수는 몇 회인가요?");
-}
-
-/**
- * 입력 오류 메시지 타입을 정의하는 열거형.
- *
- * 각 타입은 콘솔에 출력될 안내 메시지를 포함한다.
- *
- * @property message 출력될 오류 메시지 문자열
- */
-enum class InputError(val message: String) {
-    EMPTY("빈 문자열은 입력할 수 없습니다."),
 }
 
 object InputView {
@@ -38,7 +28,7 @@ object InputView {
 
         val input = Console.readLine()
 
-        if (input.trim().isEmpty()) throw IllegalArgumentException(InputError.EMPTY.message)
+        if (input.trim().isEmpty()) throw IllegalArgumentException(ErrorType.EMPTY_INPUT.message)
         return input
     }
 }
