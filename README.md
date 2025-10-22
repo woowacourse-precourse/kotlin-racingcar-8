@@ -1,9 +1,11 @@
 # kotlin-racingcar-precourse
 
 # 기능 임시 목록
-- [X]  readNoneEmptyLine
-- [ ]  parseCarNames
-- [ ]  parseRound
+- [x]  readNoneEmptyLine
+- [x]  splitWithDelimiters
+- [x]  parseInt
+- [ ]  validationCarNames
+- [ ]  validationRound
 - [ ]  process(Game)
 - [ ]  process(Car)
 - [ ]  generateRandomValue
