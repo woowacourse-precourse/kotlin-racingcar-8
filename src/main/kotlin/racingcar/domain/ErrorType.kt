@@ -10,7 +10,7 @@ package racingcar.domain
 enum class ErrorType(val message: String) {
     EMPTY_INPUT("빈 문자열은 입력할 수 없습니다."),
     INVALID_NUMBER("숫자가 아닙니다."),
-    NEGATIVE_NUMBER("음수는 허용되지 않습니다."),
-    NAME_TOO_LONG("이름은 5자를 초과할 수 없습니다."),
-    INVALID_DELIMITER("허용되지 않은 구분자입니다.")
+    NOT_POSITIVE_NUMBER("0 이하의 횟수는 허용되지 않습니다."),
+    EMPTY_NAME("공백인 이름은 허용되지 않습니다."),
+    INVALID_NAME_LENGTH("이름은 5글자 이하만 허용됩니다."),
 }
