@@ -1,7 +1,8 @@
 package racingcar
 
-import racingcar.view.InputView
+import racingcar.controller.Race
 
 fun main() {
-    val rawCarNames = InputView.readCarNameInput()
+    val race = Race()
+    race.run()
 }
