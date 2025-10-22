@@ -6,4 +6,10 @@ class CarNameParser {
         val carNames = rawCarNames.split(",").toList()
         return carNames
     }
+
+    fun validateCarName(carNames: List<String>) {
+        carNames.forEach { name ->
+            require(name.length <= 5)
+        }
+    }
 }
