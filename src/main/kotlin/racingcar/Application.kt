@@ -1,9 +1,29 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 class Car(val name: String) {
+    var position = 0
+        private set
 
+    fun move() {
+        position++
+    }
+}
+
+class Race(
+    private val cars: List<Car>,
+    private val tryCount: Int
+) {
+    fun runSingleRound() {
+        cars.forEach { car ->
+            val value = Randoms.pickNumberInRange(0, 9)
+            if (value >= 4) {
+                car.move()
+            }
+        }
+    }
 }
 
 fun readCarNames(): List<String> {
@@ -49,6 +69,9 @@ fun main() {
         val cars = carNames.map { Car(it) }
 
         val tryCount = readTryCount()
+
+        val race = Race(cars, tryCount)
+        race.runSingleRound()
 
     } catch (e: IllegalArgumentException) {
         println(e.message)
