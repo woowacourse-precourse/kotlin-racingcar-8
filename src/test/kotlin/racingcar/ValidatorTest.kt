@@ -64,7 +64,7 @@ class ValidatorTest {
             Validator.validateTryCount(input)
         }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("시도할 횟수는 1 이상의 양수여야 합니다.")
+            .hasMessageContaining("시도할 횟수는 1 이상의 양수여야 합니다")
     }
 
     @Test
@@ -73,7 +73,7 @@ class ValidatorTest {
         val validNames = "pobi,woni,jun"
         val validCount = "5"
 
-        assertThatThrownBy {
+        assertDoesNotThrow {
             Validator.validateCarNames(validNames)
             Validator.validateTryCount(validCount)
         }
