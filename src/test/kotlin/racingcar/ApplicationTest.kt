@@ -23,6 +23,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름은 중복을 허용하지 않는다`() {
+        assertSimpleTest {
+            val names = listOf("A", "A")
+            assertThrows<IllegalArgumentException> { createUniqueCars(names) }
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
