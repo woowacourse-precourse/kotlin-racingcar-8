@@ -13,4 +13,11 @@ object Validator {
         require(names.none { it.isBlank() })
         require(names.all { it.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH })
     }
+
+    fun validateRoundInput(input: String) {
+        require(input.isNotBlank())
+        val parsedInput = input.toIntOrNull()
+        require(parsedInput != null)
+        require(parsedInput > 0)
+    }
 }
