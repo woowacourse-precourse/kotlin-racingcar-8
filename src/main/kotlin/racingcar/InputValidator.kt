@@ -10,6 +10,15 @@ class InputValidator {
         }
     }
 
+    fun validateTotalMovement(totalMovement: String) {
+        require(totalMovement.isEmpty()) { "이동 횟수를 입력하셔야 합니다" }
+        try {
+            totalMovement.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("정수를 입력하셔야 합니다")
+        }
+    }
+
     companion object {
         const val MAX_CAR_NAME_LENGTH = 5
     }
