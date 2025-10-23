@@ -10,4 +10,8 @@ class Cars {
     fun startRound() {
         cars.map { it.move() }
     }
+
+    fun getCars(): List<Car> {
+        return cars
+    }
 }
