@@ -4,6 +4,10 @@ import racingcar.model.Car
 
 object OutputView {
 
+    fun printStartRacing() {
+        println("실행 결과")
+    }
+
     fun printPerRound(cars: List<Car>) {
         val stringBuilder = StringBuilder()
         cars.map { it ->
