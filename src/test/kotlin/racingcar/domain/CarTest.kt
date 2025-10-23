@@ -15,7 +15,7 @@ class CarTest : NsTest() {
         car.tryMove(false)
         car.tryMove(true)
 
-        val lastPosition = car.getPosition()
+        val lastPosition = car.positionValue
         assertThat(lastPosition).isEqualTo(2)
     }
 
@@ -32,7 +32,7 @@ class CarTest : NsTest() {
             4, 5, 3,8
         )
 
-        val lastPosition = car.getPosition()
+        val lastPosition = car.positionValue
         assertThat(lastPosition).isEqualTo(3)
     }
 
