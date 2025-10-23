@@ -18,6 +18,13 @@ class Race(private val users: List<User>) {
         return users.associate { it.displayName() to it.score }
     }
 
+    fun getWinners(): List<String> {
+        val maxScore = users.maxOf { it.score }
+        return users
+            .filter { it.score == maxScore }
+            .map { it.displayName() }
+    }
+
     companion object {
         private const val MIN_MOVE_NUMBER = 4
 
