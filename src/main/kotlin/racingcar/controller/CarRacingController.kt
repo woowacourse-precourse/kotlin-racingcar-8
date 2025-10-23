@@ -7,5 +7,7 @@ class CarRacingController {
     fun run() {
         OutputView.displayCarNamePrompt()
         val input = InputView.readCarNames()
+
+        OutputView.displayAttemptCountPrompt()
     }
 }
