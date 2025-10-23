@@ -16,6 +16,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름은 5글자 이하여야 한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { Car("123456") }
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
