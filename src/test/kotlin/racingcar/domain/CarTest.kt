@@ -5,38 +5,46 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import racingcar.util.RandomGenerator
 
 class CarTest : NsTest() {
     @Test
     fun `주입된 랜덤값에 따라 이동 여부 결정`() {
         val car = Car("pobi")
-        car.tryMove(false)
-        car.tryMove(true)
-        car.tryMove(false)
-        car.tryMove(true)
+
+        val successCount = 2
+        repeat(successCount) { car.tryMove(true) }
+
+        val failureCount = 2
+        repeat(failureCount) { car.tryMove(false) }
 
         val lastPosition = car.positionValue
-        assertThat(lastPosition).isEqualTo(2)
+        assertThat(lastPosition).isEqualTo(successCount)
     }
 
     @Test
     fun `RandomGenerator 결과값에 따라 이동 누적`() {
         val car = Car("pobi")
+
         assertRandomNumberInRangeTest(
             {
-                car.tryMove()
-                car.tryMove()
-                car.tryMove()
-                car.tryMove()
+                repeat(TEST_COUNT) { car.tryMove() }
             },
-            4, 5, 3,8
+            TEST_VALUE, *RANDOM_TEST_VALUES
         )
 
-        val lastPosition = car.positionValue
-        assertThat(lastPosition).isEqualTo(3)
+        val expectedValue = car.positionValue
+        val actualValue = RANDOM_TEST_VALUES.plus(TEST_VALUE).count { it >= RandomGenerator.THRESHOLD }
+        assertThat(expectedValue).isEqualTo(actualValue)
     }
 
     override fun runMain() {
         main()
+    }
+
+    companion object {
+        const val TEST_VALUE = 4
+        val RANDOM_TEST_VALUES = arrayOf(5, 3, 8)
+        val TEST_COUNT = RANDOM_TEST_VALUES.count() + 1
     }
 }

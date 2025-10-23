@@ -8,9 +8,9 @@ class Car {
     val positionValue: Int
         get() = position
 
-    constructor(input: String, position: Int = 0) {
+    constructor(name: String, position: Int = 0) {
         this.position = position
-        this.name = Validator.validateCarName(input)
+        this.name = Validator.validateCarName(name)
     }
 
     /**
