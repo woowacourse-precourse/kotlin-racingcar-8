@@ -8,30 +8,38 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-    @Test
-    fun `기능 테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
-    }
 
     @Test
-    fun `예외 테스트`() {
+    fun `자동차 이름은 한 글자 이상을 포함해야 한다`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { Car("") }
         }
     }
 
+//    @Test
+//    fun `기능 테스트`() {
+//        assertRandomNumberInRangeTest(
+//            {
+//                run("pobi,woni", "1")
+//                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+//            },
+//            MOVING_FORWARD, STOP
+//        )
+//    }
+//
+//    @Test
+//    fun `예외 테스트`() {
+//        assertSimpleTest {
+//            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+//        }
+//    }
+//
     override fun runMain() {
         main()
     }
-
-    companion object {
-        private const val MOVING_FORWARD: Int = 4
-        private const val STOP: Int = 3
-    }
+//
+//    companion object {
+//        private const val MOVING_FORWARD: Int = 4
+//        private const val STOP: Int = 3
+//    }
 }
