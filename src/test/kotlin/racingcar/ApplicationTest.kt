@@ -6,6 +6,9 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
+import org.junit.jupiter.api.assertDoesNotThrow
 
 class ApplicationTest : NsTest() {
 
@@ -28,6 +31,14 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             val names = listOf("A", "A")
             assertThrows<IllegalArgumentException> { createUniqueCars(names) }
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["\n", "\t", " ", "''", "\"", "\\", "``", "wo\ni!"])
+    fun `자동차 이름은 다양한 특수문자를 허용한다`(specialName: String) {
+        assertSimpleTest {
+            assertDoesNotThrow { Car(specialName) }
         }
     }
 
