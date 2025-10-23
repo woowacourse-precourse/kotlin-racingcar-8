@@ -8,8 +8,8 @@ object InputView {
         return Console.readLine()
     }
 
-    fun readTryCount(): Int? {
+    fun readTryCount(): String? {
         println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine().toIntOrNull()
+        return Console.readLine()
     }
 }

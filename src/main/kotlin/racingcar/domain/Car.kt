@@ -1,8 +1,8 @@
 package racingcar.domain
 
-class Car(val name: String) {
+data class Car(val name: String) {
     var position = 0
-        private set
+        internal set
 
     fun move(randomInt: Int) {
         if (randomInt >= 4) {

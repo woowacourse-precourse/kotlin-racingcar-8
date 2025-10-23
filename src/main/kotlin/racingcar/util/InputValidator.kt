@@ -12,10 +12,13 @@ object InputValidator {
         }
     }
 
-    fun validateTryCount(readTryCount: Int?): Int{
-        if (readTryCount == null || readTryCount == 0) {
-            throw IllegalArgumentException("입력받은 수가 유효하지 않은 값입니다.")
+    fun validateTryCount(readTryCount: String?): Int {
+        val tryCount = readTryCount?.toIntOrNull() ?: throw IllegalArgumentException("입력받은 수가 유효하지 않은 값입니다.")
+
+        if (tryCount < 0) {
+            throw IllegalArgumentException("입력받은 수가 음수입니다.")
         }
-        return readTryCount
+
+        return tryCount
     }
 }
