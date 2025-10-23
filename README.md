@@ -64,6 +64,9 @@ jun : -----
     - 이동 횟수는 `null`이 아니다
     - 이동 횟수는 양수로 주어진다
 
+**(interface)NumberGenerator**
+- 수를 생성하는 `generate`에 대한 규칙이다
+
 **RandomNumberGenerator**
 - 0-9까지의 수 중 랜덤 숫자를 내놓는다
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 사용한다
