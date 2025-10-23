@@ -19,4 +19,8 @@ class Race(val cars: List<Car>, val tryCount: Int) {
             println()
         }
     }
+
+    fun findFinalMaxPosition(cars: List<Car>): Int{
+        return cars.maxOf { it.position }
+    }
 }
