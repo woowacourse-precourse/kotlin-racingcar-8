@@ -23,6 +23,8 @@ class Race(
             runSingleRound()
             printCarPositions()
         }
+
+        printWinners()
     }
 
     fun runSingleRound() {
@@ -43,6 +45,17 @@ class Race(
             println()
         }
         println()
+    }
+
+    fun getWinners(): List<Car> {
+        val maxPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == maxPosition}
+    }
+
+    fun printWinners() {
+        val winners = getWinners()
+        val winnerNames = winners.map { it.name }.joinToString(", ")
+        println("최종 우승자 : ${winnerNames}")
     }
 }
 
@@ -84,16 +97,11 @@ fun validateTryCount(input: String) {
 
 fun main() {
     // TODO: 프로그램 구현
-    try {
-        val carNames = readCarNames()
-        val cars = carNames.map { Car(it) }
+    val carNames = readCarNames()
+    val cars = carNames.map { Car(it) }
 
-        val tryCount = readTryCount()
+    val tryCount = readTryCount()
 
-        val race = Race(cars, tryCount)
-        race.run()
-
-    } catch (e: IllegalArgumentException) {
-        println(e.message)
-    }
+    val race = Race(cars, tryCount)
+    race.run()
 }
