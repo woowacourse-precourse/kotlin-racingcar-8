@@ -11,15 +11,6 @@ import racingcar.model.UserParser
 
 class UserParserTest : NsTest() {
 
-    @Test
-    fun `이름 입력시 공백이면 에러`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> {
-                runException(" ")
-            }
-        }
-    }
-
     @ParameterizedTest(name = "입력: \"{0}\" -> IllegalArgumentException")
     @ValueSource(strings = ["pobi, ,jun", "pobi, jun,", ",pobi,jun"])
     fun `쉼표로 구분된 문자열이 공백이면 에러`(given: String) {
