@@ -1,5 +1,7 @@
 package racingcar.controller
 
+import racingcar.domain.Car
+import racingcar.domain.Race
 import racingcar.util.InputParser
 import racingcar.view.InputView
 
@@ -12,5 +14,9 @@ class RaceController(
         val readTryCount = inputView.readTryCount()
 
         val carNames = inputParser.parseCarNames(readCarNames)
+        val cars : List<Car> = carNames.map { Car(it) }
+
+        val game = Race(cars, readTryCount)
+        game.run()
     }
 }
