@@ -10,6 +10,6 @@ data class User(
     }
 
     fun displayName(): String {
-        return if (tag == null) name else "name #$tag"
+        return if (tag == null) name else "$name #$tag"
     }
 }
