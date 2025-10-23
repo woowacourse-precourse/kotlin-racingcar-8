@@ -6,4 +6,8 @@ class Cars {
     fun createCar(carNames: List<String>) {
         carNames.map { cars.add(Car(it)) }
     }
+
+    fun startRound() {
+        cars.map { it.move() }
+    }
 }
