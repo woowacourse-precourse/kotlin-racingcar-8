@@ -7,6 +7,8 @@ fun main() {
     val input = Console.readLine()
     val names = parse(input)
 
+    val cars = names.map { Car(it) }
+
     println("시도할 횟수는 몇 회인가요?")
     val numInput = Console.readLine()
     val num = numCheck(numInput)
