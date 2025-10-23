@@ -24,7 +24,7 @@ class RaceTest : NsTest() {
     }
 
     @Test
-    fun `라운드 실행 후 결과 반환`(){
+    fun `라운드 실행 후 결과 반환`() {
         assertRandomNumberInRangeTest(
             {
                 val users = listOf(User("a"), User("b"))
@@ -38,6 +38,18 @@ class RaceTest : NsTest() {
             },
             MOVING_FORWARD, STOP
         )
+    }
+
+    @Test
+    fun `최고 점수를 가진 참가자 이름 반환`() {
+        val users = listOf(
+            User(name = "a", score = 1),
+            User(name = "b", score = 2),
+            User(name = "c", score = 2)
+        )
+        val race = Race(users)
+        val winners: List<String> = race.getWinners()
+        assertThat(winners).containsExactly("b", "c")
     }
 
     override fun runMain() {
