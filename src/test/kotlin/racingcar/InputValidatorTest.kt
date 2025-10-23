@@ -30,4 +30,31 @@ class InputValidatorTest {
         // when & then
         assertThrows<IllegalArgumentException> { InputValidator().validateCarName(carName) }
     }
+
+    @Test
+    fun `이동 횟수가 정수가 아니면 IllegalArgumentException을 발생시킨다`() {
+        // given
+        val repeatTime = "String"
+
+        // when & then
+        assertThrows<IllegalArgumentException> { InputValidator().validateTotalMovement(repeatTime) }
+    }
+
+    @Test
+    fun `이동 횟수가 빈칸이라면 IllegalArgumentException을 발생시킨다`() {
+        // given
+        val repeatTime = ""
+
+        // when & then
+        assertThrows<IllegalArgumentException> { InputValidator().validateTotalMovement(repeatTime) }
+    }
+
+    @Test
+    fun `이동 횟수가 공백으로 주어지면 IllegalArgumentException을 발생시킨다`() {
+        // given
+        val repeatTime = " "
+
+        // when & then
+        assertThrows<IllegalArgumentException> { InputValidator().validateTotalMovement(repeatTime) }
+    }
 }
