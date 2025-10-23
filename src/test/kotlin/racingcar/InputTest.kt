@@ -18,6 +18,16 @@ class InputTest : NsTest() {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["", "-1", "2.5", "0", "#"])
+    fun `라운드 입력 시 양의 정수가 아니면 에러`(given: String) {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Validator.validateRoundInput(given)
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
