@@ -52,6 +52,28 @@ class RaceTest : NsTest() {
         assertThat(winners).containsExactly("b", "c")
     }
 
+    @Test
+    fun `라운드 진행 및 우승자 반환 통합 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                val users = listOf(User("a", tag = 'A'), User("a", tag = 'B'), User("b"))
+                val race = Race(users)
+
+                race.play()
+                race.play()
+                val result = race.getScores()
+                assertThat(result["a #A"]).isEqualTo(2)
+                assertThat(result["a #B"]).isEqualTo(2)
+                assertThat(result["b"]).isEqualTo(1)
+
+                assertThat(race.getWinners()).containsExactly("a #A", "a #B")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+        )
+
+    }
+
     override fun runMain() {
         main()
     }
