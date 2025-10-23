@@ -14,6 +14,10 @@ class Race(private val users: List<User>) {
 
     fun getRandomNum(): Int = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER)
 
+    fun getScores(): Map<String, Int> {
+        return users.associate { it.displayName() to it.score }
+    }
+
     companion object {
         private const val MIN_MOVE_NUMBER = 4
 

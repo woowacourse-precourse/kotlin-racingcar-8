@@ -8,4 +8,8 @@ data class User(
     fun move() {
         score++
     }
+
+    fun displayName(): String {
+        return if (tag == null) name else "name #$tag"
+    }
 }
