@@ -128,10 +128,10 @@ jun : -----
 - 함수가 한 가지 일만 하도록 최대한 작게 작성
 - JUnit와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는 지 테스트 코드 확인
   - 테스트 도구는 아래 문서를 참고하여 학습
-    - [JUnit 5 User Guide]()
-    - [AssertJ User Guide]()
-    - [AssertJ Exception Assertions]()
-    - [Guide to JUnit 5 Parameterized Tests]()
+    - [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide)
+    - [AssertJ User Guide](https://assertj.github.io/doc)
+    - [AssertJ Exception Assertions](https://www.baeldung.com/assertj-exception-assertion)
+    - [Guide to JUnit 5 Parameterized Tests](https://www.baeldung.com/parameterized-tests-junit-5)
 
 ## 라이브러리
 - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`, `Console` API를 사용하여 구현
