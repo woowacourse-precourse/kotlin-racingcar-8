@@ -8,10 +8,12 @@ object Validator {
      *
      * @param name 자동차 이름
      * @throws IllegalArgumentException 자동차 이름이 빈 문자열이거나 5글자 미만인 경우 에러 발생
+     * @return 검증 완료된 자동차 이름
      */
-    fun validateCarName(name: String) {
-        if (name.isBlank()) throw  IllegalArgumentException(ErrorType.EMPTY_NAME.message)
-        else if (name.length > NAME_LENGTH_LIMIT) throw IllegalArgumentException(ErrorType.INVALID_NAME_LENGTH.message)
+    fun validateCarName(name: String) : String {
+        require(name.isNotBlank()) { ErrorType.EMPTY_NAME.message }
+        require(name.length <= NAME_LENGTH_LIMIT) { ErrorType.INVALID_NAME_LENGTH.message }
+        return name
     }
 
     /**
@@ -19,9 +21,11 @@ object Validator {
      *
      * @param number 라운드 횟수
      * @throws IllegalArgumentException 자연수가 아닌 경우 에러 발생
+     * @return 검증 완료된 라운드 횟수
      */
-    fun validateRound(number: Int) {
-        if (number <= 0) throw IllegalArgumentException(ErrorType.NOT_POSITIVE_NUMBER.message)
+    fun validateRound(number: Int): Int {
+        require (number > 0) { ErrorType.NOT_POSITIVE_NUMBER.message }
+        return number
     }
 }
 
