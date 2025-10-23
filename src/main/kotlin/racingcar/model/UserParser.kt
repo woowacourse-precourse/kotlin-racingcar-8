@@ -1,6 +1,7 @@
 package racingcar.model
 
 import racingcar.constant.DELIMITER
+import racingcar.constant.TAG_START_CHAR
 import racingcar.validator.Validator
 
 class UserParser(inputName: String) {
@@ -14,19 +15,19 @@ class UserParser(inputName: String) {
     }
 
     fun getUserList(): List<User> {
-
         val nameCounts = userNames.groupingBy { it }.eachCount()
-
         val checked: MutableMap<String, Int> = mutableMapOf()
 
         return userNames.map { name ->
             val total = nameCounts[name] ?: 0
-            val count = checked.getOrDefault(name, 0) + 1
+            val count = checked.getOrPut(name) { 0 } + 1
             checked[name] = count
 
-            val tag = if (total > 1) ('A' + count - 1) else null
-            User(name, tag)
+            User(name, getTag(total, count))
         }
+    }
 
+    private fun getTag(total: Int, count: Int): Char? {
+        return if (total > 1) (TAG_START_CHAR + count - 1) else null
     }
 }
