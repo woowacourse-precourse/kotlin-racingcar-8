@@ -23,6 +23,23 @@ class RaceTest : NsTest() {
         )
     }
 
+    @Test
+    fun `라운드 실행 후 결과 반환`(){
+        assertRandomNumberInRangeTest(
+            {
+                val users = listOf(User("a"), User("b"))
+                val race = Race(users)
+
+                race.play()
+
+                val result = race.getScores()
+                assertThat(result["a"]).isEqualTo(1)
+                assertThat(result["b"]).isEqualTo(0)
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
     override fun runMain() {
         main()
     }
