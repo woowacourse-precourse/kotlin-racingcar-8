@@ -25,6 +25,7 @@ class RaceController(
         race.run()
 
         val maxPosition = race.findFinalMaxPosition(cars)
-        printFinalWinner(cars, maxPosition)
+        val winners = race.findWinners(maxPosition)
+        printFinalWinner(winners)
     }
 }

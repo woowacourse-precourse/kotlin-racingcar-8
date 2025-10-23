@@ -23,4 +23,16 @@ class Race(val cars: List<Car>, val tryCount: Int) {
     fun findFinalMaxPosition(cars: List<Car>): Int{
         return cars.maxOf { it.position }
     }
+
+    fun findWinners(maxPosition: Int): List<String> {
+        val winners :MutableList<String> = mutableListOf()
+
+        for (car in cars){
+            if (car.position == maxPosition){
+                winners += car.name
+            }
+        }
+
+        return winners
+    }
 }
