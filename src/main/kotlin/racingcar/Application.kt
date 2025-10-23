@@ -10,6 +10,7 @@ fun getCarNamesList(): List<String> {
 
 fun getRepeatNum(): Int {
     val repeatNum = readLine()
+    validateRepeatNum(repeatNum)
     return repeatNum.toInt()
 }
 
@@ -21,7 +22,11 @@ fun validateCarNames(carNames: List<String>): Unit {
         require(it.length <= 5) {"자동차 이름은 5글자를 초과할 수 없습니다."}
     }
 }
-
+fun validateRepeatNum(repeatNum: String) {
+    require(repeatNum.isNotEmpty()) {"시도 횟수는 빈 문자열일 수 없습니다."}
+    val number = repeatNum.toIntOrNull()?: throw IllegalArgumentException("시도 횟수는 숫자여야 합니다.")
+    require(number > 0) {"시도 횟수는 1 이상의 정수여야 합니다."}
+}
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
