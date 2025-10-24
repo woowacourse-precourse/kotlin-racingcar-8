@@ -5,7 +5,7 @@ private const val CAR_NAME_DELIMITER = ","
 object InputView {
     fun readCarNames(): List<String> {
         val input = readLine()
-        return input.split(CAR_NAME_DELIMITER)
+        return input.split(CAR_NAME_DELIMITER) .map {it.trim()}
     }
 
     fun readRepeatNum(): String {
