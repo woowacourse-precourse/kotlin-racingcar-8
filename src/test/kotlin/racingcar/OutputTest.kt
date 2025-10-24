@@ -6,10 +6,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import racingcar.view.OutputView
 
-class OutputTest: NsTest() {
+class OutputTest : NsTest() {
 
     @Test
-    fun `라운드별 실행 결과 출력`(){
+    fun `라운드별 실행 결과 출력`() {
         val result = mapOf(
             "pobi" to 1,
             "woni" to 0,
@@ -22,7 +22,23 @@ class OutputTest: NsTest() {
 
     }
 
+    @Test
+    fun `우승자 1명 출력`() {
+        val winner = listOf("pobi")
+        assertSimpleTest {
+            OutputView.displayWinners(winner)
+            assertThat(output()).contains("최종 우승자 : pobi")
+        }
+    }
 
+    @Test
+    fun `우승자가 여러명일 경우 쉼표로 구분하여 출력`() {
+        val winners = listOf("pobi", "woni")
+        assertSimpleTest {
+            OutputView.displayWinners(winners)
+            assertThat(output()).contains("최종 우승자 : pobi, woni")
+        }
+    }
 
     override fun runMain() {
         main()
