@@ -11,14 +11,14 @@ class CarsTest {
     @Test
     fun Car_리스트를_입력하면_Cars_객체가_생성된다() {
         // given
-        val input = mutableListOf(
-            Car(Name("pobi")),
-            Car(Name("woni")),
-            Car(Name("jun"))
+        val input = listOf(
+            Car.from("pobi"),
+            Car.from("woni"),
+            Car.from("jun")
         )
 
         // when
-        val cars = Cars(input)
+        val cars = Cars.of(input)
 
         // then
         assertEquals(cars.cars.size, 3)
@@ -27,14 +27,23 @@ class CarsTest {
     @Test
     fun Cars를_거리_기준_내림차순으로_올바르게_정렬한다() {
         // given
-        val cars = Cars(mutableListOf(
-            Car(Name("pobi"), 3),
-            Car(Name("woni"), 5),
-            Car(Name("jun"), 4)
+        val cars = Cars.of(listOf(
+            Car.from("pobi"),
+            Car.from("woni"),
+            Car.from("jun")
         ))
+        repeat(3) {
+            cars.cars[0].move()
+        }
+        repeat(5) {
+            cars.cars[1].move()
+        }
+        repeat(4) {
+            cars.cars[1].move()
+        }
 
         // when
-        cars.sortByDistanceDesc()
+        cars.sortedByDistanceDesc()
 
         // then
         assertEquals(cars.cars[0].name.value, "woni")

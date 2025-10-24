@@ -10,10 +10,10 @@ class CarTest {
     @Test
     fun Name_객체를_입력하면_자동차_객체가_생성된다() {
         // given
-        val name = Name("pobi")
+        val name = "pobi"
 
         // when
-        val car = Car(name)
+        val car = Car.from(name)
 
         // then
         assertEquals(car.name.value, "pobi")
@@ -23,11 +23,13 @@ class CarTest {
     @Test
     fun 경기_결과를_올바르게_가져온다() {
         // given
-        val name = Name("pobi")
-        val distance = 5
+        val name = "pobi"
 
         // when
-        val car = Car(name, distance)
+        val car = Car.from(name)
+        repeat(5) {
+            car.move()
+        }
 
         // then
         assertEquals(car.getResult(), "pobi : -----")

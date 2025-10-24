@@ -1,8 +1,36 @@
 package racingcar.domain.car
 
-data class Car(val name: Name, val distance: Int = 0) {
+import racingcar.exception.ErrorMessage
+
+class Car private constructor(
+    val name: Name,
+    private var _distance: Int = 0,
+) {
+    val distance: Int get() = _distance
+
+    fun move() {
+        _distance++
+    }
 
     fun getResult(): String {
-        return "${name.value} : ${"-".repeat(distance)}"
+        return "${name.value} : ${"-".repeat(_distance)}"
+    }
+
+    companion object {
+        fun from(input: String): Car {
+            return Car(Name(input))
+        }
+    }
+}
+
+@JvmInline
+value class Name(val value: String) {
+    init {
+        require(value.isNotBlank()) { ErrorMessage.CAR_NAME_BLANK.message }
+        require(value.length <= MAX_LENGTH) { ErrorMessage.CAR_NAME_TOO_LONG.message }
+    }
+
+    companion object {
+        private const val MAX_LENGTH: Int = 5
     }
 }
