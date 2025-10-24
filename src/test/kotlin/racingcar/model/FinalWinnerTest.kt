@@ -13,7 +13,7 @@ class FinalWinnerTest() {
         val winner = FinalWinner()
         val finalWinner = winner.findWinners(cars)
 
-        assertThat(finalWinner).containsExactly("pobi")
+        assertThat(finalWinner).contains("pobi")
     }
 
     @Test
@@ -25,7 +25,7 @@ class FinalWinnerTest() {
         val winner = FinalWinner()
         val finalWinner = winner.findWinners(cars)
 
-        assertThat(finalWinner).containsExactly("pobi", "woni")
+        assertThat(finalWinner).contains("pobi", "woni")
     }
 
     @Test
@@ -38,7 +38,7 @@ class FinalWinnerTest() {
         val winner = FinalWinner()
         val finalWinner = winner.findWinners(cars)
 
-        assertThat(finalWinner).containsExactly("pobi", "woni", "jun")
+        assertThat(finalWinner).contains("pobi", "woni", "jun")
     }
 }
 

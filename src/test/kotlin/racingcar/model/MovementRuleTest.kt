@@ -1,27 +1,18 @@
 package racingcar.model
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-
 class MovementRuleTest {
     @ParameterizedTest
     @MethodSource("hasMoveAndStop")
-    fun `랜덤 번호가 3보다 크면 true를 반환`(number: Int, expected: Boolean) {
-        val rule = MovementRule(number)
-        val result = rule.hasMoveAndStop()
+    fun `4 이상이면 true, 4 미만이면 false를 반환`(number: Int, expected: Boolean) {
+        val rule = MovementRule()
+        val result = rule.hasMoveAndStop(number)
         assertThat(result).isEqualTo(expected)
-    }
-
-    @Test
-    fun `랜덤값이 0~9일 때 결과는 항상 Boolean으로 반환`() {
-        val randomNumber = RandomNumberGenerator().getRandomNumber()
-        val result = MovementRule(randomNumber).hasMoveAndStop()
-        assertThat(result).isIn(true, false)
     }
 
     private companion object {
@@ -40,4 +31,4 @@ class MovementRuleTest {
             )
         }
     }
-} // 통과
+}

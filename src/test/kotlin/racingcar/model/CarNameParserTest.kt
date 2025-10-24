@@ -11,10 +11,12 @@ class CarNameParserTest : NsTest() {
     @Test
     fun `자동차 이름 파싱 테스트`() {
         assertSimpleTest {
-            val parser = Parser().parseCarName("pobi,woni")
-            assertThat(parser).containsExactly("pobi", "woni")
+            val carList: List<Car> = Parser().parseCarName("pobi,woni")
+            assertThat(carList).containsExactly(
+                Car("pobi", 0), Car("woni", 0)
+            )
         }
-    }
+    } // 통과
 
     override fun runMain() {
         main()
