@@ -1,6 +1,8 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import racingcar.domain.Car
+import racingcar.domain.RacingGame
 
 object ConsoleView {
 
@@ -9,21 +11,24 @@ object ConsoleView {
         return readLine()
     }
 
-    fun inputTryCount(): String {
+    fun inputTryCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        return readLine()
+        return readLine().toInt()
     }
 
-    fun showRaceProgress(printHeader: Boolean) {
-        if (printHeader) println("실행 결과")
+    fun showRaceHeader() {
+        println("실행 결과")
+    }
 
-        // 반복문 구현 필요 [아래 형태로 출력]
-        println("이름 : ---")
-
+    fun showRaceProgress(cars: List<Car>) {
+        cars.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.score)}")
+        }
         println()
     }
 
-    fun showRaceWinner() {
-        println("최종 우승자 : ")
+    fun showRaceWinner(racingGame: RacingGame) {
+        val winners = racingGame.winner()
+        println("최종 우승자 : ${winners.joinToString(", ") {it.name}}")
     }
 }
