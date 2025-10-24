@@ -74,7 +74,7 @@
 
 - [x] `printCarRaceResultTitle()`: `실행 결과` 출력 메서드
 
-- [ ] `printCarRaceCurrentResult()`: 현재 자동차 경주 현황을 출력하는 메서드
+- [x] `printCarRaceCurrentResult()`: 현재 자동차 경주 현황을 출력하는 메서드
     ```text
     pobi : -
     woni : 

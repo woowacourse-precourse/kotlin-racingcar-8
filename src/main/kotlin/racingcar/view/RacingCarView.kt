@@ -1,6 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import racingcar.model.Car
 
 class RacingCarView {
     fun getCarNameInput(): String {
@@ -15,5 +16,9 @@ class RacingCarView {
 
     fun printCarRaceResultTitle() {
         println("실행 결과")
+    }
+
+    fun printCarRaceCurrentResult(cars: List<Car>) {
+        cars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
     }
 }
