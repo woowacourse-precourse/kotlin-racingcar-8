@@ -18,4 +18,8 @@ object OutputView {
 
         println("최종 우승자 : $winnerNames")
     }
+
+    fun showError(error : String) {
+        throw IllegalArgumentException("[ERROR] : $error")
+    }
 }

@@ -6,18 +6,22 @@ import racingcar.view.OutputView
 
 class Controller {
     fun run() {
-        val carNames = InputView.getCarNames()
-        val tries = InputView.getTries()
+        try {
+            val carNames = InputView.getCarNames()
+            val tries = InputView.getTries()
 
-        val game = RacingGame(carNames, tries)
+            val game = RacingGame(carNames, tries)
 
-        OutputView.showRacingStart()
-        repeat(game.getTries()) {
-            val roundResult = game.playRound()
-            OutputView.showRoundResult(roundResult)
+            OutputView.showRacingStart()
+            repeat(game.getTries()) {
+                val roundResult = game.playRound()
+                OutputView.showRoundResult(roundResult)
+            }
+
+            val winners = game.getWinners()
+            OutputView.showWinners(winners)
+        } catch (e: IllegalArgumentException) {
+            OutputView.showError(e.message ?: "잘못된 입력입니다.")
         }
-
-        val winners = game.getWinners()
-        OutputView.showWinners(winners)
     }
 }
