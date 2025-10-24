@@ -64,9 +64,9 @@
 
 ### View
 
-- [ ] `getCarNameInput()`: 자동차 이름을 입력 처리 메서드
+- [x] `getCarNameInput()`: 자동차 이름을 입력 처리 메서드
     - `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)`
-    - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+    - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 
 - [ ] `getCarRaceCountInput()`: 자동차 경주를 반복할 횟수 입력 처리 메서드
     - `시도할 횟수는 몇 회인가요?`
