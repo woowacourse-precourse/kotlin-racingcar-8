@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 import kotlin.collections.all
 import kotlin.text.all
 
@@ -44,7 +45,7 @@ fun validateNamesDelimiter() {
 
 fun validateNamesType() {
     val names = processCarNaming()
-    for(name in names) {
+    for (name in names) {
         validateNamesCharType(name)
     }
 }
@@ -59,3 +60,17 @@ private fun validateNamesCharType(name: String) {
 fun racingBar() {
 
 }
+
+fun randomNumber(): Int {
+    return Randoms.pickNumberInRange(0, 9)
+}
+
+fun moveNumber(): Int {
+    return input().toInt()
+}
+
+fun racingProcessor(): Boolean {
+    val randomNumber = randomNumber()
+    return randomNumber >= 4
+}
+
