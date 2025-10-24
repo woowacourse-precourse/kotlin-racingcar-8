@@ -5,6 +5,7 @@ import racingcar.io.InputView
 import racingcar.util.Parser
 
 object CarFactory {
+    /** 콘솔에서 사용자 입력을 받아 자동차 객체 리스트[GameManager.cars]를 생성 */
     fun createCars(
         reader: () -> String = {
             InputView.readNonEmptyLine(InputMessageType.CAR)
@@ -13,6 +14,7 @@ object CarFactory {
         return Parser.splitWithDelimiters(reader()).map(::Car)
     }
 
+    /** 콘솔에서 사용자 입력을 받아 게임의 최대 라운드 수[GameManager.maxRound]를 생성 */
     fun createRound(
         reader: () -> String = {
             InputView.readNonEmptyLine(InputMessageType.ROUND)
@@ -26,6 +28,7 @@ class GameManager(
     private val cars: List<Car> = CarFactory.createCars(),
     val maxRound: Int = CarFactory.createRound(),
 ) {
+    /** 한 턴 동안 각 [Car]의 전진을 시도하고, 그 결과를 반환 */
     fun playRound(): List<Car> {
         cars.forEach { car ->
             car.tryMove()
