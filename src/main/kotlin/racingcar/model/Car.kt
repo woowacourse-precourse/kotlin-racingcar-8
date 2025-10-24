@@ -29,7 +29,7 @@ class Car(private val name: String) {
     }
 
     companion object {
-        const val MAX_NAME_LENGTH = 5;
+        const val MAX_NAME_LENGTH = 5
     }
 
 }

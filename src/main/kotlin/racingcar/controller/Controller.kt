@@ -1,6 +1,6 @@
 package racingcar.controller
 
-import calculator.view.InputView
+import racingcar.view.InputView
 import racingcar.model.RacingGame
 import racingcar.view.OutputView
 
