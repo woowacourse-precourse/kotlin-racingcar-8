@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms
 
 data class Car(
     val carName: String,
@@ -9,6 +10,10 @@ data class Car(
     fun move (randomValue: Int): Car{
         return if(randomValue >= 4) copy(position = position + 1) else this
     }
+}
+
+fun raceOnce(cars: List<Car>): List<Car> {
+    return cars.map { it. move(Randoms.pickNumberInRange(0, 9))}
 }
 
 fun getCarNamesList(): List<String> {
