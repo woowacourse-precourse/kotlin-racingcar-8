@@ -42,6 +42,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차를 한칸 이동시킨다`() {
+        assertSimpleTest {
+            assertThat(Car("jun", 0).moveForward()).isEqualTo(Car("jun", 1))
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
