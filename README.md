@@ -81,8 +81,8 @@
     jun : -
     ```
 
-- [ ] `printCarRaceWinnerResult()`: 자동차 경주 우승자 출력하는 메서드
-    - [ ] 위치가 같은 우승자가 여러 명이라면 `,`를 이용하여 구분
+- [x] `printCarRaceWinnerResult()`: 자동차 경주 우승자 출력하는 메서드
+    - [x] 위치가 같은 우승자가 여러 명이라면 `,`를 이용하여 구분
     - `최종 우승자 : carName1, carName2, ...`
 
 ### Controller

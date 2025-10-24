@@ -21,4 +21,8 @@ class RacingCarView {
     fun printCarRaceCurrentResult(cars: List<Car>) {
         cars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
     }
+
+    fun printCarRaceWinnerResult(winner: List<String>) {
+        println("최종 우승자 : ${winner.joinToString(", ")}")
+    }
 }
