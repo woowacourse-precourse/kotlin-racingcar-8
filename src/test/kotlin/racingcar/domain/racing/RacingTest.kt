@@ -39,13 +39,13 @@ class RacingTest {
 
         round1.saveRoundResult(pobiCar.name, pobiCar.distance)
         round1.saveRoundResult(woniCar.name, woniCar.distance)
-        racing.saveRoundResults(round1)
+        racing.saveRoundResults(round1.roundResult)
 
         pobiCar.move()
 
         round2.saveRoundResult(pobiCar.name, pobiCar.distance)
         round2.saveRoundResult(woniCar.name, woniCar.distance)
-        racing.saveRoundResults(round2)
+        racing.saveRoundResults(round2.roundResult)
 
         // then
         assertEquals(racing.roundResults, "pobi : \nwoni : -\n\npobi : -\nwoni : -")
@@ -68,13 +68,13 @@ class RacingTest {
 
         round1.saveRoundResult(pobiCar.name, pobiCar.distance)
         round1.saveRoundResult(woniCar.name, woniCar.distance)
-        racing.saveRoundResults(round1)
+        racing.saveRoundResults(round1.roundResult)
 
         pobiCar.move()
 
         round2.saveRoundResult(pobiCar.name, pobiCar.distance)
         round2.saveRoundResult(woniCar.name, woniCar.distance)
-        racing.saveRoundResults(round2)
+        racing.saveRoundResults(round2.roundResult)
 
         racing.saveWinners(cars.getWinners())
         // then

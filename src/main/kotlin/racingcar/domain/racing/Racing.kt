@@ -11,8 +11,8 @@ class Racing(
         return n >= MIN
     }
 
-    fun saveRoundResults(round: Round) {
-        _roundResults.add(round.roundResult)
+    fun saveRoundResults(roundResult: String) {
+        _roundResults.add(roundResult)
     }
 
     fun saveWinners(winners: List<String>) {
