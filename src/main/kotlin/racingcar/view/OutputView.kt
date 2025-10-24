@@ -7,6 +7,7 @@ object OutputView {
     private const val WINNER_DELIMITER = ", "
 
     fun displayTitle() {
+        println()
         println(OutputMessage.TITLE.text)
     }
 
@@ -15,6 +16,7 @@ object OutputView {
             val formattedScore = MOVE_SYMBOL.repeat(score)
             println(OutputMessage.ROUND_RESULT.format(name, formattedScore))
         }
+        println()
     }
 
     fun displayWinners(winners: List<String>) {
