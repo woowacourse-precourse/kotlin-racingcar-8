@@ -2,6 +2,15 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
 
+data class Car(
+    val carName: String,
+    val position: Int = 0
+) {
+    fun move (randomValue: Int): Car{
+        return if(randomValue >= 4) copy(position = position + 1) else this
+    }
+}
+
 fun getCarNamesList(): List<String> {
     val carNamesList = readLine().split(",")
     validateCarNames(carNamesList)
@@ -34,3 +43,4 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val repeatNum = getRepeatNum()
 }
+
