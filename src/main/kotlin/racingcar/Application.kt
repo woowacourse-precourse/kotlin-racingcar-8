@@ -16,13 +16,24 @@ fun racing(carList: List<Car>, repeatNum: Int): List<Car> {
     var currentCars = carList
     repeat(repeatNum) {
         currentCars = raceOnce(currentCars)
+        printRaceProcess(currentCars)
     }
     val maxDistance = currentCars.maxByOrNull { it.position }?.position ?: 0
     return currentCars.filter { it.position == maxDistance }
 }
+fun printRaceProcess(currentCars: List<Car>): Unit {
+    val step = "-"
+    currentCars.forEach { println("${it.carName} : ${step.repeat(it.position)}") }
+    println()
+}
+
+fun printWinner(winnerList: List<Car>): Unit {
+    val winner = winnerList.joinToString(", ") {it.carName}
+    println("최종 우승자 : $winner")
+}
 
 fun raceOnce(cars: List<Car>): List<Car> {
-    return cars.map { it.move(Randoms.pickNumberInRange(0, 9))}
+    return cars.map { it. move(Randoms.pickNumberInRange(0, 9))}
 }
 
 fun getCarNamesList(): List<String> {
@@ -56,5 +67,9 @@ fun main() {
     val carNamesList = getCarNamesList()
     println("시도할 횟수는 몇 회인가요?")
     val repeatNum = getRepeatNum()
+    val cars = carNamesList.map { carName -> Car(carName) }
+    println("실행 결과")
+    val winnerList = racing(cars, repeatNum)
+    printWinner(winnerList)
 }
 
