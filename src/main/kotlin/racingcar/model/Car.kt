@@ -20,13 +20,9 @@ class Car(private val name: String) {
         return "$name : ${"*".repeat(distance)}"
     }
 
-    fun getDistance(): Int {
-        return distance
-    }
+    fun getDistance() = distance
 
-    fun getName(): String {
-        return name
-    }
+    fun getName() = name
 
     companion object {
         const val MAX_NAME_LENGTH = 5
