@@ -3,18 +3,27 @@ package racingcar
 data class Car(val name: String, val position: Int) {
     init {
         require(name.isNotEmpty()) { "자동차 이름은 한 글자 이상을 포함해야 합니다." }
-        require(name.length <= 5) { "자동차 이름은 5글자 이하여야 합니다." }
+        require(name.length <= NAME_LENGTH_LIMIT) { "자동차 이름은 5글자 이하여야 합니다." }
     }
 
     init {
-        require(position >= 0) { "자동차의 위치($position)는 0미만일 수 없습니다." }
+        require(position >= START_POSITION) {
+            "자동차의 위치($position)는 $START_POSITION 미만일 수 없습니다."
+        }
     }
 
     fun moveForward(): Car {
-        return Car(name, position + 1)
+        return Car(name, position + MOVE_INCREMENT)
     }
 
-    constructor(name: String) : this(name, 0)
+    companion object {
+        const val START_POSITION = 0
+        const val NAME_LENGTH_LIMIT = 5
+        const val MOVE_INCREMENT = 1
+
+        fun withStartPosition(name: String): Car = Car(name, START_POSITION)
+    }
+
 }
 
 fun createUniqueCars(names: List<String>): List<Car> {
@@ -22,7 +31,7 @@ fun createUniqueCars(names: List<String>): List<Car> {
     return names.map { name ->
         require(!usedNames.contains(name)) { "중복된 자동차 이름($name)은 허용되지 않습니다." }
         usedNames.add(name)
-        Car(name)
+        Car.withStartPosition(name)
     }
 }
 

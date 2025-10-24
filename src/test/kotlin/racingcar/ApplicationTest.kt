@@ -15,14 +15,14 @@ class ApplicationTest : NsTest() {
     @Test
     fun `자동차 이름은 한 글자 이상을 포함해야 한다`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { Car("") }
+            assertThrows<IllegalArgumentException> { Car.withStartPosition("") }
         }
     }
 
     @Test
     fun `자동차 이름은 5글자 이하여야 한다`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { Car("123456") }
+            assertThrows<IllegalArgumentException> { Car.withStartPosition("123456") }
         }
     }
 
@@ -38,14 +38,16 @@ class ApplicationTest : NsTest() {
     @ValueSource(strings = ["\n", "\t", " ", "''", "\"", "\\", "``", "wo\ni!"])
     fun `자동차 이름은 다양한 특수문자를 허용한다`(specialName: String) {
         assertSimpleTest {
-            assertDoesNotThrow { Car(specialName) }
+            assertDoesNotThrow { Car.withStartPosition(specialName) }
         }
     }
 
     @Test
     fun `자동차를 한칸 이동시킨다`() {
         assertSimpleTest {
-            assertThat(Car("jun", 0).moveForward()).isEqualTo(Car("jun", 1))
+            val car = Car.withStartPosition("jun")
+            val movedCar = Car("jun", 1)
+            assertThat(car.moveForward()).isEqualTo(movedCar)
         }
     }
 
