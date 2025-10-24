@@ -25,7 +25,7 @@ class CarsTest {
     }
 
     @Test
-    fun Cars를_거리_기준_내림차순으로_올바르게_정렬한다() {
+    fun 우승자를_성공적으로_반환한다() {
         // given
         val cars = Cars.of(listOf(
             Car.from("pobi"),
@@ -38,16 +38,15 @@ class CarsTest {
         repeat(5) {
             cars.cars[1].move()
         }
-        repeat(4) {
+        repeat(5) {
             cars.cars[2].move()
         }
 
         // when
-        val sortedCars = cars.sortedByDistanceDesc()
+        val winners = cars.getWinners()
 
         // then
-        assertEquals(sortedCars.cars[0].name.value, "woni")
-        assertEquals(sortedCars.cars[1].name.value, "jun")
-        assertEquals(sortedCars.cars[2].name.value, "pobi")
+        assertEquals(winners[0], "woni")
+        assertEquals(winners[1], "jun")
     }
 }
