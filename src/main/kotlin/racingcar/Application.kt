@@ -1,11 +1,11 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import kotlin.collections.all
 
 fun main() {
     // TODO: 프로그램 구현
-    print(processCarNaming())
-
+    print(validateNamesType())
 }
 
 fun infoMessage() {
@@ -22,4 +22,29 @@ fun output() {
 fun processCarNaming(): List<String> {
     val carNames = input().split(",")
     return listOf(carNames.joinToString(","))
+}
+
+fun validateNamesLength() {
+    if (!processCarNaming().all { it.length <= 5 }) {
+        throw IllegalArgumentException()
+    }
+    if (!processCarNaming().all { it.isNotEmpty() }) {
+        throw IllegalArgumentException()
+    }
+}
+
+fun validateNamesDelimiter() {
+    if (!input().contains(",")) {
+        throw IllegalArgumentException()
+    }
+}
+
+fun validateNamesType() {
+    val names = processCarNaming()
+    for(name in names) {
+        val nameChar = name.filter{ it != ',' }
+        if (!nameChar.all { it.isLetter() }) {
+            throw IllegalArgumentException()
+        }
+    }
 }
