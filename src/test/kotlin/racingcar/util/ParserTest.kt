@@ -10,7 +10,6 @@ class ParserTest {
     fun `splitWithDelimiters 기본 구분자 입력 케이스`() {
         val input = "a,b,c"
         val result = Parser.splitWithDelimiters(input)
-
         Assertions.assertThat(result).isEqualTo(listOf("a", "b", "c"))
     }
 
@@ -18,7 +17,6 @@ class ParserTest {
     fun `splitWithDelimiters 커스텀 구분자 입력`() {
         val input = "a,b+c:d"
         val result = Parser.splitWithDelimiters(input, delimiters = listOf(',', '+', ':'))
-
         Assertions.assertThat(result).isEqualTo(listOf("a", "b", "c", "d"))
     }
 
@@ -26,7 +24,6 @@ class ParserTest {
     fun `splitWithDelimiters 입력에 구분자가 포함 안된 경우`() {
         val input = "a b c"
         val result = Parser.splitWithDelimiters(input)
-
         Assertions.assertThat(result).isEqualTo(listOf("a b c"))
     }
 
@@ -34,7 +31,6 @@ class ParserTest {
     fun `parseInt 정상 입력`() {
         val input = "10"
         val result = Parser.parseInt(input)
-
         Assertions.assertThat(result).isEqualTo(10)
     }
 
@@ -42,7 +38,6 @@ class ParserTest {
     fun `parseInt 음수 입력`() {
         val input = "-10"
         val result = Parser.parseInt(input)
-
         Assertions.assertThat(result).isEqualTo(-10)
     }
 
@@ -52,7 +47,6 @@ class ParserTest {
         val result = assertThrows<IllegalArgumentException> {
             Parser.parseInt(input)
         }
-
         Assertions.assertThat(result.message).isEqualTo(ErrorType.INVALID_NUMBER.message)
     }
 }
