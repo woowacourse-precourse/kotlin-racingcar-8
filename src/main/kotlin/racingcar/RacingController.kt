@@ -7,5 +7,12 @@ class RacingController {
         val carName = InputView().getCarNameFromUser()
         val carNames = Separator().separateName(carName)
         InputValidator().validateCarName(carNames)
+
+        val repeatTime = InputView().getMovementTimeFromUser()
+        InputValidator().validateTotalMovement(repeatTime)
+    }
+
+    fun race() {
+
     }
 }
