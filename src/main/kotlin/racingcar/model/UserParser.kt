@@ -1,7 +1,5 @@
 package racingcar.model
 
-import racingcar.constant.DELIMITER
-import racingcar.constant.TAG_START_CHAR
 import racingcar.validator.Validator
 
 class UserParser(inputName: String) {
@@ -29,5 +27,10 @@ class UserParser(inputName: String) {
 
     private fun getTag(total: Int, count: Int): Char? {
         return if (total > 1) (TAG_START_CHAR + count - 1) else null
+    }
+
+    companion object {
+        private const val DELIMITER = ','
+        private const val TAG_START_CHAR = 'A'
     }
 }

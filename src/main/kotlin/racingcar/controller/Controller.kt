@@ -9,7 +9,6 @@ import racingcar.view.OutputView
 
 class Controller {
     fun run() {
-
         val users = getUsers()
         val round = getRound()
         val race = Race(users)

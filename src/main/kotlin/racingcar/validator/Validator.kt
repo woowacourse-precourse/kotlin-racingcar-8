@@ -1,9 +1,8 @@
 package racingcar.validator
 
-import racingcar.constant.MAX_NAME_LENGTH
-import racingcar.constant.MIN_NAME_LENGTH
-
 object Validator {
+    private const val MIN_NAME_LENGTH = 1
+    private const val MAX_NAME_LENGTH = 5
 
     fun validateNotBlank(input: String) {
         require(input.isNotBlank())
