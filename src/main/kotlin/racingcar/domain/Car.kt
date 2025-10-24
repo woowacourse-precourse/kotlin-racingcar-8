@@ -1,6 +1,6 @@
 package racingcar.domain
 
-class Car(name: String) {
+class Car(val name: String) {
     var distance: Int = INITIAL_CAR_DISTANCE
     init {
         require(name.length < MAX_NAME_LENGTH) { "자동차 이름의 길이는 5자 이하여야 합니다" }
