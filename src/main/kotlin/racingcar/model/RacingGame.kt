@@ -11,4 +11,9 @@ class RacingGame(private val carNames: List<String>, private val tries: String) 
     fun getTries() : Int{
         return tries.toInt()
     }
+
+    fun getWinners(): List<Car> {
+        val maxDistance = cars.maxOf { it.getDistance() }
+        return cars.filter { it.getDistance() == maxDistance }
+    }
 }

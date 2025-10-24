@@ -12,4 +12,10 @@ object OutputView {
         roundResult.map { println(it.toString()) }
         println()
     }
+
+    fun showWinners(winners: List<Car>) {
+        val winnerNames = winners.joinToString(", ") { it.getName() }
+
+        println("최종 우승자 : $winnerNames")
+    }
 }

@@ -16,5 +16,8 @@ class Controller {
             val roundResult = game.playRound()
             OutputView.showRoundResult(roundResult)
         }
+
+        val winners = game.getWinners()
+        OutputView.showWinners(winners)
     }
 }
