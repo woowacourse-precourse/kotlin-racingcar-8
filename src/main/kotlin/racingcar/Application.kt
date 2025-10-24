@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import kotlin.collections.all
+import kotlin.text.all
 
 fun main() {
     // TODO: 프로그램 구현
@@ -10,6 +11,7 @@ fun main() {
 
 fun infoMessage() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    println("실행 결과")
 }
 
 fun input(): String {
@@ -17,6 +19,7 @@ fun input(): String {
 }
 
 fun output() {
+
 }
 
 fun processCarNaming(): List<String> {
@@ -42,9 +45,17 @@ fun validateNamesDelimiter() {
 fun validateNamesType() {
     val names = processCarNaming()
     for(name in names) {
-        val nameChar = name.filter{ it != ',' }
-        if (!nameChar.all { it.isLetter() }) {
-            throw IllegalArgumentException()
-        }
+        validateNamesCharType(name)
     }
+}
+
+private fun validateNamesCharType(name: String) {
+    val nameChar = name.filter{ it != ',' }
+    if (!nameChar.all { it.isLetter() }) {
+        throw IllegalArgumentException()
+    }
+}
+
+fun racingBar() {
+
 }
