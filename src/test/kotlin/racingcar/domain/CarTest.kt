@@ -10,7 +10,7 @@ import racingcar.util.RandomGenerator
 class CarTest : NsTest() {
     @Test
     fun `주입된 랜덤값에 따라 이동 여부 결정`() {
-        val car = Car("pobi")
+        val car = Car(TEST_CAR_NAME)
 
         val successCount = 2
         repeat(successCount) { car.tryMove(true) }
@@ -18,13 +18,13 @@ class CarTest : NsTest() {
         val failureCount = 2
         repeat(failureCount) { car.tryMove(false) }
 
-        val lastPosition = car.positionValue
+        val lastPosition = car.position
         assertThat(lastPosition).isEqualTo(successCount)
     }
 
     @Test
     fun `RandomGenerator 결과값에 따라 이동 누적`() {
-        val car = Car("pobi")
+        val car = Car(TEST_CAR_NAME)
 
         assertRandomNumberInRangeTest(
             {
@@ -33,7 +33,7 @@ class CarTest : NsTest() {
             TEST_VALUE, *RANDOM_TEST_VALUES
         )
 
-        val expectedValue = car.positionValue
+        val expectedValue = car.position
         val actualValue = RANDOM_TEST_VALUES.plus(TEST_VALUE).count { it >= RandomGenerator.THRESHOLD }
         assertThat(expectedValue).isEqualTo(actualValue)
     }
@@ -43,6 +43,7 @@ class CarTest : NsTest() {
     }
 
     companion object {
+        const val TEST_CAR_NAME = "pobi"
         const val TEST_VALUE = 4
         val RANDOM_TEST_VALUES = arrayOf(5, 3, 8)
         val TEST_COUNT = RANDOM_TEST_VALUES.count() + 1
