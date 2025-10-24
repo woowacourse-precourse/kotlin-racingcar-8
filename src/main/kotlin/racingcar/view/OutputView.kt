@@ -1,22 +1,27 @@
 package racingcar.view
 
 import racingcar.domain.Car
+import racingcar.port.OutputPort
 
-object ResultView {
+object OutputView : OutputPort {
     const val BAR = "-"
 
-    fun printFirstResult() {
-        println()
+    override fun printFirstResult() {
+        printBlankLine()
         println("실행 결과")
     }
 
-    fun printRaceResult(car: Car) {
+    override fun printRoundResult(car: Car) {
         val positionBar = BAR.repeat(car.position)
 
         println("${car.name} : $positionBar")
     }
 
-    fun printFinalWinner(winners: List<Car>) {
+    override fun printBlankLine() {
+        println()
+    }
+
+    override fun printFinalWinner(winners: List<Car>) {
         val winnersName = winners.joinToString(", ") { it.name }
 
         println("최종 우승자 : $winnersName")

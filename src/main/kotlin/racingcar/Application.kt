@@ -4,15 +4,15 @@ import racingcar.controller.RaceController
 import racingcar.util.InputParser
 import racingcar.util.InputValidator
 import racingcar.view.InputView
-import racingcar.view.ResultView
+import racingcar.view.OutputView
 
 fun main() {
-    val inputView = InputView
+    val inputPort = InputView
+    val outputPort = OutputView
     val inputParser = InputParser
     val inputValidator = InputValidator
-    val resultView = ResultView
 
-    val raceController = RaceController(inputView, inputParser, inputValidator, resultView)
+    val raceController = RaceController(inputPort, outputPort, inputParser, inputValidator)
 
     raceController.run()
 }

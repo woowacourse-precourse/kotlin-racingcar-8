@@ -1,21 +1,12 @@
 package racingcar.domain
 
+import racingcar.port.OutputPort
 import racingcar.util.RandomUtils
-import racingcar.view.ResultView
 
-class Race(val cars: List<Car>, val tryCount: Int) {
-    fun run() {
-        for (i in 1..tryCount) {
-            if (i == 1) {
-                ResultView.printFirstResult()
-            }
-
-            for (car in cars) {
-                car.move(RandomUtils.getRandomInt())
-                ResultView.printRaceResult(car)
-            }
-
-            println()
+class Race(val cars: List<Car>) {
+    fun runOneRound() {
+        for (car in cars) {
+            car.move(RandomUtils.getRandomInt())
         }
     }
 
