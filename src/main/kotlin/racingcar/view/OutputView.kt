@@ -4,6 +4,10 @@ import racingcar.constant.OutputMessage
 
 object OutputView {
 
+    fun displayTitle() {
+        println(OutputMessage.TITLE.text)
+    }
+
     fun displayRoundResult(result: Map<String, Int>) {
         result.forEach { (name, score) ->
             val formattedScore = "-".repeat(score)
