@@ -71,6 +71,10 @@ jun : -----
 - 0-9까지의 수 중 랜덤 숫자를 내놓는다
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 사용한다
 
+**Car**
+- 생성될 때 입력한 이름이 조건에 맞는지 확인한다
+- 랜덤 번호를 생성하고 이 번호가 기준을 넘는다면 앞으로 전진한다
+
 ## 개인적인 목표
 
 ---
