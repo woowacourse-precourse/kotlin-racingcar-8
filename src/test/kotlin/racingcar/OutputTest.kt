@@ -9,6 +9,14 @@ import racingcar.view.OutputView
 class OutputTest : NsTest() {
 
     @Test
+    fun `실행 결과 타이틀 출력`() {
+        assertSimpleTest {
+            OutputView.displayTitle()
+            assertThat(output()).contains("실행 결과")
+        }
+    }
+
+    @Test
     fun `라운드별 실행 결과 출력`() {
         val result = mapOf(
             "pobi" to 1,
