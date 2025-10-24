@@ -5,8 +5,7 @@ data class Car(
     val name: String,
     var position: Int = 0
 ) {
-    fun move(){
-        val randomNumber = Randoms.pickNumberInRange(0, 9)
+    fun move(randomNumber: Int){
         if(randomNumber >= 4) position++
         println("$name : ${"-".repeat(position)}")
     }

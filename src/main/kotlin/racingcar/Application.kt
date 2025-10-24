@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -12,6 +13,13 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val numInput = Console.readLine()
     val num = numCheck(numInput)
+
+    println()
+    println("실행 결과")
+    repeat(num) {
+        race(cars)
+        println()
+    }
 }
 
 fun parse(input: String): List<String> {
@@ -26,4 +34,11 @@ fun numCheck(input: String): Int {
     val num = input.toIntOrNull() ?: throw IllegalArgumentException("No number")
     if (num <= 0) throw IllegalArgumentException("No literal number")
     return num
+}
+
+fun race(cars: List<Car>) {
+    for (car in cars) {
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        car.move(randomNumber)
+    }
 }
