@@ -5,7 +5,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.ErrorType
-import racingcar.main
 
 class InputViewTest : NsTest() {
     @Test
@@ -99,9 +98,7 @@ class InputViewTest : NsTest() {
         assertThat(result.message).isEqualTo(ErrorType.EMPTY_INPUT.message)
     }
 
-    override fun runMain() {
-        main()
-    }
+    override fun runMain() {}
 
     companion object {
         const val CORRECT_CAR_NAMES = "pobi,woni,jun"

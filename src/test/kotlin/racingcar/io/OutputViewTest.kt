@@ -1,11 +1,10 @@
 package racingcar.io
 
-import racingcar.main
-
-import camp.nextstep.edu.missionutils.test.NsTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
+import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
 import racingcar.domain.Car
 
 class OutputViewTest : NsTest() {
@@ -60,7 +59,5 @@ class OutputViewTest : NsTest() {
         }
     }
 
-    override fun runMain() {
-        main()
-    }
+    override fun runMain() {}
 }
