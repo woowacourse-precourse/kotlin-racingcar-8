@@ -33,19 +33,4 @@ class CarTest {
         // then
         assertEquals(car.distance, 3)
     }
-
-    @Test
-    fun 경기_결과를_올바르게_가져온다() {
-        // given
-        val name = "pobi"
-
-        // when
-        val car = Car.from(name)
-        repeat(5) {
-            car.move()
-        }
-
-        // then
-        assertEquals(car.getResult(), "pobi : -----")
-    }
 }

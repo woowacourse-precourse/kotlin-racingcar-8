@@ -12,10 +12,6 @@ class Car private constructor(
         _distance++
     }
 
-    fun getResult(): String {
-        return "${name.value} : ${"-".repeat(_distance)}"
-    }
-
     companion object {
         fun from(input: String): Car {
             return Car(Name(input))
