@@ -1,4 +1,4 @@
-package racingcar.service
+package racingcar.service.car
 
 import racingcar.domain.car.Car
 import racingcar.domain.car.Cars

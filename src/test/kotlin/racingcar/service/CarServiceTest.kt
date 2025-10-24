@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayNameGeneration
 import org.junit.jupiter.api.DisplayNameGenerator
 import org.junit.jupiter.api.Test
+import racingcar.service.car.CarService
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores::class)
 class CarServiceTest {
