@@ -8,26 +8,35 @@ import racingcar.model.Validator
 
 class RacingController {
     fun start() {
-        // 자동차 이름을 입력 받고 검증
-        OutputView.printCarInputInstruction()
-        val carNamesList = InputView.readCarNames()
-        Validator.validateCarNames(carNamesList)
-
-        // 반복 횟수를 입력 받고 검증
-        OutputView.printRepeatNumInputInstruction()
-        val repeatNumInput = InputView.readRepeatNum()
-        Validator.validateRepeatNum(repeatNumInput)
-        val repeatNum = repeatNumInput.toInt()
-
-        // 자동차 객체를 생성
+        val carNameList = readAndValidateCarNames()
+        val repeatNum = readAndValidateRepeatNum()
         val racingGame = RacingGame()
-        val cars = carNamesList.map { carName -> Car(carName) }
-
-        // 레이싱 진행
-        OutputView.printResultHeader()
-        val winners = racingGame.racing(cars, repeatNum)
-
-        // 결과 출력
-        OutputView.printRaceWinners(winners)
+        val initialCars = carNameList.map { Car(it) }
+        playRace(racingGame, initialCars, repeatNum)
     }
+
+    private fun readAndValidateCarNames(): List<String> {
+        OutputView.printCarInputInstruction()
+        val carNames = InputView.readCarNames()
+        Validator.validateCarNames(carNames)
+        return carNames
+    }
+
+    private fun readAndValidateRepeatNum(): Int {
+        OutputView.printRepeatNumInputInstruction()
+        val input = InputView.readRepeatNum()
+        Validator.validateRepeatNum(input)
+        return input.toInt()
+    }
+
+    private fun playRace(racingGame: RacingGame, cars: List<Car>, repeatNum: Int) {
+        OutputView.printResultHeader()
+        var currentCars = cars
+        repeat(repeatNum) {
+            currentCars = racingGame.raceOneRound(currentCars)
+            OutputView.printRaceProcess(currentCars)
+        }
+        OutputView.printRaceWinners(racingGame.findWinners(currentCars))
+    }
+
 }
