@@ -51,12 +51,12 @@
 ### Model
 
 - [ ] `Car`: 자동차 정보를 저장하는 객체
-    - [ ] `name`: Car의 이름
+    - [x] `name`: Car의 이름
         - [ ] 이름이 5자 이하가 아니라면 예외 처리
         - [ ] 중복된 자동차 이름이 있는 경우 예외 처리
-    - [ ] `position`: 현재 Car의 위치
+    - [x] `position`: 현재 Car의 위치
         - 초기 위치는 0
-    - [ ] `move()`: Car의 현재 위치를 변경시키는 메서드
+    - [x] `move()`: Car의 현재 위치를 변경시키는 메서드
         - `camp.nextstep.edu.missionutils`의 `Randoms` API를 사용해서 4이상일 경우 전진
 - [ ] `Cars`: 자동차 경주에 참여하고 있는 Car의 이름을 저장하는 HashMap
 - [ ] `playRace()`: 자동차 경주를 한번 실행하는 함수
