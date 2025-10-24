@@ -1,5 +1,6 @@
 package racingcar
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.controller.RacingController
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -58,20 +59,8 @@ fun validateRepeatNum(repeatNum: String) {
 }
 
 fun main() {
-    OutputView.printCarInputInstruction()
-    val carNamesList = InputView.readCarNames()
-    validateCarNames(carNamesList)
-
-    OutputView.printRepeatNumInputInstruction()
-    val repeatNumInput = InputView.readRepeatNum()
-    validateRepeatNum(repeatNumInput)
-    val repeatNum = repeatNumInput.toInt()
-
-    val cars = carNamesList.map { carName -> Car(carName) }
-
-    OutputView.printResultHeader()
-    val winnerList = racing(cars, repeatNum)
-    OutputView.printRaceWinners(winnerList)
+    val controller = RacingController()
+    controller.start()
 }
 
 
