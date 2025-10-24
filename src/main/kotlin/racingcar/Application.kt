@@ -14,7 +14,7 @@ fun main() {
     val num = numCheck(numInput)
 }
 
-fun parse(input: String): List<String>{
+fun parse(input: String): List<String> {
     val names = input.split(",").map { it.trim() }
     if (names.isEmpty()) throw IllegalArgumentException("No name")
     if (names.any { it.isEmpty() }) throw IllegalArgumentException("Empty name")
@@ -22,7 +22,7 @@ fun parse(input: String): List<String>{
     return names
 }
 
-fun numCheck(input: String): Int{
+fun numCheck(input: String): Int {
     val num = input.toIntOrNull() ?: throw IllegalArgumentException("No number")
     if (num <= 0) throw IllegalArgumentException("No literal number")
     return num
