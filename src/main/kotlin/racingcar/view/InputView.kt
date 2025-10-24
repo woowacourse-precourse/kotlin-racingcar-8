@@ -4,6 +4,6 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
     fun readInput(): String {
-        return Console.readLine()
+        return Console.readLine().trim()
     }
 }
