@@ -21,6 +21,20 @@ class CarTest {
     }
 
     @Test
+    fun 자동차를_이동시키면_거리가_증가한다() {
+        // given
+        val car = Car.from("pobi")
+
+        // when
+        repeat(3) {
+            car.move()
+        }
+
+        // then
+        assertEquals(car.distance, 3)
+    }
+
+    @Test
     fun 경기_결과를_올바르게_가져온다() {
         // given
         val name = "pobi"
