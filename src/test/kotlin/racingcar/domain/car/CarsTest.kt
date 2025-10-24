@@ -39,15 +39,15 @@ class CarsTest {
             cars.cars[1].move()
         }
         repeat(4) {
-            cars.cars[1].move()
+            cars.cars[2].move()
         }
 
         // when
-        cars.sortedByDistanceDesc()
+        val sortedCars = cars.sortedByDistanceDesc()
 
         // then
-        assertEquals(cars.cars[0].name.value, "woni")
-        assertEquals(cars.cars[1].name.value, "jun")
-        assertEquals(cars.cars[2].name.value, "pobi")
+        assertEquals(sortedCars.cars[0].name.value, "woni")
+        assertEquals(sortedCars.cars[1].name.value, "jun")
+        assertEquals(sortedCars.cars[2].name.value, "pobi")
     }
 }
