@@ -6,11 +6,12 @@ object OutputView {
 
     fun displayRoundResult(result: Map<String, Int>) {
         result.forEach { (name, score) ->
-            println(OutputMessage.ROUND_RESULT.format(name, score))
+            val formattedScore = "-".repeat(score)
+            println(OutputMessage.ROUND_RESULT.format(name, formattedScore))
         }
     }
 
     fun displayWinners(winners: List<String>) {
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+        println(OutputMessage.WINNERS.format(winners.joinToString(", ")))
     }
 }
