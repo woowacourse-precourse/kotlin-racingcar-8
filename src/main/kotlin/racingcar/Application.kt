@@ -15,14 +15,14 @@ data class Car(
 fun racing(carList: List<Car>, repeatNum: Int): List<Car> {
     var currentCars = carList
     repeat(repeatNum) {
-        currentCars = raceOnce(carList)
+        currentCars = raceOnce(currentCars)
     }
-    val maxDistance = currentCars.maxByOrNull { it.position } ?: 0
+    val maxDistance = currentCars.maxByOrNull { it.position }?.position ?: 0
     return currentCars.filter { it.position == maxDistance }
 }
 
 fun raceOnce(cars: List<Car>): List<Car> {
-    return cars.map { it. move(Randoms.pickNumberInRange(0, 9))}
+    return cars.map { it.move(Randoms.pickNumberInRange(0, 9))}
 }
 
 fun getCarNamesList(): List<String> {
@@ -56,7 +56,5 @@ fun main() {
     val carNamesList = getCarNamesList()
     println("시도할 횟수는 몇 회인가요?")
     val repeatNum = getRepeatNum()
-
-
 }
 
