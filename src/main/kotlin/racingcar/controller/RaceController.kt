@@ -25,7 +25,7 @@ class RaceController(
         val race = Race(cars)
 
         outputPort.printFirstResult()
-        repeat (tryCount) {
+        repeat(tryCount) {
             race.runOneRound()
 
             cars.forEach { car ->

@@ -1,6 +1,5 @@
 package racingcar.domain
 
-import racingcar.port.OutputPort
 import racingcar.util.RandomUtils
 
 class Race(val cars: List<Car>) {
