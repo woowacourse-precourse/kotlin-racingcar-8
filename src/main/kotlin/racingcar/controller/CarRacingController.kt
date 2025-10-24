@@ -15,5 +15,7 @@ class CarRacingController(
 
         OutputView.displayAttemptCountPrompt()
         val result = racingService.race(InputView.readInput(), cars)
+
+        OutputView.displayResult(result)
     }
 }
