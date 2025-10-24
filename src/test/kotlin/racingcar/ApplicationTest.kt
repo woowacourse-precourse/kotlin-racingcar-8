@@ -26,6 +26,17 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 경주 통합 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,pobi", "1")
+                assertThat(output()).contains("pobi #A : -", "woni : ", "pobi #B : -", "최종 우승자 : pobi #A, pobi #B")
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD
+        )
+    }
+
     override fun runMain() {
         main()
     }
