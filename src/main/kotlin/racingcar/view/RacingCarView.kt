@@ -12,4 +12,8 @@ class RacingCarView {
         println("시도할 횟수는 몇 회인가요?")
         return readLine()
     }
+
+    fun printCarRaceResultTitle() {
+        println("실행 결과")
+    }
 }
