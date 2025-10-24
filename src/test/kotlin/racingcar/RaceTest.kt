@@ -71,7 +71,6 @@ class RaceTest : NsTest() {
             MOVING_FORWARD, MOVING_FORWARD, STOP,
             MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
         )
-
     }
 
     override fun runMain() {

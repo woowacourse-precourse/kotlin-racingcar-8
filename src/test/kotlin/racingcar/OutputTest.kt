@@ -27,7 +27,6 @@ class OutputTest : NsTest() {
             OutputView.displayRoundResult(result)
             assertThat(output()).contains("pobi : -", "woni : ", "jun : --")
         }
-
     }
 
     @Test
