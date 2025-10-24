@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     // TODO: 프로그램 구현
+    print(processCarNaming("pobi,zz"))
 }
 
 fun infoMessage() {
@@ -15,4 +16,9 @@ fun input(): String? {
 }
 
 fun output() {
+}
+
+fun processCarNaming(input: String): String {
+    val carNames = listOf(input)
+    return carNames.joinToString(",")
 }
