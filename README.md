@@ -42,14 +42,18 @@ racingcar
 │   ├── Car.kt
 │   └── Race.kt
 │
-├── view
-│   ├── InputView.kt
-│   └── ResultView.kt
+├── port
+│   ├── InputPort.kt
+│   └── OutputPort.kt
 │
 ├── util
 │   ├── InputParser.kt
 │   ├── InputValidator.kt
 │   └── RandomUtils.kt
+│
+├── view
+│   ├── InputView.kt
+│   └── OutputView.kt
 │
 └── Application.kt (main 함수)
 ```
@@ -64,6 +68,8 @@ racingcar
 │   └── RaceTest.kt
 │
 └── util
-    ├── InputParserTest.kt
-    └── InputValidatorTest.kt
+│   ├── InputParserTest.kt
+│   └── InputValidatorTest.kt
+│
+└── ApplicationTest.kt
 ```
