@@ -13,11 +13,11 @@ class Race {
     fun run() {
         val cars = Cars()
         val rawCarNames = InputView.readCarNameInput()
-        val raceCount = InputView.readRaceCountInput()
-        RaceCountValidator.validateRaceCount(raceCount)
-
         val parseCarNames = CarNameParser.parseCarsNames(rawCarNames)
         CarNameValidator.validateCarName(parseCarNames)
+
+        val raceCount = InputView.readRaceCountInput()
+        RaceCountValidator.validateRaceCount(raceCount)
 
         cars.createCar(parseCarNames)
         OutputView.printStartRacing()
