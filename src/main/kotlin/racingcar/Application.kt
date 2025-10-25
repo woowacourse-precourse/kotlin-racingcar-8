@@ -24,7 +24,7 @@ fun main() {
 
     //시도 횟수 입력
     println("시도할 횟수는 몇 회인가요?")
-    val attemptNumbers: Int = Console.readLine().toInt()
+    val attemptNumbers = getAttempNumber()
 
     //경기 수행
     println("실행 결과")
@@ -59,6 +59,22 @@ fun validateNameInput(inputNameString: List<String>) {
 
     if (!invalidName.isEmpty()) {
         throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다. (5자 이상인 이름 : ${invalidName})")
+    }
+}
+
+// 입력받은 값이 숫자이며 양수인지 판별하는 함수
+fun getAttempNumber(): Int{
+    try {
+        val input = Console.readLine().toInt()
+
+        if (input < 0){
+            throw IllegalArgumentException("음수는 입력할 수 없습니다.")
+        }
+
+        return input
+
+    } catch(e: NumberFormatException) {
+        throw IllegalArgumentException("정수를 입력해주세요")
     }
 }
 
