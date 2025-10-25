@@ -5,12 +5,13 @@ import racingcar.model.RacingGame
 import racingcar.view.InputView
 import racingcar.view.OutputView
 import racingcar.model.Validator
+import racingcar.util.RandomNumberGenerator
 
 class RacingController {
     fun start() {
         val carNameList = readAndValidateCarNames()
         val repeatNum = readAndValidateRepeatNum()
-        val racingGame = RacingGame()
+        val racingGame = RacingGame(RandomNumberGenerator())
         val initialCars = carNameList.map { Car(it) }
         playRace(racingGame, initialCars, repeatNum)
     }

@@ -4,7 +4,8 @@ data class Car(
     val carName: String,
     val position: Int = INITIAL_POSITION
 ) {
-    fun move(randomValue: Int): Car {
+    fun move(generator: NumberGenerator): Car {
+        val randomValue = generator.generate()
         return if (randomValue >= MOVE_FORWARD_THRESHOLD) {
             copy(position = position + MOVE_DISTANCE)
         } else this

@@ -5,9 +5,9 @@ import racingcar.view.OutputView
 private const val MIN_RANDOM_NUMBER = 0
 private const val MAX_RANDOM_NUMBER = 9
 
-class RacingGame {
+class RacingGame(private val numberGenerator: NumberGenerator) {
     fun raceOneRound(cars: List<Car>): List<Car> {
-        return cars.map { it. move(Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER))}
+        return cars.map { it. move(numberGenerator)}
     }
 
     fun findWinners(cars: List<Car>): List<Car> {
