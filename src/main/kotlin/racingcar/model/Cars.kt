@@ -11,7 +11,6 @@ class Cars {
         cars.map { it.move() }
     }
 
-    fun getCars(): List<Car> {
-        return cars
-    }
+    fun getCars(): List<Car> = cars
+
 }
