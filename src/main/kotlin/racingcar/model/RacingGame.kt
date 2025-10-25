@@ -1,11 +1,13 @@
 package racingcar.model
 
+import racingcar.Messages
+
 class RacingGame(private val carNames: List<String>, private val tries: String) {
     private val cars = carNames.map { Car(it) }
 
     init {
-        require(tries.toIntOrNull() != null) { "정수가 아닌 입력값입니다." }
-        require(tries.toInt() != 0) { "횟수는 0보다 큰 정수이여야 합니다." }
+        require(tries.toIntOrNull() != null) { Messages.NOT_INTEGER }
+        require(tries.toInt() != 0) { Messages.NOT_SMALLER_THAN_ZERO }
     }
 
     fun playRound(): List<Car> {

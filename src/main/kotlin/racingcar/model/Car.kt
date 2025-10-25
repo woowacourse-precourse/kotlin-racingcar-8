@@ -1,13 +1,14 @@
 package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import racingcar.Messages
 
 class Car(private val name: String) {
     private var distance: Int = 0
 
     init {
-        require(name.isNotEmpty()) { "이름은 비어 있을 수 없습니다." }
-        require(name.length <= MAX_NAME_LENGTH) { "이름은 5자 이하여야 합니다." }
+        require(name.isNotEmpty()) { Messages.NOT_EMPTY_NAME}
+        require(name.length <= MAX_NAME_LENGTH) { Messages.NOT_BIGGER_THAN_FIVE }
     }
 
     fun move() {

@@ -1,11 +1,12 @@
 package racingcar.view
 
+import racingcar.Messages
 import racingcar.model.Car
 
 object OutputView {
 
     fun showRacingStart() {
-        println("\n실행 결과")
+        println(Messages.RACING_RESULT)
     }
 
     fun showRoundResult(roundResult: List<Car>) {
@@ -16,10 +17,10 @@ object OutputView {
     fun showWinners(winners: List<Car>) {
         val winnerNames = winners.joinToString(", ") { it.getName() }
 
-        println("최종 우승자 : $winnerNames")
+        println("${Messages.WINNER_PREFIX}$winnerNames")
     }
 
     fun showError(error : String) {
-        throw IllegalArgumentException("[ERROR] : $error")
+        throw IllegalArgumentException("${Messages.ERROR_PREFIX}$error")
     }
 }

@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import racingcar.Messages
 import racingcar.view.InputView
 import racingcar.model.RacingGame
 import racingcar.view.OutputView
@@ -21,7 +22,7 @@ class Controller {
             val winners = game.getWinners()
             OutputView.showWinners(winners)
         } catch (e: IllegalArgumentException) {
-            OutputView.showError(e.message ?: "잘못된 입력입니다.")
+            OutputView.showError(e.message ?: Messages.ERROR_DEFAULT)
         }
     }
 }
