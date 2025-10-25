@@ -90,3 +90,8 @@ Randoms.pickNumberInRange(0, 9)
    3. 각 필드 값들을 반환하는 getter
 2. racer 객체들을 저장할 컬렉션
 3. 입력받은 racer들의 이름을 나누는 함수
+4. 공백이 입력될 시 프로그램 종료
+5. 잘못된 시행횟수가 입력될시 IllegalArgumentException 발생
+6. 잘못된 자동차 이름 입력시 IllegalArgumentException 발생
+7. 경기 수행 기능
+8. 우승자 판별 함수
