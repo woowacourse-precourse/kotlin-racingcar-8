@@ -51,7 +51,7 @@ private fun stringToInt(roundInput: String): Int =
     }
 
 data class Car(val name: String) {
-    var position: Int = 0
+    var position: Int = 1
 }
 
 class RacingGame(val round: Int, val cars: List<Car>) {
