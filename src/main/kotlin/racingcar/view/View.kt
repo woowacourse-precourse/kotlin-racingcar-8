@@ -5,6 +5,6 @@ interface View {
     fun readRoundCounts(): String
 
     fun printRoundHeader()
-    fun printRoundResult(carStates: Map<String, Int>)
+    fun printRoundResult(carStates: List<Pair<String, Int>>)
     fun printWinners(winners: List<String>)
 }

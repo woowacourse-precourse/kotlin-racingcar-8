@@ -17,7 +17,7 @@ class ConsoleView : View {
 
     override fun printRoundHeader() = println(ROUND_HEADER)
 
-    override fun printRoundResult(carStates: Map<String, Int>) = carStates.forEach { (name, position) ->
+    override fun printRoundResult(carStates: List<Pair<String, Int>>) = carStates.forEach { (name, position) ->
         println("$name : ${"-".repeat(position)}")
     }
 
