@@ -3,7 +3,6 @@ package racingcar.controller
 import racingcar.model.CarNameParser
 import racingcar.model.InputValidator
 import racingcar.model.RaceManager
-import racingcar.model.WinnerCalculator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -42,7 +41,7 @@ class Race {
     }
 
     private fun endRace(raceManager: RaceManager) {
-        val winners = WinnerCalculator.calculateWinners(raceManager.getCars())
+        val winners = raceManager.calculateWinners()
         OutputView.printWinners(winners)
     }
 }

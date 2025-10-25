@@ -34,4 +34,10 @@ class RaceManager {
 
     fun getCars(): List<Car> = cars
 
+    fun calculateWinners(): List<String> {
+        val maxWin = cars.maxOfOrNull { it.position }
+        return cars.filter {
+            it.position == maxWin
+        }.map { it.name }
+    }
 }
