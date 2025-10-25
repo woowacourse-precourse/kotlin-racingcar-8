@@ -30,8 +30,8 @@ class RacingGameExceptionTest {
     }
 
     @Test
-    @DisplayName("자동차 수는 1대 이상이어야 한다")
-    fun carShouldBeMoreThanOne() {
+    @DisplayName("자동차 수는 2대 이상이어야 한다")
+    fun carShouldBeMoreThanTwo() {
         assertThrows<IllegalArgumentException> {
             game.setup("pobi", "1")
         }
