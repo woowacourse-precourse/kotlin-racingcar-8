@@ -2,9 +2,13 @@ package racingcar.model
 
 object InputValidator {
 
+    private const val MIN_NAME_LENGTH = 1
+    private const val MAX_NAME_LENGTH = 5
+
     fun validateCarName(carNames: List<String>) {
         carNames.forEach { name ->
-            require(name.length in 1..5) { "각 자동차의 이름의 길이는 1~5자 이어야 합니다." }
+            require(name.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH)
+            { "각 자동차의 이름의 길이는 1~5자 이어야 합니다." }
         }
     }
 
