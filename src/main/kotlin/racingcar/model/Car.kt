@@ -7,7 +7,7 @@ class Car(private val name: String) {
     private var distance: Int = 0
 
     init {
-        require(name.isNotEmpty()) { Messages.NOT_EMPTY_NAME}
+        require(name.trim().isNotEmpty()) { Messages.NOT_EMPTY_NAME}
         require(name.length <= MAX_NAME_LENGTH) { Messages.NOT_BIGGER_THAN_FIVE }
     }
 
