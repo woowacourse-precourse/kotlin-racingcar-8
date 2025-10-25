@@ -3,6 +3,20 @@ package racingcar.model
 class RaceManager {
     private val cars = mutableListOf<Car>()
 
+    fun addSuffixToDuplicateNames(carNames: List<String>, duplicateNameAndIndex: Map<String, Set<Int>>): List<String> {
+        if (duplicateNameAndIndex.isEmpty()) return carNames
+
+        val result = carNames.toMutableList()
+        duplicateNameAndIndex.forEach { (name, indexes) ->
+            var suffix = 'A'
+            indexes.forEach { index ->
+                result[index] = "$name$suffix"
+                suffix++
+            }
+        }
+        return result
+    }
+
     fun createCar(carNames: List<String>) {
         carNames.map { cars.add(Car(it)) }
     }
