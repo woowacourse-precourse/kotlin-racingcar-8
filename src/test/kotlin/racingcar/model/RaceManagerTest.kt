@@ -7,6 +7,14 @@ import org.junit.jupiter.api.Test
 class RaceManagerTest {
 
     @Test
+    fun `레이스 횟수 설정하기`() {
+        val raceManager = RaceManager()
+        raceManager.setRaceCount(3)
+        assertEquals(3, raceManager.getRaceCount())
+    }
+
+
+    @Test
     fun `리스트로 Car 생성하기`() {
         val carNames = mutableListOf<String>("A", "B", "C")
         val cars = mutableListOf<Car>(Car("A"), Car("B"), Car("C"))
