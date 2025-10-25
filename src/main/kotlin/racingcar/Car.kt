@@ -8,4 +8,8 @@ class Car(private val name: String, private var score: Int = 0) {
     init {
         require(name.length <= MAX_NAME_LENGTH) { ExceptionMessage.NAME_LENGTH_OVER }
     }
+
+    fun move(randomNumber : Int) {
+        if(randomNumber >= 4) score += 1
+    }
 }
