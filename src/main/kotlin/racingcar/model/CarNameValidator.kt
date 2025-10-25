@@ -4,8 +4,16 @@ object CarNameValidator {
 
     fun validateCarName(carNames: List<String>) {
         carNames.forEach { name ->
-            require(name.length in 1..5) { "각 자동차의 이름의 길이는 1~5자 이어야 합니다."}
+            require(name.length in 1..5) { "각 자동차의 이름의 길이는 1~5자 이어야 합니다." }
         }
+    }
+
+    fun findDuplicateName(carNames: List<String>): Map<String, Set<Int>> {
+        val indexMap = mutableMapOf<String, MutableSet<Int>>()
+        carNames.forEachIndexed { index, value ->
+            indexMap.computeIfAbsent(value) { mutableSetOf() }.add(index)
+        }
+        return indexMap.filterValues { it.size > 1 }
     }
 
 }
