@@ -14,5 +14,6 @@ object Messages {
 
     const val NOT_INTEGER = "정수가 아닌 입력값입니다."
     const val NOT_SMALLER_THAN_ZERO = "횟수는 0보다 큰 정수이여야 합니다."
+    const val DUPLICATE_NAME = "중복된 이름이 있습니다."
 
 }

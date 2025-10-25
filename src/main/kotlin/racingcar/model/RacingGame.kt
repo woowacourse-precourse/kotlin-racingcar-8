@@ -8,6 +8,7 @@ class RacingGame(private val carNames: List<String>, private val tries: String) 
     init {
         require(tries.toIntOrNull() != null) { Messages.NOT_INTEGER }
         require(tries.toInt() != 0) { Messages.NOT_SMALLER_THAN_ZERO }
+        require(carNames.toSet().size == carNames.size  ) { Messages.DUPLICATE_NAME }
     }
 
     fun playRound(): List<Car> {
