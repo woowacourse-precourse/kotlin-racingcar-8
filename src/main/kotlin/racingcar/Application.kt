@@ -31,5 +31,12 @@ private fun readTryCount(): Int {
     val input = Console.readLine()
     val tryCount = input.toIntOrNull()
 
+    validateTryCount(tryCount)
+
     return tryCount!!
+}
+
+private fun validateTryCount(tryCount: Int?) {
+    requireNotNull(tryCount) { ExceptionMessage.INVALID_TRY_COUNT }
+    require(tryCount > 0) { ExceptionMessage.INVALID_TRY_COUNT }
 }
