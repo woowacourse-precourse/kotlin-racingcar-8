@@ -3,7 +3,7 @@ package racingcar.model
 import camp.nextstep.edu.missionutils.Randoms
 
 // 자동차 모델
-class Car(val name: String) {
+data class Car(val name: String) {
     var moves: Int = 0
 
     fun moving() {
