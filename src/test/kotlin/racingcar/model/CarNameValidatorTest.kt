@@ -18,4 +18,11 @@ class CarNameValidatorTest {
             CarNameValidator.validateCarName(listOf("abcsdwdds", "ace", "oddvvvd"))
         }
     }
+
+    @Test
+    fun `빈 문자열 입력 시`() {
+        assertThrows(IllegalArgumentException::class.java) {
+            CarNameValidator.validateCarName(listOf(""))
+        }
+    }
 }
