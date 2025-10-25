@@ -55,4 +55,28 @@ class RaceManagerTest {
         map["Alice"] = mutableSetOf(1, 2)
         assertEquals(answer, raceManager.addSuffixToDuplicateNames(carNames, map))
     }
+
+    @Test
+    fun `공동 우승자인 경우`() {
+        val raceManager = RaceManager()
+        val cars = listOf("A", "B", "C")
+        raceManager.createCar(cars)
+
+        raceManager.getCars()[0].position = 5
+        raceManager.getCars()[1].position = 5
+        raceManager.getCars()[2].position = 2
+        assertEquals(listOf("A","B"), raceManager.calculateWinners())
+    }
+
+    @Test
+    fun `단독 우승자인 경우`() {
+        val raceManager = RaceManager()
+        val cars = listOf("A", "B", "C")
+        raceManager.createCar(cars)
+
+        raceManager.getCars()[0].position = 5
+        raceManager.getCars()[1].position = 1
+        raceManager.getCars()[2].position = 2
+        assertEquals(listOf("A"), raceManager.calculateWinners())
+    }
 }
