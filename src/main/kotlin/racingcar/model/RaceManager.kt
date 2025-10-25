@@ -2,6 +2,13 @@ package racingcar.model
 
 class RaceManager {
     private val cars = mutableListOf<Car>()
+    private var raceCount: Int = 0
+
+    fun setRaceCount(raceCount: Int) {
+        this.raceCount = raceCount
+    }
+
+    fun getRaceCount(): Int = raceCount
 
     fun addSuffixToDuplicateNames(carNames: List<String>, duplicateNameAndIndex: Map<String, Set<Int>>): List<String> {
         if (duplicateNameAndIndex.isEmpty()) return carNames
