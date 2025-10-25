@@ -26,14 +26,19 @@ object CarFactory {
 
 class GameManager(
     private val cars: List<Car> = CarFactory.createCars(),
-    val maxRound: Int = CarFactory.createRound(),
+    private val maxRound: Int = CarFactory.createRound(),
 ) {
     /** 한 턴 동안 각 [Car]의 전진을 시도하고, 그 결과를 반환 */
-    fun playRound(): List<Car> {
-        cars.forEach { car ->
-            car.tryMove()
-        }
+    private fun playRound(moveStrategy: (Car) -> Unit = { it.tryMove() }): List<Car> {
+        cars.forEach { moveStrategy(it) }
         return cars
+    }
+
+    /** [maxRound]회에 걸쳐 각 round를 진행하고, 각 라운드 결과를 지연 평가 형태로 반환한다. */
+    fun playAllRounds(moveStrategy: (Car) -> Unit = { it.tryMove() }): Sequence<List<Car>> = sequence {
+        repeat(maxRound) {
+            yield(playRound(moveStrategy))
+        }
     }
 
     /** [racingcar.util.RandomGenerator.THRESHOLD]보다 멀거나 같은 거리를 이동한 차의 이름 리스트 반환 */
