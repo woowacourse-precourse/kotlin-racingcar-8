@@ -21,10 +21,12 @@ fun main() {
             racer.doRandomProgress()
         }
         for(racer in racerCollection){
-            println(racer.getLastDistance())
+            println(racer.getDistance())
         }
         println()
     }
+
+    print(getWinner(racerCollection))
 }
 
 // 입력받은 문자열에서 이름들을 추출하는 함수
@@ -35,23 +37,41 @@ fun extractRacerName(inputNameString: String): List<String> {
     return returnCollection
 }
 
+// 우승자 선별 함수
+fun getWinner(collection: List<Racer>): String{
+    val winner = StringBuilder().append("최종 우승자 : ")
+    if(collection.isEmpty()){
+        return winner.toString()
+    }
+
+    val maxDistance = collection.map { it.getFinalDistance() }.maxOrNull()
+
+    val winners = collection.filter { it.getFinalDistance() == maxDistance }
+
+    val winnerNames = winners.map { it.getName() }
+
+    winner.append(winnerNames.joinToString(","))
+
+    return winner.toString()
+}
+
 public class Racer(var nameInput: String){
     private var name = nameInput
     private var distance = StringBuilder()
-    private var distanceNumber: Int = 0
 
     fun doRandomProgress(){
         if(Randoms.pickNumberInRange(0, 9) >= 4) {
             this.distance.append("-")
-            this.distanceNumber += 1
         }
     }
 
     fun getName(): String { return this.name }
 
-    fun getDistance(): String { return this.distance.toString() }
-
-    fun getLastDistance(): String {
+    fun getDistance(): String {
         return this.name+" : "+this.distance.toString()
+    }
+
+    fun getFinalDistance(): Int {
+        return this.distance.toString().length
     }
 }
