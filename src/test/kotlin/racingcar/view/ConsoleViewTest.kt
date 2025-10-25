@@ -21,7 +21,7 @@ class ConsoleViewTest: NsTest() {
     fun readLinePromptTest() {
         assertSimpleTest {
             // When
-            run("test", "1")
+            run("pobi,woni", "1")
 
             // Then
             assertThat(output()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -46,7 +46,7 @@ class ConsoleViewTest: NsTest() {
     fun roundResultTest() {
         assertSimpleTest {
             // Given
-            val carStates = mapOf("pobi" to 3, "woni" to 1, "jun" to 3)
+            val carStates = listOf("pobi" to 3, "woni" to 1, "jun" to 3)
             val expectedOutput = """
                 pobi : ---
                 woni : -
