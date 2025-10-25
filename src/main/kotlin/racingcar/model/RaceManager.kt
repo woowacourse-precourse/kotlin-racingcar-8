@@ -1,6 +1,6 @@
 package racingcar.model
 
-class Cars {
+class RaceManager {
     private val cars = mutableListOf<Car>()
 
     fun createCar(carNames: List<String>) {

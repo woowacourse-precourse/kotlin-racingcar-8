@@ -2,7 +2,7 @@ package racingcar.controller
 
 import racingcar.model.CarNameParser
 import racingcar.model.CarNameValidator
-import racingcar.model.Cars
+import racingcar.model.RaceManager
 import racingcar.model.RaceCountValidator
 import racingcar.model.WinnerCalculator
 import racingcar.view.InputView
@@ -11,7 +11,7 @@ import racingcar.view.OutputView
 class Race {
 
     fun run() {
-        val cars = Cars()
+        val raceManager = RaceManager()
         val rawCarNames = InputView.readCarNameInput()
         val parseCarNames = CarNameParser.parseCarsNames(rawCarNames)
         CarNameValidator.validateCarName(parseCarNames)
@@ -19,14 +19,14 @@ class Race {
         val raceCount = InputView.readRaceCountInput()
         RaceCountValidator.validateRaceCount(raceCount)
 
-        cars.createCar(parseCarNames)
+        raceManager.createCar(parseCarNames)
         OutputView.printStartRacing()
         repeat(raceCount.toInt(), {
-            cars.startRound()
-            OutputView.printPerRound(cars.getCars())
+            raceManager.startRound()
+            OutputView.printPerRound(raceManager.getCars())
         })
 
-        val winners = WinnerCalculator.calculateWinners(cars.getCars())
+        val winners = WinnerCalculator.calculateWinners(raceManager.getCars())
         OutputView.printWinners(winners)
     }
 }
