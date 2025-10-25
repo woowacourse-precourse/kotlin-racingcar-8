@@ -5,6 +5,12 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
     val names = readCarNames()
     val tryCount = readTryCount()
+    val cars = names.map { Car(it) }
+    val game = Game(cars)
+
+    println("실행 결과")
+    repeat(tryCount) { game.play() }
+    game.showWinners()
 }
 
 private fun readCarNames(): List<String> {
