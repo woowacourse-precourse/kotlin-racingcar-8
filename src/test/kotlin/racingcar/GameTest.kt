@@ -89,7 +89,7 @@ class GameTest : NsTest() {
     @Test
     fun `라운드 횟수가 숫자가 아닌 경우`() {
         assertSimpleTest {
-            assertThrows<NumberFormatException> {
+            assertThrows<IllegalArgumentException> {
                 runException("pobi,crong", "abc")
             }
         }
