@@ -89,3 +89,4 @@ Randoms.pickNumberInRange(0, 9)
    2. 각 수행 후 결과를 저장할 필드
    3. 각 필드 값들을 반환하는 getter
 2. racer 객체들을 저장할 컬렉션
+3. 입력받은 racer들의 이름을 나누는 함수
