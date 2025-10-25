@@ -12,4 +12,6 @@ class Car(private val name: String, private var score: Int = 0) {
     fun move(randomNumber : Int) {
         if(randomNumber >= 4) score += 1
     }
+
+    fun showCurrentProgress() { println("$name : "+"-".repeat(score)) }
 }
