@@ -21,7 +21,8 @@ fun main() {
         println()
     }
 
-    checkWinner(cars)
+    val winners = checkWinner(cars)
+    println("최종 우승자: ${winners.joinToString(", ")}")
 }
 
 fun parse(input: String): List<String> {
@@ -45,8 +46,8 @@ fun race(cars: List<Car>) {
     }
 }
 
-fun checkWinner(cars: List<Car>) {
+fun checkWinner(cars: List<Car>): List<String> {
     val maxPosition = cars.maxOf { it.position }
     val winners = cars.filter { it.position == maxPosition }.map { it.name }
-    println("최종 우승자 : ${winners.joinToString(", ")}")
+    return winners
 }
