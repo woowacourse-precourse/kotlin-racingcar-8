@@ -16,9 +16,12 @@ class RaceManagerTest {
 
     @Test
     fun `리스트로 Car 생성하기`() {
+        val raceManager = RaceManager()
         val carNames = mutableListOf<String>("A", "B", "C")
-        val cars = mutableListOf<Car>(Car("A"), Car("B"), Car("C"))
-        assertEquals(cars, RaceManager().createCar(carNames))
+        val answer = mutableListOf<Car>(Car("A", 0), Car("B", 0), Car("C", 0))
+
+        raceManager.createCar(carNames)
+        assertEquals(answer, raceManager.getCars())
     }
 
     @Test
