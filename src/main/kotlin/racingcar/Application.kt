@@ -20,6 +20,8 @@ fun main() {
         race(cars)
         println()
     }
+
+    checkWinner(cars)
 }
 
 fun parse(input: String): List<String> {
@@ -41,4 +43,10 @@ fun race(cars: List<Car>) {
         val randomNumber = Randoms.pickNumberInRange(0, 9)
         car.move(randomNumber)
     }
+}
+
+fun checkWinner(cars: List<Car>) {
+    val maxPosition = cars.maxOf { it.position }
+    val winners = cars.filter { it.position == maxPosition }.map { it.name }
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
