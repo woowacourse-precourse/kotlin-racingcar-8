@@ -59,5 +59,25 @@ class OutputViewTest : NsTest() {
         }
     }
 
+    @Test
+    fun `printRounds 출력 테스트(하드코딩)`() {
+        val cars1 = listOf(Car("pobi", 1), Car("woni", 0))
+        val cars2 = listOf(Car("pobi", 2), Car("woni", 1))
+        val rounds = sequenceOf(cars1, cars2)
+
+        OutputView.printRounds(rounds)
+
+        val expected = """
+            pobi : -
+            woni : 
+            
+            pobi : --
+            woni : -""".trimIndent()
+
+        assertSimpleTest {
+            assertThat(output()).isEqualTo(expected)
+        }
+    }
+
     override fun runMain() {}
 }
