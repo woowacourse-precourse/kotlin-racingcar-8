@@ -56,6 +56,6 @@
 - **WinnerCalculatorTest** : 우승자 및 공동 우승자 계산 검증  
 - **InputViewTest** : 입력값 유효성(빈 이름, 길이 초과) 검증  
 - **OutputViewTest** : 출력 형식 및 우승자 출력 검증  
-- **ApplicationTest** : 프로그램 통합 테스트 (정상 흐름 & 예외 케이스)
+- **ApplicationTest** : 프로그램 통합 테스트
 
 
