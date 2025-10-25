@@ -6,13 +6,25 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
     // 입력 화면 출력
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    var racerNames: String = Console.readLine()
-    println("시도할 횟수는 몇 회인가요?")
-    var attemptNumbers: Int = Console.readLine().toInt()
+    val racerNames: String = Console.readLine()
+
+    //공백 입력시
+    if(racerNames.isEmpty()) {
+        println("아무도 입력되지 않아 경기가 진행되지 않습니다.")
+        return
+    }
+
+    // 레이서 이름 추출 및 잘못된 입력에 대한 예외처리
+    val extractedRacerNames = extractRacerName(racerNames)
+
+    validateNameInput(extractedRacerNames)
 
     // 레이서 객체 생성
-    var extractedRacerNames = extractRacerName(racerNames)
-    var racerCollection: List<Racer> = extractedRacerNames.map { Racer(it) }
+    val racerCollection: List<Racer> = extractedRacerNames.map { Racer(it) }
+
+    //시도 횟수 입력
+    println("시도할 횟수는 몇 회인가요?")
+    val attemptNumbers: Int = Console.readLine().toInt()
 
     //경기 수행
     println("실행 결과")
@@ -37,6 +49,19 @@ fun extractRacerName(inputNameString: String): List<String> {
     return returnCollection
 }
 
+// 잘못된 이름에 대한 예외처리
+fun validateNameInput(inputNameString: List<String>) {
+    var invalidName = StringBuilder()
+    for (name in inputNameString) {
+        //자동차 이름이 5자 이상인 경우
+        if (name.length > 5) { invalidName.append("$name ") }
+    }
+
+    if (!invalidName.isEmpty()) {
+        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다. (5자 이상인 이름 : ${invalidName})")
+    }
+}
+
 // 우승자 선별 함수
 fun getWinner(collection: List<Racer>): String{
     val winner = StringBuilder().append("최종 우승자 : ")
@@ -44,7 +69,7 @@ fun getWinner(collection: List<Racer>): String{
         return winner.toString()
     }
 
-    val maxDistance = collection.map { it.getFinalDistance() }.maxOrNull()
+    val maxDistance = collection.maxOfOrNull { it.getFinalDistance() }
 
     val winners = collection.filter { it.getFinalDistance() == maxDistance }
 
@@ -55,7 +80,7 @@ fun getWinner(collection: List<Racer>): String{
     return winner.toString()
 }
 
-public class Racer(var nameInput: String){
+class Racer(var nameInput: String){
     private var name = nameInput
     private var distance = StringBuilder()
 
