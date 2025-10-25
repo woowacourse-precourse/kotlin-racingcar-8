@@ -2,10 +2,10 @@ package racingcar.controller
 
 import racingcar.view.View
 
-class RacingCarController {
-    val view = View()
-    val inputController = InputController()
-
+class RacingCarController(
+    val view: View = View(),
+    val inputController: InputController = InputController()
+) {
     fun run() {
         val nameList = view.inputName() // 이름 입력
         val carList = inputController.createCarList(nameList) // 자동차 리스트
