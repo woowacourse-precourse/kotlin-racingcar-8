@@ -14,5 +14,13 @@ private fun readCarNames(): List<String> {
         .map { it.trim() }
         .filter { it.isNotBlank() }
 
+    validateCarNames(names, input)
+
     return names
+}
+
+private fun validateCarNames(names: List<String>, input: String) {
+    val inputCommaCount = input.count { it == ',' }
+
+    require(names.size == inputCommaCount + 1) { ExceptionMessage.INVALID_NAME_FORMAT }
 }
