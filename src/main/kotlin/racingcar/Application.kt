@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     val names = readCarNames()
+    val tryCount = readTryCount()
 }
 
 private fun readCarNames(): List<String> {
@@ -23,4 +24,12 @@ private fun validateCarNames(names: List<String>, input: String) {
     val inputCommaCount = input.count { it == ',' }
 
     require(names.size == inputCommaCount + 1) { ExceptionMessage.INVALID_NAME_FORMAT }
+}
+
+private fun readTryCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val input = Console.readLine()
+    val tryCount = input.toIntOrNull()
+
+    return tryCount!!
 }
