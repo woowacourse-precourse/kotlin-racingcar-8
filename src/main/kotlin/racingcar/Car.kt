@@ -14,4 +14,8 @@ class Car(private val name: String, private var score: Int = 0) {
     }
 
     fun showCurrentProgress() { println("$name : "+"-".repeat(score)) }
+
+    fun getScore() : Int { return score }
+
+    fun getName() : String { return name }
 }
