@@ -1,9 +1,8 @@
 package racingcar.controller
 
 import racingcar.model.CarNameParser
-import racingcar.model.CarNameValidator
+import racingcar.model.InputValidator
 import racingcar.model.RaceManager
-import racingcar.model.RaceCountValidator
 import racingcar.model.WinnerCalculator
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -14,12 +13,15 @@ class Race {
         val raceManager = RaceManager()
         val rawCarNames = InputView.readCarNameInput()
         val parseCarNames = CarNameParser.parseCarsNames(rawCarNames)
-        CarNameValidator.validateCarName(parseCarNames)
+        InputValidator.validateCarName(parseCarNames)
 
         val raceCount = InputView.readRaceCountInput()
-        RaceCountValidator.validateRaceCount(raceCount)
+        InputValidator.validateRaceCount(raceCount)
 
-        raceManager.createCar(parseCarNames)
+        val duplicateNameAndIndex = InputValidator.findDuplicateName(parseCarNames)
+
+        val renamedCarNames = raceManager.addSuffixToDuplicateNames(parseCarNames, duplicateNameAndIndex)
+        raceManager.createCar(renamedCarNames)
         OutputView.printStartRacing()
         repeat(raceCount.toInt(), {
             raceManager.startRound()

@@ -4,10 +4,13 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
-import racingcar.model.CarNameValidator.findDuplicateName
-import racingcar.model.CarNameValidator.validateCarName
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
+import racingcar.model.InputValidator.findDuplicateName
+import racingcar.model.InputValidator.validateCarName
+import racingcar.model.InputValidator.validateRaceCount
 
-class CarNameValidatorTest {
+class InputValidatorTest {
     @Test
     fun `자동차 이름 길이 검증 통과`() {
         assertDoesNotThrow {
@@ -36,5 +39,24 @@ class CarNameValidatorTest {
         answer["pobi"] = mutableSetOf(0, 1)
         answer["woni"] = mutableSetOf(3, 4)
         assertEquals(answer, findDuplicateName(input))
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+        "0",
+        "-4",
+        "d4",
+    )
+    fun `경주 횟수를 잘못 입력 시`(input: String) {
+        assertThrows(IllegalArgumentException::class.java) {
+           validateRaceCount(input)
+        }
+    }
+
+    @Test
+    fun `경주 횟수 정상 입력 시`() {
+        assertDoesNotThrow {
+            validateRaceCount("5")
+        }
     }
 }
