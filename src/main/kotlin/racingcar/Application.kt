@@ -7,6 +7,14 @@ fun main() {
     // TODO: 프로그램 구현
 }
 
+// 입력받은 문자열에서 이름들을 추출하는 함수
+fun extractRacerName(inputNameString: String): List<String> {
+    var returnCollection: List<String> = mutableListOf<String>()
+    returnCollection = inputNameString.split(",")
+
+    return returnCollection
+}
+
 public class Racer(var name: String){
     private var distance = StringBuilder()
     private var distanceNumber: Int = 0
