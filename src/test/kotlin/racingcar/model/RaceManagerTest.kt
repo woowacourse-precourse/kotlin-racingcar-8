@@ -26,4 +26,25 @@ class RaceManagerTest {
             println("${it.name}의 위치 : ${it.position}")
         }
     }
+
+    @Test
+    fun `중복 이름이 1개 있을 경우`() {
+        val raceManager = RaceManager()
+        val carNames = listOf("Joy", "Joy", "Alice")
+        val answer = listOf("JoyA", "JoyB", "Alice")
+        val map = mutableMapOf<String, Set<Int>>()
+        map["Joy"] = mutableSetOf(0, 1)
+        assertEquals(answer, raceManager.addSuffixToDuplicateNames(carNames, map))
+    }
+
+    @Test
+    fun `중복 이름이 2개 있고 순서가 섞여 있는 경우`() {
+        val raceManager = RaceManager()
+        val carNames = listOf("Joy","Alice" ,"Alice", "Joy", "Bob")
+        val answer = listOf("JoyA","AliceA" ,"AliceB", "JoyB", "Bob")
+        val map = mutableMapOf<String, Set<Int>>()
+        map["Joy"] = mutableSetOf(0, 3)
+        map["Alice"] = mutableSetOf(1, 2)
+        assertEquals(answer, raceManager.addSuffixToDuplicateNames(carNames, map))
+    }
 }
