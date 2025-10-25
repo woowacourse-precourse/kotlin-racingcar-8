@@ -24,7 +24,7 @@ fun main() {
 
     //시도 횟수 입력
     println("시도할 횟수는 몇 회인가요?")
-    val attemptNumbers = getAttempNumber()
+    val attemptNumbers = getAttemptNumber()
 
     //경기 수행
     println("실행 결과")
@@ -63,7 +63,7 @@ fun validateNameInput(inputNameString: List<String>) {
 }
 
 // 입력받은 값이 숫자이며 양수인지 판별하는 함수
-fun getAttempNumber(): Int{
+fun getAttemptNumber(): Int{
     try {
         val input = Console.readLine().toInt()
 
