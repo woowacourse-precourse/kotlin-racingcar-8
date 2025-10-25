@@ -20,4 +20,11 @@ class Game(private val cars: List<Car>) {
     private fun getBestScore() : Int {
         return cars.maxOf { it.getScore() }
     }
+
+    fun showWinners() {
+        val maxScore = getBestScore()
+        val winners = cars.filter { it.getScore() == maxScore }.map { it.getName() }
+
+        println("최종 우승자 : ${winners.joinToString(", ")}")
+    }
 }
