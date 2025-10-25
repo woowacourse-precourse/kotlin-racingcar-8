@@ -16,4 +16,8 @@ class Game(private val cars: List<Car>) {
         cars.forEach { it.showCurrentProgress() }
         println()
     }
+
+    private fun getBestScore() : Int {
+        return cars.maxOf { it.getScore() }
+    }
 }
