@@ -38,6 +38,7 @@ fun main() {
         println()
     }
 
+    // 경기 결과(우승자) 출력
     print(getWinner(racerCollection))
 }
 
@@ -96,7 +97,8 @@ fun getWinner(collection: List<Racer>): String{
     return winner.toString()
 }
 
-class Racer(var nameInput: String){
+// 자동차 정보를 저장하는 클래스
+class Racer(nameInput: String){
     private var name = nameInput
     private var distance = StringBuilder()
 
