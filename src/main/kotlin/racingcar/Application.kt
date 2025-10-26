@@ -16,6 +16,10 @@ data class Car(val name: String, var position: Int = 0) {
     private fun isMovable(randomNumber: Int): Boolean {
         return randomNumber >= 4
     }
+
+    fun getPositionString(): String {
+        return name + " : " + "-".repeat(position)
+    }
 }
 
 fun main() {
@@ -57,5 +61,13 @@ private fun startRacing(carNames: List<String>, tryCount: Int) {
 private fun executeSingleRound(cars: List<Car>) {
     cars.forEach { car ->
         car.move()
+    }
+
+    printRoundResult(cars)
+}
+
+private fun printRoundResult(cars: List<Car>) {
+    cars.forEach { car ->
+        println(car.getPositionString())
     }
 }
