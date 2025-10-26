@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -47,5 +48,16 @@ fun PlayerNameInputErrorCheck(Name: String){
         throw IllegalArgumentException("이름은 공백이 될 수 없습니다.")
     }
 }
+
+fun FindCurrentMostMove(PlayerList: List<String>, PlayerProgressBarArray: Array<String>): Int{
+    var CurrentMostForwardCount: Int = 0
+    for(i in 0 until PlayerList.size){
+        var RandomNumber = pickNumberInRange(0, 9)
+        val Moved = PlayerForward(RandomNumber, i, PlayerProgressBarArray)
+        CurrentMostForwardCount = Math.max(CurrentMostForwardCount, Moved)
+    }
+    return CurrentMostForwardCount
+}
+
 
 
