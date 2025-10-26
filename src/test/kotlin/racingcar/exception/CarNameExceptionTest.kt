@@ -1,19 +1,18 @@
 package racingcar.exception
 
-/*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.assertThrows
 import java.util.stream.Stream
 import org.junit.jupiter.params.provider.Arguments
-import racingcar.controller.InputValidator
+
 
 class CarNameExceptionTest {
     @ParameterizedTest
     @MethodSource("provideCarNameInput")
     fun `자동차 이름이 잘못 입력 되었을 경우 예외`(input: String) {
         assertThrows<IllegalArgumentException> {
-            InputValidator().validateCarName(input)
+            CarNameInputValidator().validateCarName(input)
         }
     }
 
@@ -27,8 +26,9 @@ class CarNameExceptionTest {
                 Arguments.of(","),
                 Arguments.of("pobi,"),
                 Arguments.of(",pobi"),
-                Arguments.of("pobi,,woni")
+                Arguments.of("pobi,,woni"),
+                Arguments.of("pobi,pobi")
             )
         }
     }
-}*/
+}
