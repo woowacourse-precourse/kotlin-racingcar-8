@@ -26,6 +26,27 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이동 횟수가 숫자가 아닌 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
+        }
+    }
+
+    @Test
+    fun `이동 횟수가 음수인 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+        }
+    }
+
+    @Test
+    fun `이름이 빈 문자열인 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(" ", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
