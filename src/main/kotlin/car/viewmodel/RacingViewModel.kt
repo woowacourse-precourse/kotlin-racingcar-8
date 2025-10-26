@@ -25,4 +25,8 @@ class RacingViewModel (private val moveStrategy: MoveStrategy){
     fun getCurrentStatus(): List<Car> {
         return game.getCars()
     }
+
+    fun getWinners(): List<String> {
+        return game.getWinners()
+    }
 }

@@ -28,5 +28,8 @@ class Application {
             viewModel.playOneRound()
             outputView.printRoundResult(viewModel.getCurrentStatus())
         }
+
+        val winners = viewModel.getWinners()
+        outputView.printWinners(winners)
     }
 }
