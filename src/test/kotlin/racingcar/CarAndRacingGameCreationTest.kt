@@ -11,7 +11,7 @@ class CarAndRacingGameCreationTest {
         val testRound = 5
 
         // when
-        val carInstances = testNames.map { Car(it) }
+        val carInstances = createCars(testNames)
         val racingGame = RacingGame(testRound, carInstances)
 
         // then

@@ -46,11 +46,11 @@ public class InputTest {
         val inputRound = getInputRound()
 
         // then
-        assertThat(inputRound).isEqualTo(5)
+        assertThat(inputRound).isEqualTo(testInput)
     }
 
     @Test
-    fun `차수 입력 기능 반 뮨저욜 테스트`() {
+    fun `차수 입력 기능 빈 문자열 테스트`() {
         // given
         val testInput = "\n"
 
@@ -58,14 +58,40 @@ public class InputTest {
         setInput(testInput)
         val inputRound = getInputRound()
 
-        // then
-        assertThat(inputRound).isEqualTo(0)
+        // then (it's Console.readLine() to blame)
+        assertThat(inputRound).isEqualTo("")
     }
 
     @Test
-    fun `자동차 이름 입력 특수문자 예외 테스트`() {
+    fun `차수 입력 기능 숫자가 아닌 문자열 테스트`() {
+        // given
+        val testInput = "O"
+
+        // when
+        setInput(testInput)
+        val inputRound = getInputRound()
+
+        // then
+        assertThat(inputRound).isEqualTo(testInput)
+    }
+
+    @Test
+    fun `자동차 이름 입력 특수 문자 예외 테스트`() {
         // given
         val testInput = "pobi,woni.jun"
+
+        // when
+        setInput(testInput)
+        val exception = assertThrows<IllegalArgumentException> { getInputCarNames() }
+
+        // then
+        assertThat(exception.message).isEqualTo("이름을 올바르게 입력해주세요.")
+    }
+
+    @Test
+    fun `자동차 이름 입력 첫글자 이후 공백 예외 테스트`() {
+        // given (newline feed char)
+        val testInput = "pobi, "
 
         // when
         setInput(testInput)
@@ -89,16 +115,16 @@ public class InputTest {
     }
 
     @Test
-    fun `차수 입력 숫자가 아닌 문자 예외 테스트`() {
-        // given
-        val testInput = "W"
+    fun `자동차 이름 입력 whitespace 예외 테스트`() {
+        // given (newline feed char)
+        val testInput = " "
 
         // when
         setInput(testInput)
-        val exception = assertThrows<IllegalArgumentException> { getInputRound() }
+        val exception = assertThrows<IllegalArgumentException> { getInputCarNames() }
 
         // then
-        assertThat(exception.message).isEqualTo("숫자를 입력해주세요.")
+        assertThat(exception.message).isEqualTo("이름이 입력되지 않았습니다.")
     }
 
     @AfterEach

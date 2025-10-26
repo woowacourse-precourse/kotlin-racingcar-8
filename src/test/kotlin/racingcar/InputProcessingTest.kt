@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
 
-class InputProcessing {
+class InputProcessingTest {
     @Test
     fun `자동차 이름 입력 분할 기능 테스트`() {
         // given
