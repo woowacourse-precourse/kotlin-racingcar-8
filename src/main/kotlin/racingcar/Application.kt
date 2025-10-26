@@ -40,4 +40,22 @@ fun main() {
     if (tryCount == null || tryCount <= 0) {
         throw IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다. (입력값: $tryCountInput)")
     }
+
+    startRacing(carNames, tryCount)
+}
+
+private fun startRacing(carNames: List<String>, tryCount: Int) {
+    val cars = carNames.map { Car(it) }
+
+    println("\n실행 결과")
+    repeat(tryCount) {
+        executeSingleRound(cars)
+        println()
+    }
+}
+
+private fun executeSingleRound(cars: List<Car>) {
+    cars.forEach { car ->
+        car.move()
+    }
 }
