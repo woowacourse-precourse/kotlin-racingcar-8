@@ -1,6 +1,6 @@
 package car.model
 
-class RacingGame(){
+class RacingGame(private val moveStrategy: MoveStrategy) {
     private val cars = mutableListOf<Car>()
 
     fun addCars(names: List<String>) {
@@ -8,6 +8,14 @@ class RacingGame(){
         cars.clear()
         names.forEach { name ->
             cars.add(Car(name))
+        }
+    }
+
+    fun moveCars() {
+        cars.forEach { car ->
+            if (moveStrategy.shouldMove()) {
+                car.move()
+            }
         }
     }
 }
