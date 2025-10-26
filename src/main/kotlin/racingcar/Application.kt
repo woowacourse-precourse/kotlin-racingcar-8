@@ -27,6 +27,7 @@ private class RacingGame(
             printRound()
             println()
         }
+        printWinners()
     }
 
     private fun playOneRound() {
@@ -37,6 +38,11 @@ private class RacingGame(
         for (car in cars) println(car.statusLine())
     }
 
+    private fun printWinners() {
+        val max = cars.maxOf { it.position }
+        val winners = cars.filter { it.position == max }.joinToString(", ") { it.name }
+        println("최종 우승자 : $winners")
+    }
 }
 
 private object Validator {
