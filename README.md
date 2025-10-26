@@ -49,3 +49,20 @@ jun : -----
 
 최종 우승자 : pobi, jun
 ~~~
+## 프로젝트 구조
+### Main
+- model
+  - Car.kt : 이름과 움직임의 데이터를 갖는 자동차 클래스
+- controller
+  - InputController : 이름과 움직임의 입력의 예외처리를 하며 원하는 형태로 반환해주는 클래스
+  - CarController : 원하는 횟수만큼 전진 또는 정지하며 자동차들을 관리하는 클래스
+  - RacingCarController : InputController, CarController와 View를 연결시켜주는 클래스
+- view
+  - View.kt : Console에 데이터를 출력해주는 View 클래스
+### Test
+- model
+  - CarTest.kt : 자동차가 전진과 정지를 잘 하는가에 대한 테스트 코드
+- controller
+  - InputControllerTest.kt : 입력 값에 대해 제대로 반환하는가, 예외처리를 잘 하는가에 대한 테스트 코드
+  - CarControllerTest.kt : 한 대 이상의 자동차의 움직임을 잘 받으며 가장 많이 움직임을 가지는 자동차의 이름을 반환하는가에 대한 테스트 코드
+  - RacingCarControllerTest.kt : 전체적인 Controller와 View가 연결되어 원하는 결과를 출력하는가에 대한 테스트 코드
