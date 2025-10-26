@@ -72,6 +72,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수가 음수라면 예외로 처리한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { AttemptingNumber(-1) }
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
