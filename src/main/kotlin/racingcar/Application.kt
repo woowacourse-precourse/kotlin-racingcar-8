@@ -1,5 +1,11 @@
 package racingcar
 
+data class AttemptingNumber(val value: Int) {
+    init {
+        require(value >= 0) { "시도 횟수는 음수일 수 없습니다." }
+    }
+}
+
 data class Car(val name: String, val position: Int) {
     init {
         require(name.isNotEmpty()) { "자동차 이름은 한 글자 이상을 포함해야 합니다." }
