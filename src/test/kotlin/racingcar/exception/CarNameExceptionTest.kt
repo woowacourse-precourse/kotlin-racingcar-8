@@ -6,7 +6,6 @@ import org.junit.jupiter.api.assertThrows
 import java.util.stream.Stream
 import org.junit.jupiter.params.provider.Arguments
 
-
 class CarNameExceptionTest {
     @ParameterizedTest
     @MethodSource("provideCarNameInput")

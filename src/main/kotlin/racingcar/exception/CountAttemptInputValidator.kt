@@ -1,8 +1,9 @@
 package racingcar.exception
 
-import racingcar.RacingCarConstants.INPUT_IS_EMPTY
+import racingcar.exception.CarNameInputValidator.Companion.INPUT_IS_EMPTY
 
 class CountAttemptInputValidator {
+
     companion object {
         private const val COUNT_IS_NOT_NUMBER = "입력이 숫자가 아닙니다."
         private const val COUNT_IS_NOT_POSITIVE_NUMBER = "입력이 양수가 아닙니다."
@@ -10,15 +11,13 @@ class CountAttemptInputValidator {
     }
 
     fun validateCountAttempt(input: String) {
-
-        validateBlank(input)
+        validateCountInputBlank(input)
         validateNumber(input)
         validatePositiveNumber(input)
         validateNotZero(input)
-
     }
 
-    fun validateBlank(input: String) {
+    fun validateCountInputBlank(input: String) {
         if (input.isEmpty()) {
             throw IllegalArgumentException(INPUT_IS_EMPTY)
         }
@@ -42,3 +41,4 @@ class CountAttemptInputValidator {
         }
     }
 }
+

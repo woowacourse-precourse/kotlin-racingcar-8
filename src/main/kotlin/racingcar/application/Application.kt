@@ -5,13 +5,15 @@ import racingcar.exception.CarNameInputValidator
 import racingcar.exception.CountAttemptInputValidator
 import racingcar.model.Parser
 import racingcar.view.InputView
+import racingcar.view.OutputView
 
 fun main() {
     val controller = RacingGameController(
-        inputView = InputView(),
-        carNamesValidator = CarNameInputValidator(),
-        countAttemptValidator = CountAttemptInputValidator(),
-        parser = Parser()
+        InputView(),
+        OutputView(),
+        CarNameInputValidator(),
+        CountAttemptInputValidator(),
+        Parser()
     )
     controller.run()
 }

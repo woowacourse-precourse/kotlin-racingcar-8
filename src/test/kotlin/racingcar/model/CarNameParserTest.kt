@@ -16,10 +16,9 @@ class CarNameParserTest : NsTest() {
                 Car("pobi", 0), Car("woni", 0)
             )
         }
-    } // 통과
+    }
 
     override fun runMain() {
         main()
     }
-
-} // 통과
+}

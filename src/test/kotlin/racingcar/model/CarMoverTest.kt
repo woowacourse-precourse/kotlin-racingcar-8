@@ -21,7 +21,7 @@ class CarMoverTest() {
     fun `초기 위치는 0`() {
 
         assertThat(car.position).isEqualTo(0)
-    } // 통과
+    }
 
 
     @ParameterizedTest
@@ -31,7 +31,7 @@ class CarMoverTest() {
     ) {
         SingleCarMover().move(car, movementResult)
         assertThat(car.position).isEqualTo(expectedPosition)
-    } // 통과
+    }
 
 
     @ParameterizedTest
@@ -39,11 +39,11 @@ class CarMoverTest() {
     fun `연속 이동시 누적 위치 확인`(
         movementResult: Boolean, expectedPosition: Int
     ) {
-        SingleCarMover().move(car,movementResult)
-        SingleCarMover().move(car,movementResult)
-        SingleCarMover().move(car,movementResult)
+        SingleCarMover().move(car, movementResult)
+        SingleCarMover().move(car, movementResult)
+        SingleCarMover().move(car, movementResult)
         assertThat(car.position).isEqualTo(expectedPosition)
-    } // 통과
+    }
 
     private companion object {
         @JvmStatic
