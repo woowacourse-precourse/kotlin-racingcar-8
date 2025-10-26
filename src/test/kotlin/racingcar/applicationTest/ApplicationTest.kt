@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.controller.main
+import racingcar.application.main
 import org.assertj.core.api.Assertions.assertThat
 
 class ApplicationTest : NsTest() {
