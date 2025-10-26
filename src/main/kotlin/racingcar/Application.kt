@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     // TODO: 프로그램 구현
 
-    // 입력
     val carNamesInput = getInputCarNames()
     val splitCarNames = splitCarName(carNamesInput)
 
@@ -16,6 +15,8 @@ fun main() {
     val racingGame = RacingGame(round, carInstances)
 
     val winners = racingGame.play()
+    val winnerNames = winners.joinToString(separator = ", ") { it.name }
+    println("최종 우승자 : $winnerNames")
 
 }
 
@@ -81,7 +82,6 @@ class RacingGame(val round: Int, val cars: List<Car>) {
         val winners = cars.filter { it.position == winner.position }
 
         return winners
-
     }
 
     private fun isFinished(): Boolean = this.currentRound > this.round
