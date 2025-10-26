@@ -10,12 +10,12 @@ val ERROR_MESSAGE_ZERO_COUNT = "횟수는 1회 이상 입력해야 합니다."
 
 class RacingViewModel (private val moveStrategy: MoveStrategy){
     private val game = RacingGame(moveStrategy)
-
+    // 게임 설정(차 이름)
     fun setupGame(carNames: List<String>) {
         validateCarNames(carNames)
         game.addCars(carNames)
     }
-
+    // 게임 진행 여부 판단(횟수)
     fun coutninueGame(roundCount: Int) {
         val count= validateRoundCount(roundCount)
         return count
