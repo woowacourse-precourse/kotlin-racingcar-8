@@ -17,7 +17,7 @@ fun main() {
     printOutput(winners)
 }
 
-private fun getInputCarNames(): String {
+fun getInputCarNames(): String {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carNamesInput = Console.readLine()
     val hasNonCommaSpecialChar = carNamesInput.any { it != ',' && !it.isLetter() }
@@ -28,7 +28,7 @@ private fun getInputCarNames(): String {
     return carNamesInput
 }
 
-private fun splitCarName(carNamesInput: String): List<String> {
+fun splitCarName(carNamesInput: String): List<String> {
     val splitCarNames = carNamesInput.split(",")
     val hasLengthFiveOrLess = splitCarNames.all { it.length <= 5 && it.isNotBlank() }
     require(hasLengthFiveOrLess) { "이름은 5글자를 초과하거나 비어있을 수 없습니다." }
@@ -36,7 +36,7 @@ private fun splitCarName(carNamesInput: String): List<String> {
     return splitCarNames
 }
 
-private fun getInputRound(): Int {
+fun getInputRound(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val roundInput = Console.readLine()
     val round = stringToInt(roundInput)
@@ -44,13 +44,13 @@ private fun getInputRound(): Int {
     return round
 }
 
-private fun stringToInt(roundInput: String): Int = if (roundInput.isNotBlank()) {
+fun stringToInt(roundInput: String): Int = if (roundInput.isNotBlank()) {
     roundInput.toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
 } else {
     0
 }
 
-private fun printOutput(winners: List<Car>?) {
+fun printOutput(winners: List<Car>?) {
     val winnerNames = winners?.joinToString(separator = ", ") { it.name }
     println("최종 우승자 : $winnerNames")
 }
