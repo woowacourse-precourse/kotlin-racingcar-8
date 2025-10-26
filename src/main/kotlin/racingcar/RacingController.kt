@@ -1,10 +1,11 @@
 package racingcar
 
 import racingcar.domain.Car
+import racingcar.domain.Judge
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
-class RacingController(val inputView: InputView, val outputView: OutputView) {
+class RacingController(val inputView: InputView, val outputView: OutputView, val judge: Judge) {
     fun run() {
         outputView.printCarNameInputGuide()
         val carName = inputView.getCarNameFromUser()
@@ -17,7 +18,7 @@ class RacingController(val inputView: InputView, val outputView: OutputView) {
 
         outputView.printTextOfResult()
         val raceResult = race(carNames, repeatTime.toInt())
-        val winners = judgeWinner(raceResult)
+        val winners = judge.judgeWinner(raceResult)
         outputView.printWinner(winners)
     }
 
