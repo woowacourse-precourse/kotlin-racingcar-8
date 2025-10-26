@@ -9,5 +9,11 @@ object Constants {
     const val FORMAT_ERROR_MESSAGE = "올바른 형식이 아닙니다."
     const val MAX_LENGTH = 4
     const val MIN_LENGTH = 1
-    const val ARRAY_SEPARATOR = ","
+    const val SEPARATOR = ","
+
+    const val ZERO = 0
+
+    const val POSITION_BAR = "-"
+
+    const val RESULT_MESSAGE = "실행 결과"
 }
