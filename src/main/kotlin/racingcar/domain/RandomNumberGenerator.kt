@@ -2,7 +2,7 @@ package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RandomNumberGenerator: NumberGenerator {
+class RandomNumberGenerator : NumberGenerator {
     override fun generateNumber(): Int = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER)
 
     companion object {

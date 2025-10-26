@@ -9,14 +9,14 @@ class OutputView {
         println("시도할 횟수는 몇 회인가요?")
     }
 
-    fun printTextOfResult(){
+    fun printTextOfResult() {
         println()
         println("실행 결과")
     }
 
     fun printCurrentLocation(name: String, distance: Int) {
         print("$name : ")
-        for(i in 1 .. distance) {
+        for (i in 1..distance) {
             print("-")
         }
         println()
@@ -26,7 +26,7 @@ class OutputView {
         print("최종 우승자 : ")
         for (winner in winners) {
             print(winner)
-            if(winner == winners.last()) {
+            if (winner == winners.last()) {
                 break
             }
             print(", ")

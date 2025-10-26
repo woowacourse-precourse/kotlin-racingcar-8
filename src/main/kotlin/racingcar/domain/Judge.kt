@@ -5,9 +5,9 @@ class Judge {
         val winners = mutableListOf<String>()
 
         var maxDistance = 0
-        for(cars in gameResult) {
-            if(cars.distance == maxDistance) winners.add(cars.name)
-            else if(cars.distance > maxDistance) {
+        for (cars in gameResult) {
+            if (cars.distance == maxDistance) winners.add(cars.name)
+            else if (cars.distance > maxDistance) {
                 winners.clear()
                 winners.add(cars.name)
                 maxDistance = cars.distance

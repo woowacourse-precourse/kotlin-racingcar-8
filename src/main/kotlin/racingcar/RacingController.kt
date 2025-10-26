@@ -25,7 +25,7 @@ class RacingController(val inputView: InputView, val outputView: OutputView, val
     fun race(carNames: List<String>, repeatTime: Int): List<Car> {
         val cars: List<Car> = carNames.map(::Car)
 
-        for(i in 0 until repeatTime) {
+        for (i in 0 until repeatTime) {
             moveCar(cars)
             printCurrentCarState(cars)
         }
@@ -33,13 +33,13 @@ class RacingController(val inputView: InputView, val outputView: OutputView, val
     }
 
     private fun moveCar(cars: List<Car>) {
-        for(car in cars) {
+        for (car in cars) {
             car.moveForward()
         }
     }
 
     private fun printCurrentCarState(cars: List<Car>) {
-        for(car in cars) {
+        for (car in cars) {
             outputView.printCurrentLocation(car.name, car.distance)
         }
         println()
