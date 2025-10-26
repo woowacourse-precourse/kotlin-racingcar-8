@@ -59,5 +59,14 @@ fun FindCurrentMostMove(PlayerList: List<String>, PlayerProgressBarArray: Array<
     return CurrentMostForwardCount
 }
 
+fun PrintRacingProcess(PlayerList: List<String>, PlayerProgressBarArray: Array<String>){
+    for(i in 0 until PlayerList.size){
+        println("${PlayerList[i]} : ${PlayerProgressBarArray[i]}")
+    }
+
+}
+
+
+
 
 
