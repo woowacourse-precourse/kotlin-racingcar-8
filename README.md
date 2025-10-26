@@ -28,17 +28,22 @@
   - `출력 예시: 최종 우승자 : pobi, jun`
 
 
-## 2. ⚙️ 예외 처리 
+## 2. 🔍 예외 처리 
 ### I. 예외 처리
 - 사용자의 입력값이 유효하지 않을 경우, `IllegalArgumentException`을 발생시키고 애플리케이션을 종료한다.
+  
 - 유효하지 않은 입력의 예시
 
 **자동차 이름 입력 시**
 | 잘못된 입력 | 예외 발생 사유 |
 | :--- | :--- |
 | `pobi,longname` | 자동차 이름이 5자를 초과 |
+| `pobi,pobi` | 자동차 이름이 중복된 경우 |
 | `""` | 빈 이름이 입력 된 경우 |
 | `pobi,,woni` | 빈 이름이 포함된 경우 |
+| `" "` | 이름으로 공백이 입력 된 경우 |
+| `pobi, ,woni` | 공백 이름이 포함된 경우 |
+
 
 **시도 횟수 입력 시**
 | 잘못된 입력 | 예외 발생 사유 |
@@ -47,10 +52,46 @@
 | `-1`  | 시도 횟수가 음수인 경우 |
 | `one` | 시도 횟수가 문자열인 경우 |
 | `""` | 시도 횟수가 빈 문자열인 경우 |
+| `""` | 시도 횟수가 공백인 경우 |
 
-## 3. 💡 구현 시 고려한 점
 
-## 4. 📄 프로그래밍 요구 사항
+## 3. ⚙️ 프로그램 구조
+```
+racingcar
+├── main
+│   ├── Application.kt              # 프로그램의 시작점 (main 함수)
+│   ├── controller
+│   │   └── RacingController.kt       # 게임의 전체 흐름을 제어
+│   ├── model
+│   │   ├── Car.kt                  # 자동차 클래스 정의
+│   │   ├── NumberGenerator.kt      # 숫자 생성을 위한 인터페이스 
+│   │   ├── RacingGame.kt           # 경주 진행 및 우승자 판별 로직
+│   │   └── Validator.kt            # 사용자 입력값에 대한 유효성 검증
+│   ├── util
+│   │   └── RandomNumberGenerator.kt  # 실제 랜덤 숫자를 생성하는 구현체
+│   └── view
+│       ├── InputView.kt            # 사용자 입력을 담당
+│       └── OutputView.kt           # 게임 결과 출력을 담당
+└── test
+    ├── ApplicationTest.kt   
+    └── model
+        ├── CarTest.kt              # Car의 이동/정지 로직 단위 테스트
+        ├── RacingGameTest.kt       # RacingGame의 라운드 진행 및 우승자 판별 단위 테스트
+        └── ValidatorTest.kt        # Validator의 유효성 검증 규칙 단위 테스트
+```
+
+## 4. 💡 과제 수행 시 고려한 점
+
+- MVC 패턴과 SOLID 원칙을 기반으로, 각 계층의 역할을 분리하고 함수 단일 책임을 유지
+- **불변 객체** 를 적극 활용해 신뢰성 있는 프로그램을 구현
+  - `data class`의 `copy()` 메서드로 불변성을 간결하게 유지. 
+- object 및 companion object를 통해 `InputView`, `OutputView`, `Validator` 등은 싱글톤으로 관리해 불필요한 인스턴스 생성을 방지
+- 문자열, 숫자 등은 상수로 관리하여 코드의 재사용성과 신뢰성을 높임
+- 클래스 수준의 상수(예: 전진 임겟값)는 `companion object`로 관리하여 유지보수성을 높임
+- 단위 테스트를 통해 Model 부분(`Car`, `Validator`, `RacingGame`)의 모든 분기를 검증하고,
+정상·예외 케이스를 모두 포함해 신뢰성을 확보
+
+## 5. 📄 프로그래밍 요구 사항
 ### ✅ 프로그래밍 요구 사항 1
 - Kotlin 2.2.0에서 실행 가능해야 한다.
 - Java 코드가 아닌 Kotlin 코드로만 구현해야 한다.
