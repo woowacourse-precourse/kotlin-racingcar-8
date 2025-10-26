@@ -10,7 +10,7 @@ class OutputTest : NsTest() {
     @Test
     fun `이름 입력 가이드 출력 테스트`() {
         assertSimpleTest {
-            run()
+            run("pobi", "1")
             assertThat(output()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         }
     }
@@ -18,7 +18,7 @@ class OutputTest : NsTest() {
     @Test
     fun `시도 횟수 입력 가이드 출력 테스트`() {
         assertSimpleTest {
-            run()
+            run("pobi", "1")
             assertThat(output()).contains("시도할 횟수는 몇 회인가요?")
         }
     }

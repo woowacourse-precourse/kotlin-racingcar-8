@@ -4,7 +4,7 @@ import racingcar.view.OutputMessages
 import racingcar.view.repository.Output
 
 
-object Guide : Output {
+object GuideView : Output {
     override fun consoleName() {
         println(OutputMessages.NAME_GUIDE)
     }

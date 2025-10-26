@@ -1,11 +1,21 @@
 package racingcar.controller.domain
 
-import racingcar.view.domain.Guide
+import racingcar.view.domain.GuideView
+import racingcar.view.domain.InputView
 
 object RacingcarController {
     fun run() {
-        Guide.consoleName();
+        val carNames = inputCarNames()
+        val attempt = inputAttempt()
+    }
 
-        Guide.consoleAttempt();
+    private fun inputCarNames(): String {
+        GuideView.consoleName()
+        return InputView.console()
+    }
+
+    private fun inputAttempt(): String {
+        GuideView.consoleAttempt()
+        return InputView.console()
     }
 }

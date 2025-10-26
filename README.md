@@ -8,8 +8,8 @@
 - [x] **입력 가이드 출력 : (feature/KRP-1-input-guide)**
     - [x] _"경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"_ 가이드 문구 출력
     - [x] _"시도할 횟수는 몇 회인가요?"_ 가이드 문구 출력
-- [ ] **자동차 이름 입력 : (feature/KRP-2-input-name)**
-- [ ] **시도 횟수 입력 : (feature/WWC-KRP-3-input-attempt)**
+- [x] **자동차 이름 입력 : (feature/KRP-2-input-name)**
+- [x] **시도 횟수 입력 : (feature/WWC-KRP-3-input-attempt)**
 - [ ] **이름 분리 : (feature/KRP-5-split-name)**
     - [ ] 쉼표(,)를 이용하여 이름 분리
 - [ ] **입력 값 검증 : (feature/KRP-4-validator)**
