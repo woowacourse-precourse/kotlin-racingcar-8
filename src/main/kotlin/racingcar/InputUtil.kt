@@ -11,5 +11,9 @@ object InputUtil {
         return list
     }
 
-    fun readTries() = Console.readLine().toInt()
+    fun readTries() = try {
+        Console.readLine().toInt()
+    } catch (_: NumberFormatException) {
+        throw IllegalArgumentException()
+    }
 }
