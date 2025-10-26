@@ -1,5 +1,6 @@
 package car.viewmodel
 
+import car.model.Car
 import car.model.MoveStrategy
 import car.model.RacingGame
 
@@ -19,5 +20,9 @@ class RacingViewModel (private val moveStrategy: MoveStrategy){
 
     fun playOneRound() {
         game.moveCars()
+    }
+
+    fun getCurrentStatus(): List<Car> {
+        return game.getCars()
     }
 }
