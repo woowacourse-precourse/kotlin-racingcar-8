@@ -15,3 +15,5 @@ fun List<Car>.maxDistance(): Int {
 
     return max
 }
+
+fun List<Car>.getNamesByDistance(distance: Int) = filter { it.distance == distance }.map { it.name }
