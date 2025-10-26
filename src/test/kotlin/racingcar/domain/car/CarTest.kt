@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores::class)
 class CarTest {
     @Test
-    fun Name_객체를_입력하면_자동차_객체가_생성된다() {
+    fun 이름을_입력하면_자동차_객체가_생성된다() {
         // given
         val name = "pobi"
 
