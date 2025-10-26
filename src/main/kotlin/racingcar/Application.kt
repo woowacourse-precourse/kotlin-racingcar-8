@@ -21,6 +21,11 @@ data class Car(val name: String, val position: Int) {
         return this
     }
 
+    fun status(): String {
+        val path: String = "-".repeat(position)
+        return "$name : $path"
+    }
+
     companion object {
         const val START_POSITION = 0
         const val NAME_LENGTH_LIMIT = 5
@@ -39,6 +44,12 @@ fun List<Car>.tryMoveForward(numbers: List<Int>): List<Car> {
     }
 }
 
+fun List<Car>.showStatus() {
+    for (car in this) {
+        println(car.status())
+    }
+}
+
 fun createUniqueCars(names: List<String>): List<Car> {
     val usedNames = mutableSetOf<String>()
     return names.map { name ->
@@ -49,5 +60,7 @@ fun createUniqueCars(names: List<String>): List<Car> {
 }
 
 fun main() {
-    // TODO: 프로그램 구현
+    val cars = createUniqueCars(listOf("pobi", "woni", "jun"))
+    val nextCars = cars.tryMoveForward(listOf(4, 0, 4))
+    nextCars.showStatus()
 }
