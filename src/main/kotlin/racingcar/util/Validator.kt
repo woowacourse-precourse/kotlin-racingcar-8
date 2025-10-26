@@ -1,11 +1,11 @@
 package racingcar.util
 
-import racingcar.util.Constants.ARRAY_SEPARATOR
 import racingcar.util.Constants.EMPTY_ERROR_MESSAGE
 import racingcar.util.Constants.FORMAT_ERROR_MESSAGE
 import racingcar.util.Constants.LENGTH_ERROR_MESSAGE
 import racingcar.util.Constants.MAX_LENGTH
 import racingcar.util.Constants.MIN_LENGTH
+import racingcar.util.Constants.SEPARATOR
 
 object Validator {
     fun nameValidate(input: String): List<String> {
@@ -20,7 +20,7 @@ object Validator {
         return names
     }
 
-    fun attemptalidator(input: String): Int {
+    fun attemptValidator(input: String): Int {
         nullValidate(input)
         val attemptCount = input.toIntOrNull()
             ?: throw IllegalArgumentException(FORMAT_ERROR_MESSAGE)
@@ -37,7 +37,7 @@ object Validator {
     }
 
     private fun stringSeparator(input: String): List<String> {
-        return input.split(ARRAY_SEPARATOR)
+        return input.split(SEPARATOR)
     }
 
     private fun numberValidate(input: Int) {
