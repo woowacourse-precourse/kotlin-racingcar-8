@@ -5,9 +5,9 @@
 기능 목록은 아래와 같은 형식을 따름
 > - [x] **{기능명}** **:** **({branch-type}/{ticket-number}-{description})**
 
-- [ ] **입력 가이드 출력 : (feature/KRP-1-input-guide)**
-    - [ ] _"경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"_ 가이드 문구 출력
-    - [ ] _"시도할 횟수는 몇 회인가요?"_ 가이드 문구 출력
+- [x] **입력 가이드 출력 : (feature/KRP-1-input-guide)**
+    - [x] _"경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"_ 가이드 문구 출력
+    - [x] _"시도할 횟수는 몇 회인가요?"_ 가이드 문구 출력
 - [ ] **자동차 이름 입력 : (feature/KRP-2-input-name)**
 - [ ] **시도 횟수 입력 : (feature/WWC-KRP-3-input-attempt)**
 - [ ] **이름 분리 : (feature/KRP-5-split-name)**
@@ -55,11 +55,22 @@
     ├── main
     │   └── kotlin
     │       └── calculator
-    │           └── Application.kt
+    │           ├── Application.kt
+    │           ├── controller
+    │           │   ├── domain
+    │           │   │   └── RacingcarController.kt
+    │           │   └── repository
+    │           └── view
+    │               ├── Constants.kt
+    │               ├── domain
+    │               │   └── Guide.kt
+    │               └── repository
+    │                   └── Output.kt
     └── test 
        └── kotlin 
             └── calculator 
-                └── ApplicationTest.kt 
-                    
-10 directories, 11 files
+                ├── ApplicationTest.kt 
+                └── view
+                    └── OutputTest.kt
+66 directories, 214 files
 ```
