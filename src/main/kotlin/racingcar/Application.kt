@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
@@ -13,6 +14,8 @@ fun main() {
 
     val carInstances = splitCarNames.map { Car(it) }
     val racingGame = RacingGame(round, carInstances)
+
+    val winners = racingGame.play()
 
 }
 
@@ -51,9 +54,35 @@ private fun stringToInt(roundInput: String): Int =
     }
 
 data class Car(val name: String) {
-    var position: Int = 1
+    var position: Int = 0
 }
 
 class RacingGame(val round: Int, val cars: List<Car>) {
+    var currentRound: Int = 1
 
+    fun play(): List<Car> {
+        println()
+        println("실행 결과")
+        while (!this.isFinished()) {
+            cars.map {
+                val numToMove = Randoms.pickNumberInRange(0, 9)
+                if (numToMove >= 4) {
+                    it.position++
+                }
+            }
+            cars.map {
+                println("${it.name} : ${"-".repeat(it.position)} ")
+            }
+            println()
+            this.currentRound++
+        }
+
+        val winner = cars.maxBy { it.position }
+        val winners = cars.filter { it.position == winner.position }
+
+        return winners
+
+    }
+
+    private fun isFinished(): Boolean = this.currentRound > this.round
 }
