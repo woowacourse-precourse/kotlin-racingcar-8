@@ -1,6 +1,8 @@
 package racingcar
 
+import car.model.RandomMove
 import car.view.InputView
+import car.view.OutputView
 import car.viewmodel.RacingViewModel
 
 fun main() {
@@ -8,13 +10,21 @@ fun main() {
 }
 
 class Application {
+
     fun run() {
         val inputView = InputView()
-        val viewModel = RacingViewModel()
+        val moveStrategy = RandomMove()
+        val viewModel = RacingViewModel(moveStrategy)
 
         val carNames = inputView.readCarNames()
         viewModel.setupGame(carNames)
 
-        inputView.readRacingCount()
+        val racingCount = inputView.readRacingCount()
+
+        println()
+        println("실행 결과")
+        repeat(racingCount) {
+            viewModel.playOneRound()
+        }
     }
 }
