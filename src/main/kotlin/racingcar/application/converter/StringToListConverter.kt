@@ -2,7 +2,7 @@ package racingcar.application.converter
 
 import racingcar.domain.error.ErrorCode.INVALID_CAR_NAME_LENGTH
 
-private const val MAX_CAR_NAME_LENGTH = 4
+private const val MAX_CAR_NAME_LENGTH = 5
 
 class StringToListConverter : Converter<List<String>> {
     override fun convert(input: String): List<String> {

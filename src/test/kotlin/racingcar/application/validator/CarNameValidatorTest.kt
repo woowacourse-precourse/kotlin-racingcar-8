@@ -1,4 +1,4 @@
-package racingcar.service.validator
+package racingcar.application.validator
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
