@@ -95,6 +95,16 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @ParameterizedTest
+    @CsvSource("0,1", "1,2", "2,3")
+    fun `시도 횟수 만큼 전진 시키거나 멈춘다`(userInput: Int, stateSize: Int) {
+        assertSimpleTest {
+            val cars = listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun"))
+            val racingGame = Racing.with(cars, attempt = AttemptingNumber(userInput))
+            assertThat(racingGame.size).isEqualTo(stateSize)
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
