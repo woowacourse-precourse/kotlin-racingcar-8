@@ -1,9 +1,15 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class Racing(val list: List<Car>, val count: Int) {
     fun play() {}
 
-    private fun go() {}
+    private fun go() {
+        list.forEach {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) it.distance++
+        }
+    }
 
     private fun printState() {}
 
