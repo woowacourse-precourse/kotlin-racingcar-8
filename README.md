@@ -14,3 +14,54 @@
 #### 7. 시도할 횟수만큼 각각의 자동차에 대해 0에서 9사이의 무작위 값을 구한 후, 무작위 값이 4 이상일 경우 전진한다.
 #### 8. 차수별 실행 결과를 출력한다.
 #### 9. 최종 우승자를 판단하여 그 결과를 출력한다.
+
+## 💡설계
+
+```declarative
+src
+ ├─ main
+ │   └─ kotlin
+ │       └─ racingcar
+ │           ├─ controller
+ │           │   └─ CarRacingController.kt
+ │           ├─ domain
+ │           │   ├─ car
+ │           │   │   ├─ Car.kt
+ │           │   │   └─ Cars.kt
+ │           │   └─ racing
+ │           │       ├─ AttemptCount.kt
+ │           │       ├─ NumberPicker.kt
+ │           │       ├─ Racing.kt
+ │           │       └─ Round.kt
+ │           ├─ exception
+ │           │   └─ ErrorMessage.kt
+ │           ├─ service
+ │           │   ├─ car
+ │           │   │   └─ CarService.kt
+ │           │   └─ racing
+ │           │       └─ RacingService.kt
+ │           ├─ util
+ │           │   └─ Util.kt
+ │           ├─ view
+ │           │   ├─ InputView.kt
+ │           │   └─ OutputView.kt
+ │           └─ Application.kt
+ └─ test
+     └─ kotlin
+         └─ racingcar
+             ├─ domain
+             │   ├─ car
+             │   │   ├─ CarTest.kt
+             │   │   ├─ CarsTest.kt
+             │   │   └─ NameTest.kt
+             │   └─ racing
+             │       ├─ AttemptCountTest.kt
+             │       ├─ NumberPickerTest.kt
+             │       ├─ RacingTest.kt
+             │       └─ RoundTest.kt
+             ├─ service
+             │   ├─ car/CarServiceTest.kt
+             │   └─ racing/RacingServiceTest.kt
+             ├─ util/UtilTest.kt
+             └─ ApplicationTest.kt
+```
