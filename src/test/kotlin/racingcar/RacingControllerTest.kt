@@ -2,6 +2,9 @@ package racingcar
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.domain.Judge
+import racingcar.view.InputView
+import racingcar.view.OutputView
 import java.io.ByteArrayInputStream
 
 class RacingControllerTest {
@@ -10,9 +13,14 @@ class RacingControllerTest {
         // given
         val fakeInput = "sam, ,toby"
         val inputStream = ByteArrayInputStream(fakeInput.toByteArray())
+
+        val inputView = InputView()
+        val outputView = OutputView()
+        val judge = Judge()
+
         System.setIn(inputStream)
 
-        // when
-        assertThrows<IllegalArgumentException> { RacingController().run() }
+        // when & then
+        assertThrows<IllegalArgumentException> { RacingController(inputView, outputView, judge).run() }
     }
 }
