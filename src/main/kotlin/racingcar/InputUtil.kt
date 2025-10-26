@@ -12,7 +12,7 @@ object InputUtil {
     }
 
     fun readTries() = try {
-        Console.readLine().toInt()
+        Console.readLine().toInt().takeIf { it >= 0 } ?: throw IllegalArgumentException()
     } catch (_: NumberFormatException) {
         throw IllegalArgumentException()
     }
