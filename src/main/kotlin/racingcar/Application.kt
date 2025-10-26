@@ -22,6 +22,22 @@ fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carNamesInput = Console.readLine() ?: throw IllegalArgumentException("자동차 이름이 입력되지 않았습니다.")
     val carNames = carNamesInput.split(',').map { it.trim() }
+
+    if (carNames.isEmpty()) {
+        throw IllegalArgumentException("자동차 이름 목록이 비어있습니다.")
+    }
+
+    carNames.forEach { name ->
+        if (name.isBlank() || name.length > 5) {
+            throw IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다. (잘못된 이름: $name)")
+        }
+    }
+
     println("시도할 횟수는 몇 회인가요?")
     val tryCountInput = Console.readLine() ?: throw IllegalArgumentException("시도 횟수가 입력되지 않았습니다.")
+    val tryCount = tryCountInput.toIntOrNull()
+
+    if (tryCount == null || tryCount <= 0) {
+        throw IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다. (입력값: $tryCountInput)")
+    }
 }
