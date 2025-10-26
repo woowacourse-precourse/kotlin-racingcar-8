@@ -1,0 +1,13 @@
+package car.model
+
+class RacingGame(){
+    private val cars = mutableListOf<Car>()
+
+    fun addCars(names: List<String>) {
+        cars.forEach { it.position = 0 }
+        cars.clear()
+        names.forEach { name ->
+            cars.add(Car(name))
+        }
+    }
+}
