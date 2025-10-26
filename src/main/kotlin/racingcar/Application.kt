@@ -52,6 +52,9 @@ data class Round(val time: Int, val cars: List<Car>) {
         })
     }
 
+    private fun getMaxPosition() = (cars.maxBy { it.position }).position
+    fun getWinners(): List<Car> = cars.filter { getMaxPosition() == it.position }
+
     fun showStatus() {
         for (car in cars) {
             println(car.status())
