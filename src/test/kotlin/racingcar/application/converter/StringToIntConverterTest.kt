@@ -1,7 +1,6 @@
 package racingcar.application.converter
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import racingcar.domain.error.ErrorCode
 import racingcar.domain.error.ErrorCode.INVALID_ATTEMPT_COUNT_NUMBER
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
