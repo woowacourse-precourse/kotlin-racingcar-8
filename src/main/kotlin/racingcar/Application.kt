@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     val cars: List<String> = readCarNames()
+    val tryCount: Int = readTryCount()
     println("자동차 리스트: $cars")
+    println("이동 횟수: $tryCount")
 }
 
 fun readCarNames(): List<String> {
@@ -24,4 +26,19 @@ fun readCarNames(): List<String> {
     }
 
     return names
+}
+
+fun readTryCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+
+    val rawInput = Console.readLine().trim()
+
+    // 숫자인지 확인
+    if (!rawInput.matches(Regex("^[0-9]+$"))) {
+        throw IllegalArgumentException("이동 횟수는 숫자여야 합니다.")
+    }
+
+    val count = rawInput.toInt()
+
+    return count
 }
