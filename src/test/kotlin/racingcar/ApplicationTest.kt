@@ -106,6 +106,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `특정 라운드의 우승자를 결정한다`() {
+        assertSimpleTest {
+            val finalRound = Round(0, listOf(Car("pobi", 1), Car("jun", 2), Car("woni", 3)))
+            assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("woni", 3)))
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
