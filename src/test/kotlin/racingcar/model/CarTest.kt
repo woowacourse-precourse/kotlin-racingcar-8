@@ -16,7 +16,6 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차가 앞으로 움직이는지 테스트")
     fun `랜덤 값이 4이상일 때 자동차가 움직인다` () {
         assertRandomNumberInRangeTest(
             {
@@ -30,7 +29,6 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차가 멈추는지 테스트")
     fun `랜덤 값이 4미만일 때 자동차가 멈춘다` () {
         assertRandomNumberInRangeTest(
             {
