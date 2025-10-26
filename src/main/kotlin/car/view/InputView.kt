@@ -13,5 +13,5 @@ class InputView {
         println("시도할 횟수는 몇회인가요?")
         val input = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException(ERROR_MESSAGE_INVALID_ROUND_COUNT)
         return input
-        }
+    }
 }
