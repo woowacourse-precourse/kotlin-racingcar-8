@@ -82,6 +82,17 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun `아무도 전진 못한 경우 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni")
+            },
+            STOP, STOP
+        )
+    }
+
 
     override fun runMain() {
         main()
