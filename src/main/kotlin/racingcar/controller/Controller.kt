@@ -1,19 +1,22 @@
 package racingcar.controller
 
-import racingcar.Messages
 import racingcar.view.InputView
 import racingcar.model.RacingGame
 import racingcar.view.OutputView
+import racingcar.validator.Validator
 
 class Controller {
     fun run() {
-        val carNames = InputView.getCarNames()
-        val tries = InputView.getTries()
+        val carNamesInput = InputView.getCarNames()
+        val triesInput = InputView.getTries()
 
-        val game = RacingGame(carNames, tries)
+        Validator.validateCarNames(carNamesInput)
+        val tries = Validator.validateTries(triesInput)
+
+        val game = RacingGame(carNamesInput)
 
         OutputView.showRacingStart()
-        repeat(game.getTries()) {
+        repeat(tries) {
             val roundResult = game.playRound()
             OutputView.showRoundResult(roundResult)
         }
