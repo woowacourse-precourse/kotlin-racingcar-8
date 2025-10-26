@@ -81,6 +81,15 @@ fun FindRacingWinner(PlayerProgressBarArray: Array<String>, PlayerList: List<Str
     }
 }
 
+fun RecordRacingWinner(Index: Int, PlayerList: List<String>, Final: StringBuilder){
+    if(Final.isEmpty()){
+        Final.append(PlayerList[Index])
+    }
+    else{
+        Final.append(", " + PlayerList[Index])
+    }
+}
+
 
 
 
