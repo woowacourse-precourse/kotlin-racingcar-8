@@ -1,12 +1,13 @@
 package racingcar.model
 
-import racingcar.RacingCarConstants
-
 class MovementRule(
     private val randomNumberGenerator: NumberGenerator
 ) {
+    companion object {
+        private const val MOVE_NUMBER = 4
+
+    }
     fun hasMoveAndStop(): Boolean {
-        val moveNumber = RacingCarConstants.MOVE_NUMBER
-        return randomNumberGenerator.getRandomNumber() >= moveNumber
+        return randomNumberGenerator.getRandomNumber() >= MOVE_NUMBER
     }
 }

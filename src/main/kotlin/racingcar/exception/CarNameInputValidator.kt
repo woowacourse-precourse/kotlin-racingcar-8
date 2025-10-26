@@ -1,25 +1,35 @@
 package racingcar.exception
 
-import racingcar.RacingCarConstants.NAME_LENGTH_MAX
-import racingcar.RacingCarConstants.NAME_DUPLICATION
-import racingcar.RacingCarConstants.NAME_IS_EMPTY
-import racingcar.RacingCarConstants.NAME_CONTAINS_BLANK
-
 class CarNameInputValidator {
-    fun validateCarName(input: String) {
 
+    companion object {
+        const val INPUT_IS_EMPTY = "입력값이 비어 있습니다."
+        private const val NAME_LENGTH_MAX = "자동차 이름이 5자를 초과 했습니다."
+        private const val NAME_DUPLICATION = "자동차 이름이 중복 입력 되었습니다."
+        private const val NAME_IS_EMPTY = "자동차 이름이 비어 있습니다."
+        private const val NAME_CONTAINS_BLANK = "자동차 이름 사이에 공백이 포함되어 있습니다."
+        private const val LENGTH_MAX = 5
+    }
+
+    fun validateCarName(input: String) {
         val names = input.split(",")
-        CountAttemptInputValidator().validateBlank(input)
+
+        validateNameInputBlank(input)
         validateNameLengthMax5(names)
         validateNameDuplication(names)
         validateEmptyNames(names)
         validateContainsBlank(names)
     }
 
-    fun validateNameLengthMax5(names: List<String>) {
+    fun validateNameInputBlank(input: String) {
+        if (input.isEmpty()) {
+            throw IllegalArgumentException(INPUT_IS_EMPTY)
+        }
+    }
 
+    fun validateNameLengthMax5(names: List<String>) {
         names.forEach { names ->
-            if (names.length > 5) {
+            if (names.length > LENGTH_MAX) {
                 throw IllegalArgumentException(NAME_LENGTH_MAX)
             }
         }
@@ -27,10 +37,9 @@ class CarNameInputValidator {
 
     fun validateNameDuplication(names: List<String>) {
         val nameDuplication = names.toSet()
-        names.forEach { name ->
-            if (names.size != nameDuplication.size) {
-                throw IllegalArgumentException(NAME_DUPLICATION)
-            }
+
+        if (names.size != nameDuplication.size) {
+            throw IllegalArgumentException(NAME_DUPLICATION)
         }
     }
 
