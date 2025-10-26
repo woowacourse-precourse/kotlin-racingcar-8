@@ -1,6 +1,7 @@
 package racingcar.controller
 
 import racingcar.model.Car
+import racingcar.model.RacingGame
 import racingcar.view.InputView
 
 class RacingController (
@@ -11,5 +12,6 @@ class RacingController (
         val count = inputView.readRoundCount()
 
         val cars = names.map { Car(it) }
+        val game = RacingGame(cars, count).startGame()
     }
 }
