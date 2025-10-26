@@ -1,6 +1,6 @@
 package car.model
 
-class RacingGame(private val moveStrategy: MoveStrategy) {
+class RacingGame(private val moveStrategy: MoveStrategy){
     private val cars = mutableListOf<Car>()
 
     fun addCars(names: List<String>) {
@@ -17,5 +17,9 @@ class RacingGame(private val moveStrategy: MoveStrategy) {
                 car.move()
             }
         }
+    }
+
+    fun getCars(): List<Car> {
+        return cars.toList()
     }
 }
