@@ -87,6 +87,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수가 최대 데이터 범위를 넘어가는 경우`() {
+        val maxValue = ((Int.MAX_VALUE).toLong() + 1).toString()
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { AttemptingNumber(maxValue.toInt()) }
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
