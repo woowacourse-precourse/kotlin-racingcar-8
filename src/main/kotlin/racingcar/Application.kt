@@ -7,9 +7,10 @@ fun main() {
     // TODO: 프로그램 구현
     val carNamesInput = getInputCarNames()
     val splitCarNames = splitCarName(carNamesInput)
-    val round = getInputRound()
+    val roundInput = getInputRound()
+    val round = stringToInt(roundInput)
 
-    val carInstances = splitCarNames.map { Car(it) }
+    val carInstances = createCars(splitCarNames)
     val racingGame = RacingGame(round, carInstances)
     racingGame.play()
     val winners = racingGame.getWinners()
@@ -17,13 +18,14 @@ fun main() {
     printOutput(winners)
 }
 
+fun createCars(splitCarNames: List<String>): List<Car> = splitCarNames.map { Car(it) }
+
 fun getInputCarNames(): String {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carNamesInput = Console.readLine()
-    val hasNonCommaSpecialChar = carNamesInput.any { it != ',' && !it.isLetter() }
-
-    require(!hasNonCommaSpecialChar) { "이름을 올바르게 입력해주세요." }
     require(carNamesInput.isNotBlank()) { "이름이 입력되지 않았습니다." }
+    val hasInvalidChar = carNamesInput.any { it != ',' && !it.isLetter() }
+    require(!hasInvalidChar) { "이름을 올바르게 입력해주세요." }
 
     return carNamesInput
 }
@@ -36,12 +38,11 @@ fun splitCarName(carNamesInput: String): List<String> {
     return splitCarNames
 }
 
-fun getInputRound(): Int {
+fun getInputRound(): String {
     println("시도할 횟수는 몇 회인가요?")
     val roundInput = Console.readLine()
-    val round = stringToInt(roundInput)
 
-    return round
+    return roundInput
 }
 
 fun stringToInt(roundInput: String): Int = if (roundInput.isNotBlank()) {
@@ -83,10 +84,10 @@ class RacingGame(val round: Int, val cars: List<Car>) {
     private fun isFinished(): Boolean = this.currentRound > this.round
 
     private fun makeMove() {
-        cars.map {
+        cars.map { car ->
             val randomNumber = this.getRandomNumber()
             if (canMove(randomNumber)) {
-                increaseCarPosition(it)
+                increaseCarPosition(car)
             }
         }
     }
@@ -106,8 +107,8 @@ class RacingGame(val round: Int, val cars: List<Car>) {
     }
 
     private fun printRoundResult(cars: List<Car>) {
-        cars.map {
-            println("${it.name} : ${"-".repeat(it.position)} ")
+        cars.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.position)} ")
         }
         println()
     }
