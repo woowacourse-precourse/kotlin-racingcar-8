@@ -34,8 +34,11 @@ class UserController(
     }
 
     private fun playRacingGame(racingGame: RacingGame, attemptCount: Int) {
+        outputView.printRoundResultPrompt();
         for (attempt in 0 until attemptCount) {
-            racingGame.playRound()
+            val cars = racingGame.playRound()
+            outputView.printPlayerRoundResult(cars);
+            outputView.printBlankLine();
         }
     }
 
