@@ -92,10 +92,10 @@ fun replay() {
 }
 
 fun gameControl() {
-    game()
+
 }
 
-fun game(): MutableMap<String, Int> {
+fun carNameAssignmentStepTime(): MutableMap<String, Int> {
     val carNamesList = mutableMapOf<String, Int>()
     for (carName in processCarNaming()) {
         carNamesList[carName] = randomNumber()
