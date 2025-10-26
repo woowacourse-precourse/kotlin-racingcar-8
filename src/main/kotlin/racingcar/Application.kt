@@ -1,12 +1,22 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val cars: List<String> = readCarNames()
     val tryCount: Int = readTryCount()
-    println("자동차 리스트: $cars")
-    println("이동 횟수: $tryCount")
+
+    val positions: MutableMap<String, Int> = mutableMapOf()
+    cars.forEach { carName ->
+        positions[carName] = 0
+    }
+
+    println("실행 결과")
+    repeat(tryCount) {
+        raceOnce(cars, positions)
+        printRoundResult(cars, positions)
+    }
 }
 
 fun readCarNames(): List<String> {
@@ -18,6 +28,10 @@ fun readCarNames(): List<String> {
         .split(",")
         .map { it.trim() }
         .filter { it.isNotEmpty() }
+
+    if (names.isEmpty()) {
+        throw IllegalArgumentException("자동차 이름은 최소 1개 이상이어야 합니다.")
+    }
 
     names.forEach { name ->
         if (name.length > 5) {
@@ -33,7 +47,6 @@ fun readTryCount(): Int {
 
     val rawInput = Console.readLine().trim()
 
-    // 숫자인지 확인
     if (!rawInput.matches(Regex("^[0-9]+$"))) {
         throw IllegalArgumentException("이동 횟수는 숫자여야 합니다.")
     }
@@ -41,4 +54,22 @@ fun readTryCount(): Int {
     val count = rawInput.toInt()
 
     return count
+}
+
+fun raceOnce(cars: List<String>, positions: MutableMap<String, Int>) {
+    cars.forEach { carName ->
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        if (randomNumber >= 4) {
+            positions[carName] = positions.getValue(carName) + 1
+        }
+    }
+}
+
+fun printRoundResult(cars: List<String>, positions: Map<String, Int>) {
+    cars.forEach { carName ->
+        val distance = positions.getValue(carName)
+        val bar = "-".repeat(distance)
+        println("$carName : $bar")
+    }
+    println()
 }
