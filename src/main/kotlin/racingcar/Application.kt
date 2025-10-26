@@ -1,5 +1,6 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 data class Car(val name: String, var position: Int = 0) {
@@ -18,5 +19,9 @@ data class Car(val name: String, var position: Int = 0) {
 }
 
 fun main() {
-    // TODO: 프로그램 구현
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val carNamesInput = Console.readLine() ?: throw IllegalArgumentException("자동차 이름이 입력되지 않았습니다.")
+    val carNames = carNamesInput.split(',').map { it.trim() }
+    println("시도할 횟수는 몇 회인가요?")
+    val tryCountInput = Console.readLine() ?: throw IllegalArgumentException("시도 횟수가 입력되지 않았습니다.")
 }
