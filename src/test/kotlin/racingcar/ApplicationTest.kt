@@ -76,7 +76,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `시도 횟수가 음수라면 예외로 처리한다`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { AttemptingNumber(-1) }
+            assertThrows<IllegalArgumentException> { Attempt(-1) }
         }
     }
 
@@ -84,7 +84,7 @@ class ApplicationTest : NsTest() {
     @ValueSource(strings = ["123,", "1 ", " 2 ", " ", "abc"])
     fun `시도 횟수가 단일 숫자가 아니라면 예외로 처리한다`(userInput: String) {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { AttemptingNumber(userInput.toInt()) }
+            assertThrows<IllegalArgumentException> { Attempt(userInput.toInt()) }
         }
     }
 
@@ -92,7 +92,7 @@ class ApplicationTest : NsTest() {
     fun `시도 횟수가 최대 데이터 범위를 넘어가는 경우`() {
         val maxValue = ((Int.MAX_VALUE).toLong() + 1).toString()
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { AttemptingNumber(maxValue.toInt()) }
+            assertThrows<IllegalArgumentException> { Attempt(maxValue.toInt()) }
         }
     }
 
@@ -101,7 +101,7 @@ class ApplicationTest : NsTest() {
     fun `시도 횟수 만큼 전진 시키거나 멈춘다`(userInput: Int, roundSize: Int) {
         assertSimpleTest {
             val cars = Round(0, listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun")))
-            val racingGame = Racing.with(cars, attempt = AttemptingNumber(userInput))
+            val racingGame = Racing.with(cars, attempt = Attempt(userInput))
             assertThat(racingGame.totalRounds()).isEqualTo(roundSize)
         }
     }

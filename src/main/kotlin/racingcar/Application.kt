@@ -2,7 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-data class AttemptingNumber(val value: Int) {
+data class Attempt(val value: Int) {
     init {
         require(value >= 0) { "시도 횟수는 음수일 수 없습니다." }
     }
@@ -80,7 +80,7 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
     fun totalRounds(): Int = log.size
 
     companion object {
-        fun with(startRound: Round, attempt: AttemptingNumber = AttemptingNumber(0)): Racing {
+        fun with(startRound: Round, attempt: Attempt = Attempt(0)): Racing {
             val log = mutableListOf(startRound)
             for (current in 1..attempt.value) {
                 val past = log[current - 1]
@@ -100,7 +100,7 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
 
 fun main() {
     val cars = Round.startWith(listOf("pobi", "woni", "jun"))
-    val racing = Racing.with(cars, attempt = AttemptingNumber(3))
+    val racing = Racing.with(cars, attempt = Attempt(3))
     for (round in racing) {
         round.showStatus()
     }
