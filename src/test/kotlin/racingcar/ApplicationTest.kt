@@ -1,6 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
@@ -44,13 +43,15 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `0~9사이 무작위 정수가 4이상인 자동차들을 한칸 이동시킨다`() {
+    fun `요구 조건을 만족하는 자동차들을 한칸 이동시킨다`() {
         assertSimpleTest {
             val cars = createUniqueCars(listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))
-            val expectedCars = listOf(
-                cars[0], cars[1], cars[2], cars[3],
-                cars[4].moveForward(), cars[5].moveForward(), cars[6].moveForward(),
-                cars[7].moveForward(), cars[8].moveForward(), cars[9].moveForward(),
+            val expectedCars = Round(
+                1, listOf(
+                    Car("0", 0), Car("1", 0), Car("2", 0), Car("3", 0),
+                    Car("4", 0).moveForward(), Car("5", 0).moveForward(), Car("6", 0).moveForward(),
+                    Car("7", 0).moveForward(), Car("8", 0).moveForward(), Car("9", 0).moveForward(),
+                )
             )
             assertThat(cars.tryMoveForward((0..9).toList())).isEqualTo(expectedCars)
         }
@@ -97,11 +98,11 @@ class ApplicationTest : NsTest() {
 
     @ParameterizedTest
     @CsvSource("0,1", "1,2", "2,3")
-    fun `시도 횟수 만큼 전진 시키거나 멈춘다`(userInput: Int, stateSize: Int) {
+    fun `시도 횟수 만큼 전진 시키거나 멈춘다`(userInput: Int, roundSize: Int) {
         assertSimpleTest {
-            val cars = listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun"))
+            val cars = Round(0, listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun")))
             val racingGame = Racing.with(cars, attempt = AttemptingNumber(userInput))
-            assertThat(racingGame.size).isEqualTo(stateSize)
+            assertThat(racingGame.totalRounds()).isEqualTo(roundSize)
         }
     }
 

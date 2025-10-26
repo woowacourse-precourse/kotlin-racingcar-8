@@ -20,11 +20,11 @@ data class Car(val name: String, val position: Int) {
         }
     }
 
-    fun moveForward(): Car = Car(name, position + 1)
+    fun moveForward(): Car = Car(name, position + MOVE_INCREMENT)
 
     fun tryMoveForward(number: Int): Car {
         if (number >= MOVING_THRESHOLD) {
-            return Car(name, position + MOVE_INCREMENT)
+            return moveForward()
         }
         return this
     }
@@ -42,16 +42,35 @@ data class Car(val name: String, val position: Int) {
 
         fun withStartPosition(name: String): Car = Car(name, START_POSITION)
     }
-
 }
 
-data class Racing(private val log: List<List<Car>>) : List<List<Car>> by log {
+data class Round(val time: Int, val cars: List<Car>) {
+    fun tryMoveForward(numbers: List<Int>): Round {
+        require(numbers.size == cars.size) { "숫자 수와 자동차 수가 동일해야합니다." }
+        return Round(time + 1, cars.zip(numbers).map { (car, number) ->
+            car.tryMoveForward(number)
+        })
+    }
+
+    fun showStatus() {
+        for (car in cars) {
+            println(car.status())
+        }
+    }
+
+    fun totalCars(): Int = cars.size
+}
+
+data class Racing(private val log: List<Round>) : Iterable<Round> {
+    override fun iterator(): Iterator<Round> = log.iterator()
+    fun totalRounds(): Int = log.size
+
     companion object {
-        fun with(cars: List<Car>, attempt: AttemptingNumber = AttemptingNumber(0)): Racing {
-            val log = mutableListOf(cars)
+        fun with(startRound: Round, attempt: AttemptingNumber = AttemptingNumber(0)): Racing {
+            val log = mutableListOf(startRound)
             for (current in 1..attempt.value) {
                 val past = log[current - 1]
-                val movingCondition = generateRandomList(cars.size)
+                val movingCondition = generateRandomList(startRound.totalCars())
                 log.add(past.tryMoveForward(movingCondition))
             }
             return Racing(log)
@@ -65,32 +84,19 @@ data class Racing(private val log: List<List<Car>>) : List<List<Car>> by log {
     }
 }
 
-fun List<Car>.tryMoveForward(numbers: List<Int>): List<Car> {
-    require(numbers.size == this.size) { "숫자 수와 자동차 수가 동일해야합니다." }
-    return zip(numbers).map { (car, number) ->
-        car.tryMoveForward(number)
-    }
-}
-
-fun List<Car>.showStatus() {
-    for (car in this) {
-        println(car.status())
-    }
-}
-
-fun createUniqueCars(names: List<String>): List<Car> {
+fun createUniqueCars(names: List<String>): Round {
     val usedNames = mutableSetOf<String>()
-    return names.map { name ->
+    return Round(0, names.map { name ->
         require(!usedNames.contains(name)) { "중복된 자동차 이름($name)은 허용되지 않습니다." }
         usedNames.add(name)
         Car.withStartPosition(name)
-    }
+    })
 }
 
 fun main() {
     val cars = createUniqueCars(listOf("pobi", "woni", "jun"))
     val racing = Racing.with(cars, attempt = AttemptingNumber(3))
-    for (race in racing) {
-        race.showStatus()
+    for (round in racing) {
+        round.showStatus()
     }
 }
