@@ -14,5 +14,7 @@ class Application {
 
         val carNames = inputView.readCarNames()
         viewModel.setupGame(carNames)
+
+        inputView.readRacingCount()
     }
 }
