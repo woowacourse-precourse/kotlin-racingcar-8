@@ -59,6 +59,17 @@ data class Round(val time: Int, val cars: List<Car>) {
     }
 
     fun totalCars(): Int = cars.size
+
+    companion object {
+        fun startWith(names: List<String>): Round {
+            val usedNames = mutableSetOf<String>()
+            return Round(0, names.map { name ->
+                require(!usedNames.contains(name)) { "중복된 자동차 이름($name)은 허용되지 않습니다." }
+                usedNames.add(name)
+                Car.withStartPosition(name)
+            })
+        }
+    }
 }
 
 data class Racing(private val log: List<Round>) : Iterable<Round> {
@@ -84,17 +95,8 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
     }
 }
 
-fun createUniqueCars(names: List<String>): Round {
-    val usedNames = mutableSetOf<String>()
-    return Round(0, names.map { name ->
-        require(!usedNames.contains(name)) { "중복된 자동차 이름($name)은 허용되지 않습니다." }
-        usedNames.add(name)
-        Car.withStartPosition(name)
-    })
-}
-
 fun main() {
-    val cars = createUniqueCars(listOf("pobi", "woni", "jun"))
+    val cars = Round.startWith(listOf("pobi", "woni", "jun"))
     val racing = Racing.with(cars, attempt = AttemptingNumber(3))
     for (round in racing) {
         round.showStatus()

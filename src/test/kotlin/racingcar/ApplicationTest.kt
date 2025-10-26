@@ -30,7 +30,7 @@ class ApplicationTest : NsTest() {
     fun `자동차 이름은 중복을 허용하지 않는다`() {
         assertSimpleTest {
             val names = listOf("A", "A")
-            assertThrows<IllegalArgumentException> { createUniqueCars(names) }
+            assertThrows<IllegalArgumentException> { Round.startWith(names) }
         }
     }
 
@@ -45,7 +45,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `요구 조건을 만족하는 자동차들을 한칸 이동시킨다`() {
         assertSimpleTest {
-            val cars = createUniqueCars(listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))
+            val cars = Round.startWith(listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))
             val expectedCars = Round(
                 1, listOf(
                     Car("0", 0), Car("1", 0), Car("2", 0), Car("3", 0),
