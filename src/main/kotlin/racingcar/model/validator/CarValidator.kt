@@ -1,4 +1,4 @@
-package racingcar.model
+package racingcar.model.validator
 
 object CarValidator {
     fun parse(input: String): List<String> {

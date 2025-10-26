@@ -12,6 +12,6 @@ class RacingController (
         val count = inputView.readRoundCount()
 
         val cars = names.map { Car(it) }
-        val game = RacingGame(cars, count).startGame()
+        RacingGame(cars, count).startGame()
     }
 }

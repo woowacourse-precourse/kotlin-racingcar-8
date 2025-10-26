@@ -1,8 +1,8 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.model.CarValidator
-import racingcar.model.RoundCountValidator
+import racingcar.model.validator.CarValidator
+import racingcar.model.validator.RoundCountValidator
 
 class InputView {
     fun readCarNames(): List<String> {

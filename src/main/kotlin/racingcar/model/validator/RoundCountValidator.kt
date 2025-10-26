@@ -1,4 +1,4 @@
-package racingcar.model
+package racingcar.model.validator
 
 object RoundCountValidator {
     fun validate(countInput: String): Int {
