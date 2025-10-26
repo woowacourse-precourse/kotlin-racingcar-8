@@ -25,12 +25,23 @@ class UserParser(inputName: String) {
         }
     }
 
-    private fun getTag(total: Int, count: Int): Char? {
-        return if (total > 1) (TAG_START_CHAR + count - 1) else null
+    private fun getTag(total: Int, count: Int): String? {
+        if (total <= 1) return null
+
+        var idx = count - 1
+        var tag = ""
+        while (true) {
+            tag += TAG_START_CHAR + (idx % TAG_BASE)
+            idx = idx / TAG_BASE - 1
+
+            if (idx < 0) break
+        }
+        return tag.reversed()
     }
 
     companion object {
         private const val DELIMITER = ','
         private const val TAG_START_CHAR = 'A'
+        private const val TAG_BASE = 26 //알파벳 개수
     }
 }
