@@ -3,6 +3,17 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+private const val MOVE_THRESHOLD = 4
+private val NUMBER_RANGE = 0..9
+
+private data class Car(val name: String, var position: Int = 0) {
+    fun tryMove(rand: Int) {
+        if (rand >= MOVE_THRESHOLD) position++
+    }
+
+    fun statusLine(): String = "$name : ${"-".repeat(position)}"
+}
+
 
 private object Validator {
     fun parseAndValidateNames(raw: String?): List<String> {
