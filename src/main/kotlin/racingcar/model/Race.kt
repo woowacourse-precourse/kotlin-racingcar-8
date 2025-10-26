@@ -12,16 +12,16 @@ class Race(private val users: List<User>) {
         }
     }
 
-    fun getRandomNum(): Int = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER)
+    private fun getRandomNum(): Int = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER)
 
     fun getScores(): Map<String, Int> {
-        return users.associate { it.displayName() to it.score }
+        return users.associate { it.displayName() to it.getScore() }
     }
 
     fun getWinners(): List<String> {
-        val maxScore = users.maxOf { it.score }
+        val maxScore = users.maxOf { it.getScore() }
         return users
-            .filter { it.score == maxScore }
+            .filter { it.getScore() == maxScore }
             .map { it.displayName() }
     }
 
