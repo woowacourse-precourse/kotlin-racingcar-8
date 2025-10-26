@@ -12,18 +12,31 @@ data class Car(val name: String, val position: Int) {
         }
     }
 
-    fun moveForward(): Car {
-        return Car(name, position + MOVE_INCREMENT)
+    fun moveForward(): Car = Car(name, position + 1)
+
+    fun tryMoveForward(number: Int): Car {
+        if (number >= MOVING_THRESHOLD) {
+            return Car(name, position + MOVE_INCREMENT)
+        }
+        return this
     }
 
     companion object {
         const val START_POSITION = 0
         const val NAME_LENGTH_LIMIT = 5
         const val MOVE_INCREMENT = 1
+        const val MOVING_THRESHOLD = 4
 
         fun withStartPosition(name: String): Car = Car(name, START_POSITION)
     }
 
+}
+
+fun List<Car>.tryMoveForward(numbers: List<Int>): List<Car> {
+    require(numbers.size == this.size) { "숫자 수와 자동차 수가 동일해야합니다." }
+    return zip(numbers).map { (car, number) ->
+        car.tryMoveForward(number)
+    }
 }
 
 fun createUniqueCars(names: List<String>): List<Car> {
