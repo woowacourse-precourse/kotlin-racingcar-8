@@ -29,4 +29,20 @@ class InputHandler {
 
         return carNames
     }
+
+    fun getRaceCount(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+
+        val input = Console.readLine()
+
+        return try {
+            val raceCount = input.toInt()
+            if (raceCount <= 0) {
+                throw IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.")
+            }
+            raceCount
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("시도 횟수는 정수여야 합니다.")
+        }
+    }
 }
