@@ -53,11 +53,11 @@
 
 ### 4. 예외 처리는 어디서 담당할 것인가?
 
-* **고민:** `IllegalArgumentException` 발생 시 애플리케이션을 종료해야 합니다. 이 로직은 어디에 위치해야 할지 고민했습니다.
+* **고민:** `IllegalArgumentException` 발생 시 애플리케이션을 종료해야 한다는 요구사항을 어떻게 구현할 것인가?
 * **결정:**
-    1.  **검증:** `Model` 계층의 `RacingGameValidator`가 입력값 검증을 수행하고, 실패 시 `IllegalArgumentException`을 `throw`합니다.
-    2.  **처리:** `Application.kt`의 `main` 함수에서 `try-catch` 블록으로 이 예외를 잡아 `OutputView.printError()`를 호출합니다.
-* **근거:** 도메인 로직은 자신의 규칙(e.g., '이름은 5자 이하')을 어겼을 때 예외를 던지는 책임만 집니다. 이 예외를 '어떻게 처리할지'는 UI/Application 흐름을 제어하는 `main` 함수의 책임이라고 생각했습니다.
+    1.  **검증:** Model 계층의 `RacingGameValidator`가 입력값 검증을 수행하고, 실패 시 `IllegalArgumentException`을 `throw`합니다.
+    2.  **처리:** View 계층에서는 이 예외를 **별도로 `catch`하지 않습니다.**
+* **근거:** 요구사항은 `IllegalArgumentException`을 발생시킨 후 애플리케이션이 종료되어야 한다고 명시합니다. View에서 예외를 잡지 않으면, 처리되지 않은 예외로 인해 프로그램이 자연스럽게 종료되고 JVM이 에러 로그를 출력합니다.
 
 ### 5. 우승자 판별 로직은 어디에 둘 것인가?
 

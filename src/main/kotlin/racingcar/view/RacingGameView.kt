@@ -8,13 +8,9 @@ class RacingGameView(
     private val moveStrategy: MoveStrategy
 ) {
     fun start() {
-        try {
-            setupGame()
-            playGame()
-            showResult()
-        } catch (e: IllegalArgumentException) {
-            OutputView.printError(e.message)
-        }
+        setupGame()
+        playGame()
+        showResult()
     }
 
     private fun setupGame() {

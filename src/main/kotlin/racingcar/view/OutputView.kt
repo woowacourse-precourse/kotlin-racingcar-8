@@ -18,6 +18,4 @@ object OutputView {
     fun printBlankLine() = println()
 
     fun printWinners(winnerNames: List<String>) = println("최종 우승자 : ${winnerNames.joinToString(", ")}")
-
-    fun printError(message: String?) = println("[ERROR] $message")
 }
