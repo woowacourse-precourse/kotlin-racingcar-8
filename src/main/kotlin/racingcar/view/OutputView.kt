@@ -17,7 +17,7 @@ object OutputView {
     }
 
     fun displayResult(result: Racing) {
-        println("$RACING_RESULT\n${result.roundResults}\n")
+        println("\n$RACING_RESULT\n${result.roundResults}\n")
         println("$FINAL_WINNER ${result.winners}")
     }
 }
