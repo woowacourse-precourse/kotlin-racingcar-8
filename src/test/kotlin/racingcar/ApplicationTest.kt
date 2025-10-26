@@ -56,6 +56,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 위치는 0미만일 수 없다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { Car("pobi", -1) }
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
