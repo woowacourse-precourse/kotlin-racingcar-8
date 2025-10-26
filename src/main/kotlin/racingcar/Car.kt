@@ -3,6 +3,7 @@ package racingcar
 class Car(private val name: String, private var score: Int = 0) {
     companion object {
         const val MAX_NAME_LENGTH = 5
+        const val CAN_MOVE_MIN_NUMBER = 4
     }
 
     init {
@@ -10,7 +11,7 @@ class Car(private val name: String, private var score: Int = 0) {
     }
 
     fun move(randomNumber : Int) {
-        if(randomNumber >= 4) score += 1
+        if(randomNumber >= CAN_MOVE_MIN_NUMBER) score += 1
     }
 
     fun showCurrentProgress() { println("$name : "+"-".repeat(score)) }
