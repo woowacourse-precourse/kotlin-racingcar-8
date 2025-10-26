@@ -56,6 +56,8 @@ private fun startRacing(carNames: List<String>, tryCount: Int) {
         executeSingleRound(cars)
         println()
     }
+
+    printWinners(cars)
 }
 
 private fun executeSingleRound(cars: List<Car>) {
@@ -70,4 +72,12 @@ private fun printRoundResult(cars: List<Car>) {
     cars.forEach { car ->
         println(car.getPositionString())
     }
+}
+
+private fun printWinners(cars: List<Car>) {
+    val maxPosition = cars.maxOfOrNull { it.position } ?: 0 // Depth 1
+    val winners = cars.filter { it.position == maxPosition }
+    val winnerNames = winners.joinToString(", ") { it.name }
+
+    println("최종 우승자 : $winnerNames")
 }
