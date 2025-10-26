@@ -114,6 +114,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `여러명의 우승자가 있는 경우 공동 우승으로 결정한다`() {
+        assertSimpleTest {
+            val finalRound = Round(0, listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3)))
+            assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("pobi", 3), Car("woni", 3)))
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
