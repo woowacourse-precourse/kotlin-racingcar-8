@@ -28,7 +28,7 @@ class OutputView {
         println(stringBuilder.toString())
     }
 
-    fun printFinalWinner(winners: String) {
-        println("${RacingCarConstants.FINAL_WINNER_MESSAGE}${winners}")
+    fun printFinalWinner(winners: List<String>) {
+        println("${RacingCarConstants.FINAL_WINNER_MESSAGE}${winners.joinToString(", ")}")
     }
 }
