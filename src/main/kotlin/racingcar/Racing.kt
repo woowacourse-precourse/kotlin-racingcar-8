@@ -18,5 +18,8 @@ class Racing(val list: List<Car>, val count: Int) {
         println()
     }
 
-    private fun printWinner() {}
+    private fun printWinner() {
+        val maxDistance = list.maxDistance()
+        println("최종 우승자 : ${list.getNamesByDistance(maxDistance).joinToString(",")}")
+    }
 }
