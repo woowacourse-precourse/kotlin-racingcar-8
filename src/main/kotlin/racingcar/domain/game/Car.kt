@@ -1,8 +1,8 @@
 package racingcar.domain.game
 
 class Car(private val name: String) {
-    private var _position = 0
-    val position: Int get() = _position
+    var position = 0
+        private set
 
     fun race(numberProvider: NumberProvider, moveRule: MoveRule) {
         val baseLine = numberProvider.generateNumbers()
@@ -11,8 +11,7 @@ class Car(private val name: String) {
     }
 
     private fun move() {
-        _position++
-        return
+        position++
     }
 
     override fun toString(): String {
