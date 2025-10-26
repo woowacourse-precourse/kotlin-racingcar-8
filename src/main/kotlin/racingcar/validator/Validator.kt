@@ -16,11 +16,10 @@ object Validator {
 
     fun validateCarNames(carNames: List<String>) {
         carNames.forEach {
-            require(it.trim().isNotEmpty()) { Messages.NOT_EMPTY_NAME }
+            require(it.isNotEmpty()) { Messages.NOT_EMPTY_NAME }
         }
         carNames.forEach {
             require(it.length <= MAX_NAME_LENGTH) { Messages.NOT_BIGGER_THAN_FIVE }
         }
-        require(carNames.toSet().size == carNames.size) { Messages.DUPLICATE_NAME }
     }
 }
