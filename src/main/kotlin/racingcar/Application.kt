@@ -7,7 +7,7 @@ import kotlin.text.all
 
 fun main() {
     // TODO: 프로그램 구현
-    racing()
+
 }
 
 var movingTime: Int = 0
@@ -56,14 +56,17 @@ fun validateNamesType() {
 }
 
 private fun validateNamesCharType(name: String) {
-    val nameChar = name.filter{ it != ',' }
+    val nameChar = name.filter { it != ',' }
     if (!nameChar.all { it.isLetter() }) {
         throw IllegalArgumentException()
     }
 }
 
 fun racingBar(turn: Int) {
-
+    val bar = "-"
+    for (i in 1..turn) {
+        print(bar)
+    }
 }
 
 fun randomNumber(): Int {
@@ -78,21 +81,30 @@ fun racingRole(): Boolean {
     return randomNumber() >= 4
 }
 
-fun racing() {
-    if (racingRole()) {
-        return gameControl()
-    }
-    if (!racingRole()) {
-        return replay()
+fun racingJudge() {
+    for (carName in carNameList()) {
+        judgeSingleCar(carName)
     }
 }
 
-fun replay() {
+private fun judgeSingleCar(carName: String) {
+    if (carNameAssignmentStepTime().getValue(carName) >= 4) {
+        return gameControl()
+    }
+    if (carNameAssignmentStepTime().getValue(carName) < 4) {
+        return stop()
+    }
+}
+
+fun stop() {
 
 }
 
 fun gameControl() {
-
+    for (time in 1..turnTime()) {
+        movingTime += 1
+        racingBar(movingTime)
+    }
 }
 
 fun carNameAssignmentStepTime(): MutableMap<String, Int> {
