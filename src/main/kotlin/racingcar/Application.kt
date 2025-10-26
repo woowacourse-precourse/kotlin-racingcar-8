@@ -66,6 +66,15 @@ fun PrintRacingProcess(PlayerList: List<String>, PlayerProgressBarArray: Array<S
 
 }
 
+fun PlayerForward(RandomNumber: Int, Index: Int, PlayerProgressBarArray: Array<String>): Int{
+    var PlayerForwardCount: Int = 0
+    if (RandomNumber >= 4) {
+        PlayerProgressBarArray[Index] += "-"
+        PlayerForwardCount = PlayerProgressBarArray[Index].length
+    }
+    return PlayerForwardCount
+}
+
 
 
 
