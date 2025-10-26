@@ -17,8 +17,8 @@
     * [x] `RacingGameViewModel`: View의 요청을 받아 Model을 호출하고, 전체 게임의 흐름을 제어하는 클래스 구현
 * [x] **Application (조립):**
     * [x] `main` 함수: View, ViewModel, Model(및 전략)을 조립하고 실행 흐름 제어
-* [ ] **Test:**
-    * [ ] 도메인(Model) 및 ViewModel에 대한 JUnit 5, AssertJ 단위 테스트 코드 작성
+* [x] **Test:**
+    * [x] 도메인(Model) 및 ViewModel에 대한 JUnit 5, AssertJ 단위 테스트 코드 작성
 
 
 ## 고민과 결정
