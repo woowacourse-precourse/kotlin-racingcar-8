@@ -1,5 +1,6 @@
 package racingcar.controller.domain
 
+import racingcar.model.domain.CarName
 import racingcar.view.domain.GuideView
 import racingcar.view.domain.InputView
 
@@ -7,6 +8,8 @@ object RacingcarController {
     fun run() {
         val carNames = inputCarNames()
         val attempt = inputAttempt()
+
+        val splitName = CarName.split(carNames)
     }
 
     private fun inputCarNames(): String {

@@ -10,8 +10,8 @@
     - [x] _"시도할 횟수는 몇 회인가요?"_ 가이드 문구 출력
 - [x] **자동차 이름 입력 : (feature/KRP-2-input-name)**
 - [x] **시도 횟수 입력 : (feature/WWC-KRP-3-input-attempt)**
-- [ ] **이름 분리 : (feature/KRP-5-split-name)**
-    - [ ] 쉼표(,)를 이용하여 이름 분리
+- [x] **이름 분리 : (feature/KRP-5-split-name)**
+    - [x] 쉼표(,)를 이용하여 이름 분리
 - [ ] **입력 값 검증 : (feature/KRP-4-validator)**
 - [ ] **무작위 값 추출 : (feature/KRP-6-random)**
     - [ ] 0~9 사이의 무작위 값 추출
@@ -60,17 +60,28 @@
     │           │   ├── domain
     │           │   │   └── RacingcarController.kt
     │           │   └── repository
+    │           ├── model
+    │           │   ├── domain
+    │           │   │   └── CarName.kt
+    │           │   └── repository
+    │           │       └── Split.kt
     │           └── view
     │               ├── Constants.kt
     │               ├── domain
+    │               │   ├── ConsoleView.kt
     │               │   └── Guide.kt
     │               └── repository
+    │                   ├── Input.kt 
     │                   └── Output.kt
     └── test 
        └── kotlin 
             └── calculator 
                 ├── ApplicationTest.kt 
+                ├── model
+                │   └── CarNameSplitTest.kt
                 └── view
+                    ├── InputTest.kt
                     └── OutputTest.kt
-66 directories, 214 files
+                    
+74 directories, 226 files
 ```
