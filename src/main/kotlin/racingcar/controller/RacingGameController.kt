@@ -31,11 +31,12 @@ class RacingGameController(
         val singleMove = SingleCarMover()
         val carsMover = CarsMover(singleMove, movementRule)
         val game = RacingGame(cars, countAttemptInput.toInt())
-        val winners = FinalWinner().findWinners(cars)
-
-        game.start(carsMover)
 
         outputView.printExecutionResultMessage()
+        game.start(carsMover)
+
+        val winners = FinalWinner().findWinners(cars)
+
         outputView.printFinalWinner(winners)
 
     }
