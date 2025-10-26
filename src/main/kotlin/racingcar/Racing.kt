@@ -11,7 +11,12 @@ class Racing(val list: List<Car>, val count: Int) {
         }
     }
 
-    private fun printState() {}
+    private fun printState() {
+        list.forEach {
+            println("${it.name} : ${"-".repeat(it.distance)}")
+        }
+        println()
+    }
 
     private fun printWinner() {}
 }
