@@ -79,6 +79,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["123,", "1 ", " 2 ", " ", "abc"])
+    fun `시도 횟수가 단일 숫자가 아니라면 예외로 처리한다`(userInput: String) {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { AttemptingNumber(userInput.toInt()) }
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
