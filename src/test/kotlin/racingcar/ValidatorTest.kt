@@ -1,6 +1,7 @@
 package racingcar
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -20,7 +21,7 @@ class ValidatorTest {
     }
 
     @Test
-    @DisplayName("자동차 이름에 공백이 있으면 예외가 발생한다")
+    @DisplayName("자동차 이름이 비어있으면 예외가 발생한다")
     fun doesNameBlank(){
         val input ="pobi, ,woni"
 
@@ -28,7 +29,19 @@ class ValidatorTest {
             Validator.validateCarNames(input)
         }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("자동차 이름은 공백이거나 비어있을 수 없습니다")
+            .hasMessageContaining("자동차 이름은 비어있을 수 없습니다")
+    }
+
+    @Test
+    @DisplayName("자동차 이름의 앞뒤 공백은 허용한다.")
+    fun withBlankOk(){
+        val input = " pobi, woni ,jun "
+
+        val names = assertDoesNotThrow {
+            Validator.validateCarNames(input)
+        }
+
+        assertThat(names).containsExactly("pobi","woni","jun")
     }
 
     @Test
