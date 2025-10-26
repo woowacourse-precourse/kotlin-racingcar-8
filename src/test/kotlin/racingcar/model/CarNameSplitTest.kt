@@ -14,23 +14,15 @@ class CarNameSplitTest : NsTest() {
     @Test
     fun `자동차 이름 분리`() {
         assertSimpleTest {
-            run("pobi,woni,jun", "1")
+            run("pobi,woni,jun")
             assertThat(actualRsult).isEqualTo(listOf("pobi", "woni", "jun"))
-        }
-    }
-
-    @Test
-    fun `공백 자동차 이름 분리`() {
-        assertSimpleTest {
-            run("pobi,,,", "1")
-            assertThat(actualRsult).isEqualTo(listOf("pobi", "", "", ""))
         }
     }
 
     @Test
     fun `하나의 자동차 이름 분리`() {
         assertSimpleTest {
-            run("pobi", "1")
+            run("pobi")
             assertThat(actualRsult).isEqualTo(listOf("pobi"))
         }
     }
@@ -39,7 +31,7 @@ class CarNameSplitTest : NsTest() {
     @Test
     fun `스페이스 포함 자동차 이름 분리`() {
         assertSimpleTest {
-            run("pobi,wo ni", "1")
+            run("pobi,wo ni")
             assertThat(actualRsult).isEqualTo(listOf("pobi", "wo ni"))
         }
     }
@@ -48,11 +40,10 @@ class CarNameSplitTest : NsTest() {
     @Test
     fun `중복 자동차 이름 분리`() {
         assertSimpleTest {
-            run("pobi,pobi,pobi", "1")
+            run("pobi,pobi,pobi")
             assertThat(actualRsult).isEqualTo(listOf("pobi", "pobi", "pobi"))
         }
     }
-
 
     override fun runMain() {
         val input = Console.readLine()
