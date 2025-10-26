@@ -13,6 +13,7 @@ class Application {
 
     fun run() {
         val inputView = InputView()
+        val outputView = OutputView()
         val moveStrategy = RandomMove()
         val viewModel = RacingViewModel(moveStrategy)
 
@@ -25,6 +26,7 @@ class Application {
         println("실행 결과")
         repeat(racingCount) {
             viewModel.playOneRound()
+            outputView.printRoundResult(viewModel.getCurrentStatus())
         }
     }
 }
