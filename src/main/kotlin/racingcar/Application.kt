@@ -53,6 +53,7 @@ data class Round(val time: Int, val cars: List<Car>) : Iterable<Car> {
             car.tryMoveForward(number)
         })
     }
+
     private fun getMaxPosition() = (cars.maxBy { it.position }).position
     fun getWinners(): List<Car> = cars.filter { getMaxPosition() == it.position }
     fun totalCars(): Int = cars.size
@@ -89,6 +90,9 @@ object RacingView {
     }
 
     fun showStatus(racing: Racing) {
+        if (racing.totalRounds() <= 1) {
+            return
+        }
         println("실행 결과")
         for (round in racing.drop(1)) {
             showStatus(round)
