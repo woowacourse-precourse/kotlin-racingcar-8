@@ -18,9 +18,12 @@ class Application {
         val viewModel = RacingViewModel(moveStrategy)
 
         val carNames = inputView.readCarNames()
+        // 뷰 모델을 통해 이름 판단
         viewModel.setupGame(carNames)
 
         val racingCount = inputView.readRacingCount()
+        // 뷰 모델을 통해 시도 횟수 판단
+        viewModel.coutninueGame(racingCount)
 
         println()
         println("실행 결과")
