@@ -4,6 +4,7 @@ import racingcar.domain.game.Car
 import racingcar.view.CliText.PROMPT_CAR_NAMES
 import racingcar.view.CliText.PROMPT_PLAY_RESULT
 import racingcar.view.CliText.PROMPT_ROUND_COUNT
+import racingcar.view.CliText.PROMPT_WINNER
 
 class ConsoleOutputView : OutputView {
     override fun printCarNamesPrompt() {
@@ -29,6 +30,19 @@ class ConsoleOutputView : OutputView {
         println()
         println(PROMPT_PLAY_RESULT);
     }
+
+    override fun printWinner(winners: List<String>?) {
+        var winnersResult = ""
+        if (winners != null) {
+            for (s in winners) {
+                winnersResult += "$s, "
+            }
+        }
+
+        println(PROMPT_WINNER + " : " + winnersResult.substring(0, winnersResult.length - 2))
+    }
+
+
 }
 
 

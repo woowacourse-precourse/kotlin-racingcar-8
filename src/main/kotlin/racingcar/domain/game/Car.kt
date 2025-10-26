@@ -1,7 +1,9 @@
 package racingcar.domain.game
 
-class Car(private val name: String) {
+class Car(name: String) {
     var position = 0
+        private set
+    var name = name
         private set
 
     fun race(numberProvider: NumberProvider, moveRule: MoveRule) {

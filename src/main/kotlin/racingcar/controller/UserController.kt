@@ -8,6 +8,7 @@ import racingcar.domain.game.RacingGame
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
+
 class UserController(
     private val outputView: OutputView,
     private val inputView: InputView,
@@ -40,6 +41,13 @@ class UserController(
             outputView.printPlayerRoundResult(cars);
             outputView.printBlankLine();
         }
+        winnerResult(racingGame, attemptCount);
     }
+
+    private fun winnerResult(racingGame: RacingGame, count: Int) {
+        val winnersResult: List<String>? = racingGame.winnerResult(count)
+        outputView.printWinner(winnersResult)
+    }
+
 
 }
