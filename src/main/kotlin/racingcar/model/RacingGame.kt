@@ -9,14 +9,16 @@ class RacingGame (private val cars: List<Car>, private val count: Int){
             playRound()
             OutputView.printRoundResult(cars)
         }
+        judgeResult()
     }
 
     private fun playRound() {
         cars.forEach{ it.move() }
     }
 
-    private fun judgeResult(): List<String> {
+    private fun judgeResult() {
         val maxPosition = cars.maxOf { it.position }
-        return cars.filter { it.position == maxPosition }.map { it.name }
+        val winners = cars.filter { it.position == maxPosition }.map { it.name }
+        OutputView.printWinner(winners)
     }
 }

@@ -7,6 +7,10 @@ object OutputView {
         cars.forEach { car ->
             println("${car.name} : ${"-".repeat(car.position)}")
         }
-        println()
+        println("")
+    }
+
+    fun printWinner(names: List<String>) {
+        println("최종 우승자 : ${names.joinToString(", ")}")
     }
 }
