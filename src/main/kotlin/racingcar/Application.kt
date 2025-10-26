@@ -75,6 +75,11 @@ fun PlayerForward(RandomNumber: Int, Index: Int, PlayerProgressBarArray: Array<S
     return PlayerForwardCount
 }
 
+fun FindRacingWinner(PlayerProgressBarArray: Array<String>, PlayerList: List<String>, MostForwardCount: Int, Index: Int, Final: StringBuilder){
+    if(PlayerProgressBarArray[Index].length == MostForwardCount){
+        RecordRacingWinner(Index, PlayerList, Final)
+    }
+}
 
 
 
