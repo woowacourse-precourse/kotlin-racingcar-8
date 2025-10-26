@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 data class AttemptingNumber(val value: Int) {
     init {
         require(value >= 0) { "시도 횟수는 음수일 수 없습니다." }
@@ -43,6 +45,26 @@ data class Car(val name: String, val position: Int) {
 
 }
 
+data class Racing(private val log: List<List<Car>>) : List<List<Car>> by log {
+    companion object {
+        fun with(cars: List<Car>, attempt: AttemptingNumber = AttemptingNumber(0)): Racing {
+            val log = mutableListOf(cars)
+            for (current in 1..attempt.value) {
+                val past = log[current - 1]
+                val movingCondition = generateRandomList(cars.size)
+                log.add(past.tryMoveForward(movingCondition))
+            }
+            return Racing(log)
+        }
+
+        private fun generateRandomList(size: Int): List<Int> {
+            return (1..size).map {
+                Randoms.pickNumberInRange(0, 9)
+            }
+        }
+    }
+}
+
 fun List<Car>.tryMoveForward(numbers: List<Int>): List<Car> {
     require(numbers.size == this.size) { "숫자 수와 자동차 수가 동일해야합니다." }
     return zip(numbers).map { (car, number) ->
@@ -67,6 +89,8 @@ fun createUniqueCars(names: List<String>): List<Car> {
 
 fun main() {
     val cars = createUniqueCars(listOf("pobi", "woni", "jun"))
-    val nextCars = cars.tryMoveForward(listOf(4, 0, 4))
-    nextCars.showStatus()
+    val racing = Racing.with(cars, attempt = AttemptingNumber(3))
+    for (race in racing) {
+        race.showStatus()
+    }
 }
