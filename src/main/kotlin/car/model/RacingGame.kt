@@ -22,4 +22,9 @@ class RacingGame(private val moveStrategy: MoveStrategy){
     fun getCars(): List<Car> {
         return cars.toList()
     }
+
+    fun getWinners(): List<String> {
+        val maxPosition = cars.maxOfOrNull { it.position } ?: 0
+        return cars.filter { it.position == maxPosition }.map { it.name }
+    }
 }
