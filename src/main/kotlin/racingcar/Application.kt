@@ -7,8 +7,10 @@ import kotlin.text.all
 
 fun main() {
     // TODO: 프로그램 구현
-    print(validateNamesType())
+    racing()
 }
+
+var movingTime: Int = 0
 
 fun infoMessage() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -24,15 +26,18 @@ fun output() {
 }
 
 fun processCarNaming(): List<String> {
-    val carNames = input().split(",")
-    return listOf(carNames.joinToString(","))
+    return input().split(",")
+}
+
+fun carNameList(): List<String> {
+    return listOf(processCarNaming().joinToString(","))
 }
 
 fun validateNamesLength() {
-    if (!processCarNaming().all { it.length <= 5 }) {
+    if (!carNameList().all { it.length <= 5 }) {
         throw IllegalArgumentException()
     }
-    if (!processCarNaming().all { it.isNotEmpty() }) {
+    if (!carNameList().all { it.isNotEmpty() }) {
         throw IllegalArgumentException()
     }
 }
@@ -44,7 +49,7 @@ fun validateNamesDelimiter() {
 }
 
 fun validateNamesType() {
-    val names = processCarNaming()
+    val names = carNameList()
     for (name in names) {
         validateNamesCharType(name)
     }
@@ -57,7 +62,7 @@ private fun validateNamesCharType(name: String) {
     }
 }
 
-fun racingBar() {
+fun racingBar(turn: Int) {
 
 }
 
@@ -65,12 +70,36 @@ fun randomNumber(): Int {
     return Randoms.pickNumberInRange(0, 9)
 }
 
-fun moveNumber(): Int {
+fun turnTime(): Int {
     return input().toInt()
 }
 
-fun racingProcessor(): Boolean {
-    val randomNumber = randomNumber()
-    return randomNumber >= 4
+fun racingRole(): Boolean {
+    return randomNumber() >= 4
 }
 
+fun racing() {
+    if (racingRole()) {
+        return gameControl()
+    }
+    if (!racingRole()) {
+        return replay()
+    }
+}
+
+fun replay() {
+
+}
+
+fun gameControl() {
+    game()
+}
+
+fun game(): MutableMap<String, Int> {
+    val carNamesList = mutableMapOf<String, Int>()
+    for (carName in processCarNaming()) {
+        carNamesList[carName] = randomNumber()
+        print(carNamesList)
+    }
+    return carNamesList
+}
