@@ -25,3 +25,44 @@
 
 - [ ] 함수가 단일책임
     - 전략패턴으로 구현
+
+---
+
+### 프로젝트 구조
+```
+car/
+├── model/       # 도메인 모델 (Car, RacingGame, MoveStrategy)
+├── view/        # 입출력 담당 (InputView, OutputView)
+└── viewmodel/   # 비즈니스 로직 및 검증 (RacingViewModel)
+```
+
+### 실행 예제
+```
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+pobi,woni,jun
+시도할 횟수는 몇회인가요?
+5
+
+실행 결과
+pobi : -
+woni : 
+jun : -
+
+pobi : --
+woni : -
+jun : --
+
+pobi : ---
+woni : --
+jun : ---
+
+pobi : ----
+woni : ---
+jun : ----
+
+pobi : -----
+woni : ----
+jun : -----
+
+최종 우승자 : pobi, jun
+```
