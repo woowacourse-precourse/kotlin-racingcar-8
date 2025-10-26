@@ -78,12 +78,34 @@ class GameTest : NsTest() {
     }
 
     @Test
+    fun `자동차 이름에 공백이 포함된 경우`() {
+        assertRandomNumberInRangeTest(
+            {
+                run(" pobi , crong ", "1")
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "crong : ",
+                    "최종 우승자 : pobi"
+                )
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
     fun `자동차 이름이 중복인 경우`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> {
-                runException("pobi,pobi", "1")
-            }
-        }
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,pobi,pobi", "1")
+                assertThat(output()).contains(
+                    "pobi#1 : -",
+                    "pobi#2 : ",
+                    "pobi#3 : ",
+                    "최종 우승자 : pobi#1"
+                )
+            },
+            MOVING_FORWARD, STOP, STOP
+        )
     }
 
     @Test
