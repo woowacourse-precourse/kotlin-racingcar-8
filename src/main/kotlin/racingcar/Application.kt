@@ -14,6 +14,17 @@ private data class Car(val name: String, var position: Int = 0) {
     fun statusLine(): String = "$name : ${"-".repeat(position)}"
 }
 
+private class RacingGame(
+    private val cars: List<Car>,
+    private val rounds: Int,
+    private val numberPicker: () -> Int = { Randoms.pickNumberInRange(NUMBER_RANGE.first, NUMBER_RANGE.last) }
+) {
+
+    private fun playOneRound() {
+        for (car in cars) car.tryMove(numberPicker())
+    }
+
+}
 
 private object Validator {
     fun parseAndValidateNames(raw: String?): List<String> {
