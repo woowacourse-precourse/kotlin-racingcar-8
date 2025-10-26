@@ -10,7 +10,11 @@ object OutputView {
     }
 
     fun showRoundResult(roundResult: List<Car>) {
-        roundResult.map { println(it.toString()) }
+        roundResult.map {
+            println(
+                "${it.getName()} : ${"-".repeat(it.getDistance())}"
+            )
+        }
         println()
     }
 
