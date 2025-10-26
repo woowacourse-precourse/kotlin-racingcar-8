@@ -7,4 +7,6 @@ object InputUtil {
         val list = Console.readLine().split(",")
         return list
     }
+
+    fun readTries() = Console.readLine().toInt()
 }
