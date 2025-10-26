@@ -19,8 +19,4 @@ object OutputView {
 
         println("${Messages.WINNER_PREFIX}$winnerNames")
     }
-
-    fun showError(error : String) {
-        throw IllegalArgumentException("${Messages.ERROR_PREFIX}$error")
-    }
 }
