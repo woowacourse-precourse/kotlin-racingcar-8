@@ -17,8 +17,8 @@ class RacingController(val inputView: InputView, val outputView: OutputView) {
 
         outputView.printTextOfResult()
         val raceResult = race(carNames, repeatTime.toInt())
-        judgeWinner()
-        printWinner()
+        val winners = judgeWinner(raceResult)
+        outputView.printWinner(winners)
     }
 
     fun race(carNames: List<String>, repeatTime: Int): List<Car> {
