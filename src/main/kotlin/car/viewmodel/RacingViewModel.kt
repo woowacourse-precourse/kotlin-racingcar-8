@@ -2,6 +2,8 @@ package car.viewmodel
 
 import car.model.RacingGame
 
+val ERROR_MESSAGE_CAR_NAME_LENGTH = "자동차 이름은 5자를 초과할 수 없습니다."
+
 class RacingViewModel {
     private val game = RacingGame()
 
@@ -11,6 +13,6 @@ class RacingViewModel {
     }
 
     private fun validateCarNames(carNames: List<String>) {
-        require(carNames.all { it.length <= 5 }) { "자동차 이름은 5자를 초과할 수 없습니다." }
+        require(carNames.all { it.length <= 5 }) { ERROR_MESSAGE_CAR_NAME_LENGTH }
     }
 }
