@@ -17,13 +17,9 @@ class OutputView {
     }
 
     fun printOfRaceResult(cars: List<Car>) {
-        val carsSize = cars.size - 1
-        val stringBuilder = StringBuilder()
-
-        for (i in 0..carsSize) {
-            val dash = "-".repeat(cars[i].position)
-            stringBuilder.append("${cars[i].name} : $dash")
-            stringBuilder.append("\n")
+        val result = cars.joinToString("\n") { car ->
+            val dash = "-".repeat(car.position)
+            "${car.name} : $dash"
         }
         println(stringBuilder.toString())
     }
