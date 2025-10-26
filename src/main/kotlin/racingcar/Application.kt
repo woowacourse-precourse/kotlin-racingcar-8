@@ -114,7 +114,7 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
     fun totalRounds(): Int = log.size
 
     companion object {
-        fun with(startRound: Round, attempt: Attempt = Attempt(0)): Racing {
+        fun start(startRound: Round, attempt: Attempt = Attempt(0)): Racing {
             val log = mutableListOf(startRound)
             for (current in 1..attempt.value) {
                 val past = log[current - 1]
@@ -135,7 +135,7 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
 fun main() {
     val startRound = RacingView.getNamesFromUser()
     val attempt = RacingView.getAttemptFromUser()
-    val racing = Racing.with(startRound, attempt)
+    val racing = Racing.start(startRound, attempt)
     RacingView.showStatus(racing)
     RacingView.showWinner(racing)
 }

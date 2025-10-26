@@ -104,7 +104,7 @@ class ApplicationTest : NsTest() {
     fun `시도 횟수 만큼 전진 시키거나 멈춘다`(userInput: Int, roundSize: Int) {
         assertSimpleTest {
             val cars = Round(0, listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun")))
-            val racingGame = Racing.with(cars, attempt = Attempt(userInput))
+            val racingGame = Racing.start(cars, attempt = Attempt(userInput))
             assertThat(racingGame.totalRounds()).isEqualTo(roundSize)
         }
     }
