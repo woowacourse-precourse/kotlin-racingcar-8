@@ -1,5 +1,6 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 data class Attempt(val value: Int) {
@@ -44,23 +45,16 @@ data class Car(val name: String, val position: Int) {
     }
 }
 
-data class Round(val time: Int, val cars: List<Car>) {
+data class Round(val time: Int, val cars: List<Car>) : Iterable<Car> {
+    override fun iterator(): Iterator<Car> = cars.iterator()
     fun tryMoveForward(numbers: List<Int>): Round {
         require(numbers.size == cars.size) { "숫자 수와 자동차 수가 동일해야합니다." }
         return Round(time + 1, cars.zip(numbers).map { (car, number) ->
             car.tryMoveForward(number)
         })
     }
-
     private fun getMaxPosition() = (cars.maxBy { it.position }).position
     fun getWinners(): List<Car> = cars.filter { getMaxPosition() == it.position }
-
-    fun showStatus() {
-        for (car in cars) {
-            println(car.status())
-        }
-    }
-
     fun totalCars(): Int = cars.size
 
     companion object {
@@ -72,6 +66,42 @@ data class Round(val time: Int, val cars: List<Car>) {
                 Car.withStartPosition(name)
             })
         }
+    }
+}
+
+object RacingView {
+    fun getNamesFromUser(): Round {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        val names = Console.readLine().split(",")
+        return Round.startWith(names)
+    }
+
+    fun getAttemptFromUser(): Attempt {
+        println("시도할 횟수는 몇 회인가요?")
+        val attempt = Console.readLine()
+        return Attempt(attempt.toInt())
+    }
+
+    private fun showStatus(round: Round) {
+        for (car in round) {
+            println(car.status())
+        }
+    }
+
+    fun showStatus(racing: Racing) {
+        println("실행 결과")
+        for (round in racing.drop(1)) {
+            showStatus(round)
+            println()
+        }
+    }
+
+    fun showWinner(racing: Racing) {
+        val lastRound = racing.last()
+        val carNames = lastRound.getWinners().map { car ->
+            car.name
+        }
+        println("최종 우승자 : ${carNames.joinToString(", ")}")
     }
 }
 
@@ -99,9 +129,9 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
 }
 
 fun main() {
-    val cars = Round.startWith(listOf("pobi", "woni", "jun"))
-    val racing = Racing.with(cars, attempt = Attempt(3))
-    for (round in racing) {
-        round.showStatus()
-    }
+    val startRound = RacingView.getNamesFromUser()
+    val attempt = RacingView.getAttemptFromUser()
+    val racing = Racing.with(startRound, attempt)
+    RacingView.showStatus(racing)
+    RacingView.showWinner(racing)
 }
