@@ -1,8 +1,7 @@
 package racingcar
 
 import racingcar.controller.UserController
-import racingcar.service.AttemptCountValidator
-import racingcar.service.CarNameValidator
+import racingcar.application.validator.CarNameValidator
 import racingcar.view.ConsoleInputView
 import racingcar.view.ConsoleOutputView
 

@@ -1,11 +1,10 @@
-package racingcar.service
+package racingcar.service.validator
 
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.domain.error.ErrorCode.NAMES_MUST_BE_COMMA_SEPARATED
-import kotlin.test.Test
+import racingcar.domain.error.ErrorCode
 import kotlin.test.assertEquals
-
 
 class CarNameValidatorTest {
     private lateinit var validator: Validator
@@ -24,7 +23,7 @@ class CarNameValidatorTest {
         val ex = assertThrows<IllegalArgumentException> {
             validator.validate(input)   // validate(String): 반환/예외는 구현에 맞게
         }
-        assertEquals(NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
+        assertEquals(ErrorCode.NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
     }
 
     @Test
@@ -33,7 +32,7 @@ class CarNameValidatorTest {
         val ex = assertThrows<IllegalArgumentException> {
             validator.validate(input)
         }
-        assertEquals(NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
+        assertEquals(ErrorCode.NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
     }
 
     @Test
@@ -42,6 +41,6 @@ class CarNameValidatorTest {
         val ex = assertThrows<IllegalArgumentException> {
             validator.validate(input)
         }
-        assertEquals(NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
+        assertEquals(ErrorCode.NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
     }
 }

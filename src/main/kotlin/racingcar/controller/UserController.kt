@@ -1,6 +1,9 @@
 package racingcar.controller
 
-import racingcar.service.Validator
+import racingcar.application.converter.Converter
+import racingcar.application.converter.StringToIntConverter
+import racingcar.application.converter.StringToListConverter
+import racingcar.application.validator.Validator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -11,8 +14,16 @@ class UserController(
 ) {
     fun run() {
         outputView.printCarNamesPrompt()
-        carNameValidator.validate(inputView.readCarNames())
+        val readCarNames = inputView.readCarNames()
+        carNameValidator.validate(readCarNames)
         outputView.printAttemptCountPrompt()
+        val readAttemptCount = inputView.readAttemptCount()
+        convert(StringToListConverter(), readCarNames)
+        convert(StringToIntConverter(), readAttemptCount)
+    }
+
+    private fun convert(converter: Converter<Any>, input: String): Any {
+        return converter.convert(input)
     }
 
 }
