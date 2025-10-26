@@ -102,17 +102,17 @@ aaa,bbb,ccc
 
 // 출력 예시
 실행 결과
-car1 : -
-car2 : 
-car3 : -
+aaa : -
+bbb : 
+ccc : -
 
-car1 : -
-car2 : -
-car3 : -
+aaa : -
+bbb : -
+ccc : -
 
-car1 : --
-car2 : -
-car3 : --
+aaa : --
+bbb : -
+ccc : --
 
-최종 우승자: car1, car3
+최종 우승자: aaa, ccc
 ```
