@@ -80,19 +80,25 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
     fun totalRounds(): Int = log.size
 
     companion object {
-        fun with(startRound: Round, attempt: Attempt = Attempt(0)): Racing {
+        fun with(
+            startRound: Round,
+            attempt: Attempt = Attempt(0),
+            randomGenerator: (Int) -> List<Int> = defaultRandomGenerator()
+        ): Racing {
             val log = mutableListOf(startRound)
             for (current in 1..attempt.value) {
                 val past = log[current - 1]
-                val movingCondition = generateRandomList(startRound.totalCars())
+                val movingCondition = randomGenerator(startRound.totalCars())
                 log.add(past.tryMoveForward(movingCondition))
             }
             return Racing(log)
         }
 
-        private fun generateRandomList(size: Int): List<Int> {
-            return (1..size).map {
-                Randoms.pickNumberInRange(0, 9)
+        private fun defaultRandomGenerator(): (Int) -> List<Int> {
+            return { size ->
+                (1..size).map {
+                    Randoms.pickNumberInRange(0, 9)
+                }
             }
         }
     }
