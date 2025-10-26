@@ -39,4 +39,13 @@ fun main() {
     print("최종 우승자 : $Final")
 }
 
+fun PlayerNameInputErrorCheck(Name: String){
+    if(Name.length > 5){
+        throw IllegalArgumentException("이름은 5글자 이상이 될 수 없습니다.")
+    }
+    else if (Name.isEmpty()){
+        throw IllegalArgumentException("이름은 공백이 될 수 없습니다.")
+    }
+}
+
 
