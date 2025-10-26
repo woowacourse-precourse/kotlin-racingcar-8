@@ -63,6 +63,15 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @ParameterizedTest
+    @CsvSource("pobi, 0, ''", "jun, 1, -", "woni, 2, --")
+    fun `자동차의 현재 상태 출력이 올바른 형식을 따르는 지 확인한다`(name: String, position: Int, output: String) {
+        assertSimpleTest {
+            val car = Car(name, position)
+            assertThat(car.status()).isEqualTo("$name : $output")
+        }
+    }
+
 //    @Test
 //    fun `기능 테스트`() {
 //        assertRandomNumberInRangeTest(
