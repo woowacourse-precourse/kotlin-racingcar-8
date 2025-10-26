@@ -35,6 +35,7 @@ src
 
 src
 └─ test/kotlin/racingcar
+   ├─ ApplicationTest.kt
    ├─ CarTest.kt
    ├─ RaceRoundTest.kt
    ├─ WinnerFinderTest.kt
