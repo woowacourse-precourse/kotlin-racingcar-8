@@ -17,6 +17,7 @@ fun main() {
         raceOnce(cars, positions)
         printRoundResult(cars, positions)
     }
+    printWinners(cars, positions)
 }
 
 fun readCarNames(): List<String> {
@@ -72,4 +73,17 @@ fun printRoundResult(cars: List<String>, positions: Map<String, Int>) {
         println("$carName : $bar")
     }
     println()
+}
+
+fun printWinners(cars: List<String>, positions: Map<String, Int>) {
+    val maxDistance = positions.values.maxOrNull()
+        ?: throw IllegalStateException("우승자를 계산할 수 없습니다.")
+
+    val winners = cars.filter { carName ->
+        positions.getValue(carName) == maxDistance
+    }
+
+    val result = winners.joinToString(separator = ", ")
+
+    println("최종 우승자 : $result")
 }
