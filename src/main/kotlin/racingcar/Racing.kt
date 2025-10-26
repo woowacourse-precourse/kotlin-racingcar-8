@@ -3,7 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class Racing(val list: List<Car>, val count: Int) {
-    fun play() {}
+    fun play() {
+        repeat(count) {
+            go()
+            printState()
+        }
+        printWinner()
+    }
 
     private fun go() {
         list.forEach {
