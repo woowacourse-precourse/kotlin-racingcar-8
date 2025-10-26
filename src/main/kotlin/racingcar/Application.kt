@@ -19,9 +19,22 @@ private class RacingGame(
     private val rounds: Int,
     private val numberPicker: () -> Int = { Randoms.pickNumberInRange(NUMBER_RANGE.first, NUMBER_RANGE.last) }
 ) {
+    fun runAndPrint() {
+        println()
+        println("실행 결과")
+        repeat(rounds) {
+            playOneRound()
+            printRound()
+            println()
+        }
+    }
 
     private fun playOneRound() {
         for (car in cars) car.tryMove(numberPicker())
+    }
+
+    private fun printRound() {
+        for (car in cars) println(car.statusLine())
     }
 
 }
@@ -63,4 +76,5 @@ private object InputView {
 fun main() {
     val cars = InputView.readCars()
     val rounds = InputView.readRounds()
+    RacingGame(cars, rounds).runAndPrint()
 }
