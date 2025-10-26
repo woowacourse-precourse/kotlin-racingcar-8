@@ -1,4 +1,4 @@
-package racingcar.application
+package racingcar
 
 import racingcar.controller.RacingGameController
 import racingcar.exception.CarNameInputValidator
