@@ -15,7 +15,7 @@ object RaceController {
 
         val tryTime = InputView.tryTime()
         val time = inputParser.parseTime(tryTime)
-        // 회차 진행하면 될듯
+
         carManager.addCar(carList)
         OutputView.printResult()
         repeat(time) {
