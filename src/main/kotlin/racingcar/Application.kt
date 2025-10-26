@@ -1,5 +1,8 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val list = InputUtil.readNames().toCars()
+    val tries = InputUtil.readTries()
+    val racing = Racing(list, tries)
+    racing.play()
 }
