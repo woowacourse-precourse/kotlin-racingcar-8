@@ -10,6 +10,7 @@ class OutputView {
     }
 
     fun printTextOfResult(){
+        println()
         println("실행 결과")
     }
 
