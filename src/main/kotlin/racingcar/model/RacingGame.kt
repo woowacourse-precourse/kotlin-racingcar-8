@@ -14,4 +14,9 @@ class RacingGame (private val cars: List<Car>, private val count: Int){
     private fun playRound() {
         cars.forEach{ it.move() }
     }
+
+    private fun judgeResult(): List<String> {
+        val maxPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == maxPosition }.map { it.name }
+    }
 }
