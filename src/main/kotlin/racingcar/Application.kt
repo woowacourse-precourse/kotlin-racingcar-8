@@ -62,9 +62,16 @@ private fun validateNamesCharType(name: String) {
     }
 }
 
-fun racingBar(turn: Int) {
+fun racingBar(time: Int) {
+    for (barTime in 1..time) {
+        barCreator(barTime)
+    }
+}
+
+fun barCreator(time: Int) {
     val bar = "-"
-    for (i in 1..turn) {
+    println()
+    for (i in 1..time) {
         print(bar)
     }
 }
@@ -89,20 +96,13 @@ fun carForRacingJudge() {
 
 private fun judgeSingleCar(time: Int) {
     if (time >= 4) {
-        return stepControl()
+        return stepControl(time)
     }
-    return stop()
+    return stepControl(0)
 }
 
-fun stop() {
-
-}
-
-fun stepControl() {
-    for (t in 1..turnTime()) {
-        movingTime += 1
-        racingBar(movingTime)
-    }
+fun stepControl(trigger: Int) {
+    racingBar(trigger)
 }
 
 fun carNameAssignmentStepTime(): MutableMap<String, Int> {
@@ -110,5 +110,6 @@ fun carNameAssignmentStepTime(): MutableMap<String, Int> {
     for (carName in processCarNaming()) {
         carNameAndTimeList[carName] = randomNumber()
     }
+    println("carNameAndTimeList $carNameAndTimeList")
     return carNameAndTimeList
 }
