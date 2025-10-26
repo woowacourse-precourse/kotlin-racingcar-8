@@ -22,7 +22,7 @@ fun main() {
     }
 
     val winners = checkWinner(cars)
-    println("최종 우승자: ${winners.joinToString(", ")}")
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
 
 fun parse(input: String): List<String> {
