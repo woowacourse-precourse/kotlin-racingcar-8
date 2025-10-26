@@ -20,11 +20,68 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `이름 5자 초과 예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+
+    @Test
+    fun `이름 입력 시 공백 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException("pobi, ,jun", "1")
+            }
+        }
+    }
+
+    @Test
+    fun `라운드 횟수에 숫자가 아닌 값 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException("pobi,woni", "two")
+            }
+        }
+    }
+
+    @Test
+    fun `라운드 반복 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "2")
+                assertThat(output())
+                    .contains(
+                        "실행 결과",
+                        "pobi : -",
+                        "woni : ",
+                        "pobi : --",
+                        "woni : -"
+                    )
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
+    @Test
+    fun `라운드 횟수 0 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException("pobi,woni", "0")
+            }
+        }
+    }
+
+    @Test
+    fun `공동 우승자 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
 
     override fun runMain() {
         main()
