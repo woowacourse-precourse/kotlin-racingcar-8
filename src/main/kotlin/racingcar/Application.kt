@@ -7,7 +7,7 @@ import kotlin.text.all
 
 fun main() {
     // TODO: 프로그램 구현
-
+    carForRacingJudge()
 }
 
 var movingTime: Int = 0
@@ -81,37 +81,34 @@ fun racingRole(): Boolean {
     return randomNumber() >= 4
 }
 
-fun racingJudge() {
-    for (carName in carNameList()) {
-        judgeSingleCar(carName)
+fun carForRacingJudge() {
+    for (time in carNameAssignmentStepTime().values) {
+        judgeSingleCar(time)
     }
 }
 
-private fun judgeSingleCar(carName: String) {
-    if (carNameAssignmentStepTime().getValue(carName) >= 4) {
-        return gameControl()
+private fun judgeSingleCar(time: Int) {
+    if (time >= 4) {
+        return stepControl()
     }
-    if (carNameAssignmentStepTime().getValue(carName) < 4) {
-        return stop()
-    }
+    return stop()
 }
 
 fun stop() {
 
 }
 
-fun gameControl() {
-    for (time in 1..turnTime()) {
+fun stepControl() {
+    for (t in 1..turnTime()) {
         movingTime += 1
         racingBar(movingTime)
     }
 }
 
 fun carNameAssignmentStepTime(): MutableMap<String, Int> {
-    val carNamesList = mutableMapOf<String, Int>()
+    val carNameAndTimeList = mutableMapOf<String, Int>()
     for (carName in processCarNaming()) {
-        carNamesList[carName] = randomNumber()
-        print(carNamesList)
+        carNameAndTimeList[carName] = randomNumber()
     }
-    return carNamesList
+    return carNameAndTimeList
 }
