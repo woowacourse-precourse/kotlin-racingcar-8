@@ -2,12 +2,18 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.view.InputView
 
 fun main() {
     // TODO: 프로그램 구현
-    val carNamesInput = getInputCarNames()
+    val inputView = InputView()
+    val carNamesInput = inputView.getInputCarNames()
+    require(carNamesInput.isNotBlank()) { "이름이 입력되지 않았습니다." }
+    val hasInvalidChar = carNamesInput.any { it != ',' && !it.isLetter() }
+    require(!hasInvalidChar) { "이름을 올바르게 입력해주세요." }
+
     val splitCarNames = splitCarName(carNamesInput)
-    val roundInput = getInputRound()
+    val roundInput = inputView.getInputRound()
     val round = stringToInt(roundInput)
 
     val carInstances = createCars(splitCarNames)
@@ -20,29 +26,12 @@ fun main() {
 
 fun createCars(splitCarNames: List<String>): List<Car> = splitCarNames.map { Car(it) }
 
-fun getInputCarNames(): String {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val carNamesInput = Console.readLine()
-    require(carNamesInput.isNotBlank()) { "이름이 입력되지 않았습니다." }
-    val hasInvalidChar = carNamesInput.any { it != ',' && !it.isLetter() }
-    require(!hasInvalidChar) { "이름을 올바르게 입력해주세요." }
-
-    return carNamesInput
-}
-
 fun splitCarName(carNamesInput: String): List<String> {
     val splitCarNames = carNamesInput.split(",")
     val hasLengthFiveOrLess = splitCarNames.all { it.length <= 5 && it.isNotBlank() }
     require(hasLengthFiveOrLess) { "이름은 5글자를 초과하거나 비어있을 수 없습니다." }
 
     return splitCarNames
-}
-
-fun getInputRound(): String {
-    println("시도할 횟수는 몇 회인가요?")
-    val roundInput = Console.readLine()
-
-    return roundInput
 }
 
 fun stringToInt(roundInput: String): Int = if (roundInput.isNotBlank()) {
