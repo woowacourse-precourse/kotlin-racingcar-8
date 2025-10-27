@@ -16,8 +16,4 @@ class Car(name: String) {
         position++
     }
 
-    override fun toString(): String {
-        return name + " : " + "-".repeat(position)
-    }
-
 }

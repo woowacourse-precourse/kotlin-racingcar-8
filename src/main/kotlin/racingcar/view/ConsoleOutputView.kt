@@ -16,9 +16,7 @@ class ConsoleOutputView : OutputView {
     }
 
     override fun printPlayerRoundResult(cars: Collection<Car>) {
-        cars.stream().forEach({ car ->
-            println(car)
-        })
+        cars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
     }
 
     override fun printBlankLine() {
