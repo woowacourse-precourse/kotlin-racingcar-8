@@ -73,6 +73,7 @@ fun stepControl() {
         currentResult()
     }
 }
+
 fun racingFourMoreRole() {
     for (carName in cars) {
         judgeFourMoreRole(carName)
