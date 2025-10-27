@@ -6,5 +6,5 @@ object NumberPicker {
     private const val MIN: Int = 0
     private const val MAX: Int = 9
 
-    fun getRandomNumber(): Int = Randoms.pickNumberInRange(MIN, MAX)
+    fun getRandomNumber() = Randoms.pickNumberInRange(MIN, MAX)
 }
