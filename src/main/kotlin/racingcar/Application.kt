@@ -70,13 +70,21 @@ private fun runRace(cars: List<Car>, tryCount: Int) {
     println("\n실행 결과")
 
     repeat(tryCount) {
-        for (car in cars) {
-            car.moveForward()
-        }
-        for (car in cars) {
-            val positionMarker = "-".repeat(car.position)
-            println("${car.name} : $positionMarker")
-        }
+        moveAllCars(cars)
+        printTryResult(cars)
         println()
+    }
+}
+
+private fun moveAllCars(cars: List<Car>) {
+    for (car in cars) {
+        car.moveForward()
+    }
+}
+
+private fun printTryResult(cars: List<Car>) {
+    for (car in cars) {
+        val positionMarker = "-".repeat(car.position)
+        println("${car.name} : $positionMarker")
     }
 }
