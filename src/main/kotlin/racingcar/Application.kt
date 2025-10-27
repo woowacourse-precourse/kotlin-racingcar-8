@@ -5,6 +5,12 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
 }
 
+fun output(raceResult: RaceResult) {
+    println(Message.RACE_RESULT_GUIDE_MESSAGE)
+    print(raceResult.progress())
+    println("${Message.RACE_WINNER_GUIDE_MESSAGE}${raceResult.winners.joinToString(", ")}")
+}
+
 fun input(): Race {
     val cars = inputCars()
     val round = inputRound()
