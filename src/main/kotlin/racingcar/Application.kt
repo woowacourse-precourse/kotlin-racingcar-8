@@ -1,6 +1,6 @@
 package racingcar
 
-import java.util.Random
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val names = readln().split(",")
@@ -10,7 +10,7 @@ fun main() {
         cars[name] = 0
     }
 
-    val num = readln().toInt()
+    val num = readLine()?.toInt() ?: throw IllegalArgumentException()
 
     repeat(num) {
         for(name in names) {
@@ -22,7 +22,7 @@ fun main() {
     println("최종 우승자 : $winner")
 }
 private fun getRandmoNum(name: String, cars: MutableMap<String, Int>){
-    val num = Random().nextInt(10)
+    val num = Randoms.pickNumberInRange(0, 9)
     print("$name : ")
     if(num >= 4){
         repeat(num - 3) {
