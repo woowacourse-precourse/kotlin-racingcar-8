@@ -1,21 +1,30 @@
 package racingcar
 
-import org.junit.jupiter.api.Assertions.assertThrows
-import org.junit.jupiter.api.Test
+class Car(
+    val name: String,
+    private var position: Int = 0
+) {
 
-class CarTest {
+    init {
+        validateName(name)
+    }
 
-    @Test
-    fun `이름이 비어 있으면 예외가 발생한다`() {
-        assertThrows(IllegalArgumentException::class.java) {
-            Car("")
+    private fun validateName(name: String) {
+        if (name.isBlank()) {
+            throw IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.")
+        }
+        if (name.length > 5) {
+            throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다: $name")
         }
     }
 
-    @Test
-    fun `이름이 5자를 초과하면 예외가 발생한다`() {
-        assertThrows(IllegalArgumentException::class.java) {
-            Car("abcdef")
+    fun tryMove(randomNumber: Int) {
+        if (randomNumber >= 4) {
+            position += 1
         }
+    }
+
+    fun getPosition(): Int {
+        return position
     }
 }
