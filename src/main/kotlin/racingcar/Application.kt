@@ -3,6 +3,9 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
+    val race = input()
+    val raceResult = race.start()
+    output(raceResult)
 }
 
 fun output(raceResult: RaceResult) {
