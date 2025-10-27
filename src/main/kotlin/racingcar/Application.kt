@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -17,7 +18,14 @@ fun main() {
 data class Car(
     val name: String,
     var position: Int = 0
-)
+) {
+    fun moveForward() {
+        val randomValue = Randoms.pickNumberInRange(0, 9)
+        if (randomValue >= 4) {
+            this.position += 1
+        }
+    }
+}
 
 private fun validateCarNames(carNamesInput: String?) {
     val names = carNamesInput?.split(",")
