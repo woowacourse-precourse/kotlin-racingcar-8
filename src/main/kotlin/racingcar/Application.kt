@@ -17,6 +17,9 @@ fun main() {
     val cars = createCars(carNames)
 
     runRace(cars, tryCount)
+
+    val winners = findWinners(cars)
+    printWinners(winners)
 }
 
 data class Car(
@@ -87,4 +90,27 @@ private fun printTryResult(cars: List<Car>) {
         val positionMarker = "-".repeat(car.position)
         println("${car.name} : $positionMarker")
     }
+}
+
+private fun findWinners(cars: List<Car>): List<String> {
+    var maxPosition = 0
+
+    for (car in cars) {
+        if (car.position > maxPosition) {
+            maxPosition = car.position
+        }
+    }
+
+    val winners = mutableListOf<String>()
+    for (car in cars) {
+        if (car.position == maxPosition) {
+            winners.add(car.name)
+        }
+    }
+    return winners
+}
+
+private fun printWinners(winners: List<String>) {
+    val winnerNames = winners.joinToString(", ")
+    println("최종 우승자 : $winnerNames")
 }
