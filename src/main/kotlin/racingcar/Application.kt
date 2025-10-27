@@ -12,7 +12,6 @@ var carRunStatus = mutableMapOf<String, Int>()
 fun main() {
     // TODO: 프로그램 구현
     game()
-
 }
 
 fun game() {
@@ -115,21 +114,22 @@ fun barCreator(time: Int?) {
 }
 
 fun carNameSetting() {
-    for (carName in processCarNaming()) {
-        cars.add(carName)
-        carNameAndTimeList[carName] = 0
-    }
-    println(" 자동차 입력된 자동차이름  = ${ cars }")
-}
+    val carNames = processCarNaming()
+    validateNamesLength(carNames)
+    validateNamesType(carNames)
+    validateNamesDelimiter(carNames)
 
-fun carNameAssignmentStepTime(): MutableMap<String, Int> {
-    for(car in cars) {
-        randomNumber = pickRandomNumber()
-        carNameAndTimeList[car] = randomNumber
+    for (carName in carNames) {
+        cars.add(carName)
+        carRunStatus[carName] = 0
     }
-    return carNameAndTimeList
 }
 
 fun winner() {
+    val maxBar = carRunStatus.values.maxOrNull() ?: 0
+    val winners = carRunStatus
+        .filter { it.value == maxBar }
+        .keys
 
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
