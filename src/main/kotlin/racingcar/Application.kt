@@ -9,7 +9,8 @@ fun main() {
 class RacingGame {
     fun start() {
         val carNames = getCarNames()
-        // TODO: 시도할 횟수 입력 기능 구현
+        val tryCount = getTryCount()
+        // TODO: 경주 진행 로직 구현
     }
 
     private fun getCarNames(): List<String> {
@@ -28,5 +29,17 @@ class RacingGame {
         if (names.any { it.length > 5 }) {
             throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
         }
+    }
+
+    private fun getTryCount(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val input = Console.readLine() ?: ""
+        val count = input.toIntOrNull()
+            ?: throw IllegalArgumentException("시도 횟수는 숫자여야 합니다.")
+
+        if (count <= 0) {
+            throw IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.")
+        }
+        return count
     }
 }

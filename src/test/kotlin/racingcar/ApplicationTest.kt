@@ -36,6 +36,16 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["a", " ", "", "0", "-1"])
+    fun `잘못된 시도 횟수 입력 시 예외 테스트`(tryCount: String) {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException("pobi,woni", tryCount) // 유효한 이름, 잘못된 횟수
+            }
+        }
+    }
+
     override fun runMain() {
         main()
     }
