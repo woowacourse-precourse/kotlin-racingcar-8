@@ -23,6 +23,11 @@ class CarRacingGameViewModel {
 
     fun validateCarName(carNames: String): List<Car> {
         val carName = carNames.split(",").map { it.trim() }
+
+        if (carName.toSet().size != carName.size) {
+            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
+        }
+
         return carName.map { Car(it) }
     }
 
