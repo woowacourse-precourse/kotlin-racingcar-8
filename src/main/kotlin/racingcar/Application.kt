@@ -14,6 +14,11 @@ fun main() {
     validateTryCount(tryCountInput)
 }
 
+data class Car(
+    val name: String,
+    var position: Int = 0
+)
+
 private fun validateCarNames(carNamesInput: String?) {
     val names = carNamesInput?.split(",")
         ?: throw IllegalArgumentException("입력이 없습니다.")
