@@ -12,7 +12,7 @@ data class OutputView(val attempt: Attempt) {
 
     fun showStatus(racing: Racing) {
         if (hasOnlyInitRound(racing)) return
-        println("실행 결과")
+        println("\n실행 결과")
         for (round in skipInitRound(racing)) {
             showStatus(round)
             println()
