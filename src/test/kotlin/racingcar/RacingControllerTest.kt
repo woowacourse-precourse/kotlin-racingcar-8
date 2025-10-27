@@ -23,4 +23,18 @@ class RacingControllerTest {
         // when & then
         assertThrows<IllegalArgumentException> { RacingController(inputView, outputView, judge).run() }
     }
+
+    @Test
+    fun `라운드 횟수 입력 시 숫자가 아닌 값을 넣으면 IllegalArgumentException 발생한다`() {
+        val fakeInput = "hello"
+        val inputStream = ByteArrayInputStream(fakeInput.toByteArray())
+
+        val inputView = InputView()
+        val outputView = OutputView()
+        val judge = Judge()
+
+        System.setIn(inputStream)
+
+        assertThrows<IllegalArgumentException> { RacingController(inputView, outputView, judge).handleRepeatTime() }
+    }
 }
