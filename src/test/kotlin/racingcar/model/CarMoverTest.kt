@@ -29,7 +29,10 @@ class CarMoverTest() {
     fun `단일 이동시 위치 확인`(
         movementResult: Boolean, expectedPosition: Int
     ) {
-        SingleCarMover().move(car, movementResult)
+        val car = Car("pobi")
+        val mover = SingleCarMover()
+
+        mover.move(car, movementResult)
         assertThat(car.position).isEqualTo(expectedPosition)
     }
 
@@ -39,9 +42,11 @@ class CarMoverTest() {
     fun `연속 이동시 누적 위치 확인`(
         movementResult: Boolean, expectedPosition: Int
     ) {
-        SingleCarMover().move(car, movementResult)
-        SingleCarMover().move(car, movementResult)
-        SingleCarMover().move(car, movementResult)
+        val car = Car("pobi")
+        val mover = SingleCarMover()
+
+        repeat(3) { mover.move(car, movementResult)}
+
         assertThat(car.position).isEqualTo(expectedPosition)
     }
 

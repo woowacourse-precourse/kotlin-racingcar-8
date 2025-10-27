@@ -12,6 +12,7 @@ class CarNameParserTest : NsTest() {
     fun `자동차 이름 파싱 테스트`() {
         assertSimpleTest {
             val carList: List<Car> = Parser().parseCarName("pobi,woni")
+
             assertThat(carList).containsExactly(
                 Car("pobi", 0), Car("woni", 0)
             )

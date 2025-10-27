@@ -9,6 +9,7 @@ class MovementRuleTest {
         val fakeGenerator = FakeRandomNumberGenerator(listOf(4))
         val rule = MovementRule(fakeGenerator)
         val result = rule.hasMoveAndStop()
+
         assertThat(result).isEqualTo(true)
     }
 
@@ -17,6 +18,7 @@ class MovementRuleTest {
         val fakeGenerator = FakeRandomNumberGenerator(listOf(3))
         val rule = MovementRule(fakeGenerator)
         val result = rule.hasMoveAndStop()
+
         assertThat(result).isEqualTo(false)
     }
 }
