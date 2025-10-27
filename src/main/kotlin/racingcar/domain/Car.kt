@@ -1,6 +1,6 @@
 package racingcar.domain
 
-class Car(val name: String) {
+class Car(val name: String, val numberGenerator: NumberGenerator) {
     var distance: Int = INITIAL_CAR_DISTANCE
 
     init {
@@ -9,7 +9,7 @@ class Car(val name: String) {
     }
 
     fun moveForward() {
-        val randomNumber = RandomNumberGenerator().generateNumber()
+        val randomNumber = numberGenerator.generateNumber()
         if (randomNumber >= MOVE_FORWARD_CONDITION_NUMBER) {
             distance++
         }
