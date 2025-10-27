@@ -48,21 +48,21 @@ src
 │     └─ Application.kt
 └─ test
    └─ kotlin
-   └─ racingcar
-   ├─ domain
-   │  ├─ car
-   │  │  ├─ CarTest.kt
-   │  │  ├─ CarsTest.kt
-   │  │  ├─ NameTest.kt
-   │  │  └─ NameParserTest.kt
-   │  └─ racing
-   │     ├─ AttemptCountTest.kt
-   │     ├─ NumberPickerTest.kt
-   │     └─ RacingManagerTest.kt
-   ├─ service
-   │  ├─ car
-   │  │  └─ CarServiceTest.kt
-   │  └─ racing
-   │     └─ RacingServiceTest.kt
-   └─ ApplicationTest.kt 
+      └─ racingcar
+         ├─ domain
+         │  ├─ car
+         │  │  ├─ CarTest.kt
+         │  │  ├─ CarsTest.kt
+         │  │  ├─ NameTest.kt
+         │  │  └─ NameParserTest.kt
+         │  └─ racing
+         │     ├─ AttemptCountTest.kt
+         │     ├─ NumberPickerTest.kt
+         │     └─ RacingManagerTest.kt
+         ├─ service
+         │  ├─ car
+         │  │  └─ CarServiceTest.kt
+         │  └─ racing
+         │     └─ RacingServiceTest.kt
+         └─ ApplicationTest.kt 
 ```
