@@ -19,49 +19,50 @@
 
 ```declarative
 src
- ├─ main
- │   └─ kotlin
- │       └─ racingcar
- │           ├─ controller
- │           │   └─ CarRacingController.kt
- │           ├─ domain
- │           │   ├─ car
- │           │   │   ├─ Car.kt
- │           │   │   └─ Cars.kt
- │           │   └─ racing
- │           │       ├─ AttemptCount.kt
- │           │       ├─ NumberPicker.kt
- │           │       ├─ Racing.kt
- │           │       └─ Round.kt
- │           ├─ exception
- │           │   └─ ErrorMessage.kt
- │           ├─ service
- │           │   ├─ car
- │           │   │   └─ CarService.kt
- │           │   └─ racing
- │           │       └─ RacingService.kt
- │           ├─ util
- │           │   └─ Util.kt
- │           ├─ view
- │           │   ├─ InputView.kt
- │           │   └─ OutputView.kt
- │           └─ Application.kt
- └─ test
-     └─ kotlin
-         └─ racingcar
-             ├─ domain
-             │   ├─ car
-             │   │   ├─ CarTest.kt
-             │   │   ├─ CarsTest.kt
-             │   │   └─ NameTest.kt
-             │   └─ racing
-             │       ├─ AttemptCountTest.kt
-             │       ├─ NumberPickerTest.kt
-             │       ├─ RacingTest.kt
-             │       └─ RoundTest.kt
-             ├─ service
-             │   ├─ car/CarServiceTest.kt
-             │   └─ racing/RacingServiceTest.kt
-             ├─ util/UtilTest.kt
-             └─ ApplicationTest.kt
+├─ main
+│  └─ kotlin/racingcar
+│     ├─ controller
+│     │  └─ CarRacingController.kt
+│     ├─ domain
+│     │  ├─ car
+│     │  │  ├─ Car.kt
+│     │  │  ├─ Cars.kt
+│     │  │  ├─ Name.kt
+│     │  │  └─ NameParser.kt
+│     │  └─ racing
+│     │     ├─ AttemptCount.kt
+│     │     ├─ NumberPicker.kt
+│     │     └─ RacingManager.kt
+│     ├─ dto
+│     │  ├─ CarStatusDto.kt
+│     │  ├─ RacingResultDto.kt
+│     │  └─ RoundResultDto.kt
+│     ├─ exception
+│     │  └─ ErrorMessage.kt
+│     ├─ service
+│     │  ├─ car/CarService.kt
+│     │  └─ racing/RacingService.kt
+│     ├─ view
+│     │  ├─ InputView.kt
+│     │  └─ OutputView.kt
+│     └─ Application.kt
+└─ test
+   └─ kotlin
+   └─ racingcar
+   ├─ domain
+   │  ├─ car
+   │  │  ├─ CarTest.kt
+   │  │  ├─ CarsTest.kt
+   │  │  ├─ NameTest.kt
+   │  │  └─ NameParserTest.kt
+   │  └─ racing
+   │     ├─ AttemptCountTest.kt
+   │     ├─ NumberPickerTest.kt
+   │     └─ RacingManagerTest.kt
+   ├─ service
+   │  ├─ car
+   │  │  └─ CarServiceTest.kt
+   │  └─ racing
+   │     └─ RacingServiceTest.kt
+   └─ ApplicationTest.kt 
 ```
