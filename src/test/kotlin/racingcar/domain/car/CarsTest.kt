@@ -46,6 +46,9 @@ class CarsTest {
         val winners = cars.getWinners()
 
         // then
-        assertEquals(winners, "woni, jun")
+        assertEquals(winners[0].name.value, "woni")
+        assertEquals(winners[0].distance, 5)
+        assertEquals(winners[1].name.value, "jun")
+        assertEquals(winners[1].distance, 5)
     }
 }
