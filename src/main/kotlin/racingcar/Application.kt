@@ -21,3 +21,14 @@ fun getCarName(): List<String>{
     }
     return names
 }
+
+fun getRoundCount(): Int {
+    println("시도할 이동 횟수는 몇 회인가요?")
+    val input = Console.readLine() ?: throw IllegalArgumentException("입력이 없습니다.")
+    val count = input.toIntOrNull()
+
+    if (count == null || count <= 0) {
+        throw IllegalArgumentException("시도 횟수는 1 이상의 숫자입니다.")
+    }
+    return count
+}
