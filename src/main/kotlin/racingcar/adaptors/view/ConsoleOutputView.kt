@@ -1,10 +1,11 @@
 package racingcar.adaptors.view
 
-import racingcar.domain.game.Car
+import racingcar.domain.game.RacingCar
 import racingcar.adaptors.view.CliText.PROMPT_CAR_NAMES
 import racingcar.adaptors.view.CliText.PROMPT_PLAY_RESULT
 import racingcar.adaptors.view.CliText.PROMPT_ROUND_COUNT
 import racingcar.adaptors.view.CliText.PROMPT_WINNER
+import racingcar.domain.game.Car
 
 class ConsoleOutputView : OutputView {
     override fun printCarNamesPrompt() {
@@ -15,8 +16,8 @@ class ConsoleOutputView : OutputView {
         println(PROMPT_ROUND_COUNT)
     }
 
-    override fun printPlayerRoundResult(cars: Collection<Car>) {
-        cars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
+    override fun printPlayerRoundResult(racingCars: Collection<Car>) {
+        racingCars.forEach { println("${it.name} : ${"-".repeat(it.position)}") }
     }
 
     override fun printBlankLine() {

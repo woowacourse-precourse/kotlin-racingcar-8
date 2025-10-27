@@ -1,6 +1,6 @@
 package racingcar.application.domain.game
 
-import racingcar.domain.game.Car
+import racingcar.domain.game.RacingCar
 import racingcar.domain.rule.DefaultMoveRule
 import racingcar.domain.port.NumberProvider
 
@@ -15,16 +15,16 @@ class CarTest {
 
     @Test
     fun `한 라운드에 조건이 만족인 차만 전진`() {
-        val car = Car("pobi")
-        car.race(FixedNumberProvider(4), DefaultMoveRule())
-        assertEquals(1, car.position)
+        val racingCar = RacingCar("pobi")
+        racingCar.race(FixedNumberProvider(4), DefaultMoveRule())
+        assertEquals(1, racingCar.position)
     }
 
     @Test
     fun `한 라운드에 조건이 만족하지 않으면 차는 멈춘다`() {
-        val car = Car("pobi")
-        car.race(FixedNumberProvider(3), DefaultMoveRule())
-        assertEquals(0, car.position)
+        val racingCar = RacingCar("pobi")
+        racingCar.race(FixedNumberProvider(3), DefaultMoveRule())
+        assertEquals(0, racingCar.position)
     }
 
 }

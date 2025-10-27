@@ -5,28 +5,28 @@ import racingcar.domain.error.ErrorCode.RACE_MUST_HAVE_PROGRESS
 import racingcar.domain.rule.DefaultMoveRule
 
 class RacingGame(carName: Collection<String>) {
-    private val cars: Collection<Car>
+    private val racingCars: Collection<Car>
 
     init {
         val map = carName.map {
             it.trim()
-        }.filter { it.isNotBlank() }.map { Car(it) }
-        cars = map
+        }.filter { it.isNotBlank() }.map { RacingCar(it) }
+        racingCars = map
     }
 
     fun playRound(): Collection<Car> {
         raceOnce()
-        return cars
+        return racingCars
     }
 
     private fun raceOnce() {
-        cars.forEach { car -> car.race(RandomNumberProvider(), DefaultMoveRule()) }
+        racingCars.forEach { car -> car.race(RandomNumberProvider(), DefaultMoveRule()) }
     }
 
 
     fun winnerResult(): List<String> {
-        val max = cars.maxOf { it.position }
+        val max = racingCars.maxOf { it.position }
         require(max > 0) { RACE_MUST_HAVE_PROGRESS }
-        return cars.stream().filter { it.position == max }.map{it.name}.toList()
+        return racingCars.stream().filter { it.position == max }.map{it.name}.toList()
     }
 }

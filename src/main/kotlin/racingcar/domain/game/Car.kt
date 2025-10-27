@@ -3,20 +3,17 @@ package racingcar.domain.game
 import racingcar.domain.port.NumberProvider
 import racingcar.domain.rule.MoveRule
 
-class Car(name: String) {
-    var position = 0
-        private set
-    var name = name
-        private set
+abstract class Car(open val name: String) {
+
+    var position: Int = 0
+        protected set  // ⬅️ 하위 클래스에서 증가 가능하도록
 
     fun race(numberProvider: NumberProvider, moveRule: MoveRule) {
         val baseLine = numberProvider.generateNumbers()
-        if (moveRule.canMove(baseLine))
-            move()
+        if (moveRule.canMove(baseLine)) move()
     }
 
-    private fun move() {
-        position++
-    }
-
+    protected abstract fun move()
 }
+
+

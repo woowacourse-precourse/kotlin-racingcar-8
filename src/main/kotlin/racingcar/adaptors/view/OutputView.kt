@@ -1,6 +1,7 @@
 package racingcar.adaptors.view
 
 import racingcar.domain.game.Car
+import racingcar.domain.game.RacingCar
 
 
 interface OutputView {
@@ -8,7 +9,7 @@ interface OutputView {
 
     fun printAttemptCountPrompt()
 
-    fun printPlayerRoundResult(cars: Collection<Car>)
+    fun printPlayerRoundResult(racingCars: Collection<Car>)
 
     fun printBlankLine()
 

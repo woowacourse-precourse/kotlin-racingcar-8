@@ -2,10 +2,7 @@ package racingcar.application.domain.game
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.application.domain.game.CarTest.FixedNumberProvider
 import racingcar.domain.error.ErrorCode.RACE_MUST_HAVE_PROGRESS
-import racingcar.domain.game.Car
-import racingcar.domain.rule.DefaultMoveRule
 import racingcar.domain.game.RacingGame
 import kotlin.test.assertEquals
 
