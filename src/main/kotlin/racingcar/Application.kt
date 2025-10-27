@@ -7,6 +7,9 @@ fun main() {
     val carNamesInput = Console.readLine()
 
     validateCarNames(carNamesInput)
+
+    println("시도할 횟수는 몇 회인가요?")
+    val tryCountInput = Console.readLine()
 }
 
 private fun validateCarNames(carNamesInput: String?) {
