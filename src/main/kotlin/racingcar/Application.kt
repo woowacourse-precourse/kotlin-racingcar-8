@@ -3,7 +3,12 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    // TODO: 프로그램 구현
+    val carNames = getCarName()
+    val rountCount = getRoundCount()
+
+    val cars = carNames.map{ Car(it) }
+
+    runRace(cars, rountCount)
 }
 
 fun getCarName(): List<String>{
@@ -31,4 +36,20 @@ fun getRoundCount(): Int {
         throw IllegalArgumentException("시도 횟수는 1 이상의 숫자입니다.")
     }
     return count
+}
+
+
+fun runRace(cars: List<Car>, rounds: Int){
+    println("\n실행 결과")
+    repeat(rounds){
+        runRound(cars)
+        println()
+    }
+}
+
+fun runRound(cars: List<Car>){
+    for(car in cars){
+        car.move()
+        car.printState()
+    }
 }
