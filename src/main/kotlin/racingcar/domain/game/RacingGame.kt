@@ -1,7 +1,7 @@
 package racingcar.domain.game
 
-class RacingGame(carName: List<String>) {
-    val cars: List<Car>
+class RacingGame(carName: Collection<String>) {
+    private val cars: Collection<Car>
 
     init {
         val map = carName.map {
@@ -10,7 +10,7 @@ class RacingGame(carName: List<String>) {
         cars = map
     }
 
-    fun playRound(): List<Car> {
+    fun playRound(): Collection<Car> {
         raceOnce()
         return cars
     }

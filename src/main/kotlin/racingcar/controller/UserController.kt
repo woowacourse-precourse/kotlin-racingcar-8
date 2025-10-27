@@ -3,6 +3,7 @@ package racingcar.controller
 import racingcar.application.converter.Converter
 import racingcar.application.converter.StringToIntConverter
 import racingcar.application.converter.StringToListConverter
+import racingcar.application.converter.StringToSetConverter
 import racingcar.application.validator.Validator
 import racingcar.domain.game.RacingGame
 import racingcar.view.InputView
@@ -20,16 +21,16 @@ class UserController(
         carNameValidator.validate(readCarNames)
         outputView.printAttemptCountPrompt()
         val readAttemptCount = inputView.readAttemptCount()
-        val carNames = convert(StringToListConverter(), readCarNames)
+        val carNames = convert(StringToSetConverter(), readCarNames)
         val attemptCount = convert(StringToIntConverter(), readAttemptCount)
-        initRacingGame(carNames as List<String>, attemptCount as Int)
+        initRacingGame(carNames, attemptCount )
     }
 
-    private fun convert(converter: Converter<Any>, input: String): Any {
+    private fun <O> convert(converter: Converter<O>, input: String): O {
         return converter.convert(input)
     }
 
-    private fun initRacingGame(carNames: List<String>, attemptCount: Int) {
+    private fun initRacingGame(carNames: Collection<String>, attemptCount: Int) {
         val racingGame = RacingGame(carNames)
         playRacingGame(racingGame, attemptCount)
     }

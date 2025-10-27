@@ -15,7 +15,7 @@ class ConsoleOutputView : OutputView {
         println(PROMPT_ROUND_COUNT)
     }
 
-    override fun printPlayerRoundResult(cars: List<Car>) {
+    override fun printPlayerRoundResult(cars: Collection<Car>) {
         cars.stream().forEach({ car ->
             println(car)
         })
@@ -31,7 +31,7 @@ class ConsoleOutputView : OutputView {
         println(PROMPT_PLAY_RESULT);
     }
 
-    override fun printWinner(winners: List<String>?) {
+    override fun printWinner(winners: Collection<String>?) {
         var winnersResult = ""
         if (winners != null) {
             for (s in winners) {

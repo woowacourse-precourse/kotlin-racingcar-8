@@ -8,12 +8,12 @@ interface OutputView {
 
     fun printAttemptCountPrompt()
 
-    fun printPlayerRoundResult(cars: List<Car>)
+    fun printPlayerRoundResult(cars: Collection<Car>)
 
     fun printBlankLine()
 
     fun printRoundResultPrompt()
 
-    fun printWinner(winnerResult: List<String>?)
+    fun printWinner(winnerResult: Collection<String>?)
 
 }
