@@ -1,13 +1,20 @@
 package racingcar
 
-import racingcar.view.InputView
-import racingcar.view.OutputView
+import racingcar.domain.Car
+import racingcar.domain.RandomMoveDecider
+import racingcar.service.RaceRound
 
 fun main() {
-    val names = InputView.readNames()
-    val trialCount = InputView.readTrialCount()
+    val names = listOf("pobi", "woni", "jun")
+    val cars = names.map { Car(it) }
 
-    // 이후 게임 로직 진행
-    OutputView.printStart()
-    // ... 나중에 RaceRound, WinnerFinder 등 연결
+    val decider = RandomMoveDecider()
+    val round = RaceRound(decider)
+
+    println("===== 1 ROUND TEST =====")
+    val results = round.runOnce(cars)
+
+    cars.forEachIndexed { i, car ->
+        println("${car.name} : ${"-".repeat(car.position)} (moved=${results[i]})")
+    }
 }
