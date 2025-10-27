@@ -1,11 +1,12 @@
-package racingcar
+package racingcar.applicationTest
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.main
+import org.assertj.core.api.Assertions.assertThat
 
 class ApplicationTest : NsTest() {
     @Test
@@ -31,7 +32,7 @@ class ApplicationTest : NsTest() {
     }
 
     companion object {
-        private const val MOVING_FORWARD: Int = 4
-        private const val STOP: Int = 3
+        const val MOVING_FORWARD: Int = 4
+        const val STOP: Int = 3
     }
 }
