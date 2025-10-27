@@ -18,10 +18,10 @@ class CarNameValidatorTest {
     fun `자동차 이름들의 쉼표가 없으면 에러를 던진다`() {
 
         //given
-        val input = "pobi woni"  // 쉼표 없음
+        val input = "pobi woni"
         // when + then
         val ex = assertThrows<IllegalArgumentException> {
-            validator.validate(input)   // validate(String): 반환/예외는 구현에 맞게
+            validator.validate(input)
         }
         assertEquals(ErrorCode.NAMES_MUST_BE_COMMA_SEPARATED, ex.message)
     }

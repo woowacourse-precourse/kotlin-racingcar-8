@@ -1,4 +1,4 @@
-package racingcar.application.converter
+package racingcar.application.parser
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertThrows
@@ -6,12 +6,12 @@ import racingcar.domain.error.ErrorCode.INVALID_CAR_NAME_LENGTH
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class StringToListConverterTest {
-    private lateinit var converter: Converter<Collection<String>>
+class StringToListParserTest {
+    private lateinit var parser: Parser<Collection<String>>
 
     @BeforeEach
     fun setUp() {
-        converter = StringToListConverter()
+        parser = StringToListParser()
     }
 
     @Test
@@ -20,7 +20,7 @@ class StringToListConverterTest {
         val input: String = "pobi,woni,jun"
 
         // when
-        val result = converter.convert(input)
+        val result = parser.parse(input)
 
         //then
         assertEquals(result.size, 3)
@@ -34,7 +34,7 @@ class StringToListConverterTest {
 
         // when
         val errorMessage = assertThrows<IllegalArgumentException> {
-            converter.convert(input)
+            parser.parse(input)
         }
 
         // then

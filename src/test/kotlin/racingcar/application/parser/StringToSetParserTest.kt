@@ -1,4 +1,4 @@
-package racingcar.application.converter
+package racingcar.application.parser
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertThrows
@@ -7,12 +7,12 @@ import racingcar.domain.error.ErrorCode.INVALID_CAR_NAME_LENGTH
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class StringToSetConverterTest {
-    private lateinit var converter: Converter<Set<String>>
+class StringToSetParserTest {
+    private lateinit var parser: Parser<Set<String>>
 
     @BeforeEach
     fun setUp() {
-        converter = StringToSetConverter()
+        parser = StringToSetParser()
     }
 
     @Test fun `중복시 예외 처리`() {
@@ -21,7 +21,7 @@ class StringToSetConverterTest {
 
         //when
         val ex = assertThrows<IllegalArgumentException> {
-            converter.convert(input)
+            parser.parse(input)
         }
         //then
         assertEquals(CAR_NAMES_MUST_BE_UNIQUE, ex.message)
@@ -33,7 +33,7 @@ class StringToSetConverterTest {
 
         // when
         val errorMessage = assertThrows<IllegalArgumentException> {
-            converter.convert(input)
+            parser.parse(input)
         }
 
         // then

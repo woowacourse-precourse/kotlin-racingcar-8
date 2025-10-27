@@ -1,4 +1,4 @@
-package racingcar.application.converter
+package racingcar.application.parser
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import racingcar.domain.error.ErrorCode.INVALID_ATTEMPT_COUNT_NUMBER
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.assertThrows
 import racingcar.domain.error.ErrorCode.ATTEMPT_COUNT_MUST_BE_GREATER_THAN_ZERO
 import kotlin.test.Test
 
-class StringToIntConverterTest {
-    private val converter = StringToIntConverter()
+class StringToIntParserTest {
+    private val parser = StringToIntParser()
 
     @Test
     fun `숫자 문자열은 Int로 변환`() {
@@ -15,7 +15,7 @@ class StringToIntConverterTest {
         val input = "123"
 
         //when
-        val result = converter.convert(input)
+        val result = parser.parse(input)
 
         //then
         assertEquals(123, result)
@@ -28,7 +28,7 @@ class StringToIntConverterTest {
 
         //when
         val ex = assertThrows<IllegalArgumentException> {
-            converter.convert(input)
+            parser.parse(input)
         }
 
         //then
@@ -42,7 +42,7 @@ class StringToIntConverterTest {
 
         //when
         val ex = assertThrows<IllegalArgumentException> {
-            converter.convert(input)
+            parser.parse(input)
         }
 
         //then
@@ -56,7 +56,7 @@ class StringToIntConverterTest {
 
         //when
         val ex = assertThrows<IllegalArgumentException> {
-            converter.convert(input)
+            parser.parse(input)
         }
 
         //then

@@ -1,12 +1,12 @@
-package racingcar.application.converter
+package racingcar.application.parser
 
 import racingcar.domain.error.ErrorCode.CAR_NAMES_MUST_BE_UNIQUE
 import racingcar.domain.error.ErrorCode.INVALID_CAR_NAME_LENGTH
 
 private const val MAX_CAR_NAME_LENGTH = 5
 
-class StringToSetConverter : Converter<Set<String>> {
-    override fun convert(input: String): Set<String> {
+class StringToSetParser : Parser<Set<String>> {
+    override fun parse(input: String): Set<String> {
         val carNamesArr = input.split(",")
         val carNamesSet = HashSet<String>()
         for (name in carNamesArr) {

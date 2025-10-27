@@ -1,8 +1,8 @@
 package racingcar.adaptors.controller
 
-import racingcar.application.converter.Converter
-import racingcar.application.converter.StringToIntConverter
-import racingcar.application.converter.StringToSetConverter
+import racingcar.application.parser.Parser
+import racingcar.application.parser.StringToIntParser
+import racingcar.application.parser.StringToSetParser
 import racingcar.application.validator.Validator
 import racingcar.domain.game.RacingGame
 import racingcar.adaptors.view.InputView
@@ -20,13 +20,13 @@ class UserController(
         carNameValidator.validate(readCarNames)
         outputView.printAttemptCountPrompt()
         val readAttemptCount = inputView.readAttemptCount()
-        val carNames = convert(StringToSetConverter(), readCarNames)
-        val attemptCount = convert(StringToIntConverter(), readAttemptCount)
-        initRacingGame(carNames, attemptCount )
+        val carNames = parse(StringToSetParser(), readCarNames)
+        val attemptCount = parse(StringToIntParser(), readAttemptCount)
+        initRacingGame(carNames, attemptCount)
     }
 
-    private fun <O> convert(converter: Converter<O>, input: String): O {
-        return converter.convert(input)
+    private fun <O> parse(parser: Parser<O>, input: String): O {
+        return parser.parse(input)
     }
 
     private fun initRacingGame(carNames: Collection<String>, attemptCount: Int) {
