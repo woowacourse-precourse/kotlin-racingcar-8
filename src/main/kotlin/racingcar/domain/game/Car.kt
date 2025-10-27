@@ -1,5 +1,8 @@
 package racingcar.domain.game
 
+import racingcar.domain.port.NumberProvider
+import racingcar.domain.rule.MoveRule
+
 class Car(name: String) {
     var position = 0
         private set

@@ -1,7 +1,7 @@
-package racingcar.domain.game
+package racingcar.adaptors.random
 
 import camp.nextstep.edu.missionutils.Randoms
-
+import racingcar.domain.port.NumberProvider
 
 class RandomNumberProvider : NumberProvider {
     override fun generateNumbers(): Int {

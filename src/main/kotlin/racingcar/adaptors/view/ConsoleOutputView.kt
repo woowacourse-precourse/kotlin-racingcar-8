@@ -1,10 +1,10 @@
-package racingcar.view
+package racingcar.adaptors.view
 
 import racingcar.domain.game.Car
-import racingcar.view.CliText.PROMPT_CAR_NAMES
-import racingcar.view.CliText.PROMPT_PLAY_RESULT
-import racingcar.view.CliText.PROMPT_ROUND_COUNT
-import racingcar.view.CliText.PROMPT_WINNER
+import racingcar.adaptors.view.CliText.PROMPT_CAR_NAMES
+import racingcar.adaptors.view.CliText.PROMPT_PLAY_RESULT
+import racingcar.adaptors.view.CliText.PROMPT_ROUND_COUNT
+import racingcar.adaptors.view.CliText.PROMPT_WINNER
 
 class ConsoleOutputView : OutputView {
     override fun printCarNamesPrompt() {

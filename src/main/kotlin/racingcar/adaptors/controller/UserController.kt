@@ -1,13 +1,12 @@
-package racingcar.controller
+package racingcar.adaptors.controller
 
 import racingcar.application.converter.Converter
 import racingcar.application.converter.StringToIntConverter
-import racingcar.application.converter.StringToListConverter
 import racingcar.application.converter.StringToSetConverter
 import racingcar.application.validator.Validator
 import racingcar.domain.game.RacingGame
-import racingcar.view.InputView
-import racingcar.view.OutputView
+import racingcar.adaptors.view.InputView
+import racingcar.adaptors.view.OutputView
 
 
 class UserController(

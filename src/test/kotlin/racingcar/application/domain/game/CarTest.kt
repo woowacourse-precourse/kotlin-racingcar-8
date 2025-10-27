@@ -1,8 +1,8 @@
 package racingcar.application.domain.game
 
 import racingcar.domain.game.Car
-import racingcar.domain.game.DefaultMoveRule
-import racingcar.domain.game.NumberProvider
+import racingcar.domain.rule.DefaultMoveRule
+import racingcar.domain.port.NumberProvider
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

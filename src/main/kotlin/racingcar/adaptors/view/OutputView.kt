@@ -1,4 +1,4 @@
-package racingcar.view
+package racingcar.adaptors.view
 
 import racingcar.domain.game.Car
 

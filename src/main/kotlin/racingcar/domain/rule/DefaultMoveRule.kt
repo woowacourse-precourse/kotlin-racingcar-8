@@ -1,4 +1,4 @@
-package racingcar.domain.game
+package racingcar.domain.rule
 
 class DefaultMoveRule : MoveRule {
     override fun canMove(number: Int): Boolean {

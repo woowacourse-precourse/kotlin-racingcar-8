@@ -1,6 +1,8 @@
 package racingcar.domain.game
 
+import racingcar.adaptors.random.RandomNumberProvider
 import racingcar.domain.error.ErrorCode.RACE_MUST_HAVE_PROGRESS
+import racingcar.domain.rule.DefaultMoveRule
 
 class RacingGame(carName: Collection<String>) {
     private val cars: Collection<Car>
