@@ -17,6 +17,6 @@ data class Car(val name: String, var distance: Int = 0) {
             distance++
         }
     }
-
-    fun getPositionWithHyphen(): String = "-".repeat(distance)
+    fun getDistance(): Int = distance
+    fun getDistanceWithHyphen(): String = "-".repeat(distance)
 }
