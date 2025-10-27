@@ -10,11 +10,8 @@ class NumberPickerTest {
 
     @Test
     fun 랜덤한_숫자를_성공적으로_반환한다() {
-        // given
-        val numberPicker = NumberPicker()
-
         // when
-        val n = numberPicker.getRandomNumber()
+        val n = NumberPicker.getRandomNumber()
 
         // then
         assertTrue(n in 0..9)
