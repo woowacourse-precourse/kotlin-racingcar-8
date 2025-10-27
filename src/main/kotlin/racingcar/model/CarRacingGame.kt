@@ -11,14 +11,14 @@ class CarRacingGame(
 
     fun getCurrentCarDistances(): Map<String, String>{
         return carList.associate { car ->
-            car.name to car.getDistanceWithHyphen()
+            car.name to car.getCurrentDistanceWithHyphen()
         }
     }
 
     fun getWinners(): List<String> {
-        val maxPosition = carList.maxOfOrNull { it.getDistance() } ?: 0
+        val maxPosition = carList.maxOfOrNull { it.getCurrentDistance() } ?: 0
         return carList
-            .filter { it.getDistance() == maxPosition }
+            .filter { it.getCurrentDistance() == maxPosition }
             .map { it.name }
     }
 
