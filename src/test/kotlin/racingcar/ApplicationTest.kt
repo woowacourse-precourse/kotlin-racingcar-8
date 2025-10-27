@@ -26,6 +26,41 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름이 비어있을 때 예외`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,woni", "1") }
+        }
+    }
+
+    @Test
+    fun `자동차 이름에 문자가 아닌 값이 있을 때 예외`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,123", "1") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수가 숫자가 아닐 때 예외`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수가 0 이하일 때 예외`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수가 음수일 때 예외`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
