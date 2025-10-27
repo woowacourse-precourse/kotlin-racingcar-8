@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
+import racingcar.view.InputView
 
 public class InputTest {
 
@@ -27,10 +28,11 @@ public class InputTest {
     fun `자동차 이름 입력 기능 테스트`() {
         // given
         val testInput = "pobi,woni,jun"
+        val inputView = InputView()
 
         // when
         setInput(testInput)
-        val inputNames = getInputCarNames()
+        val inputNames = inputView.getInputCarNames()
 
         // then
         assertThat(inputNames).isEqualTo(testInput)
@@ -40,10 +42,11 @@ public class InputTest {
     fun `차수 입력 기능 테스트`() {
         // given
         val testInput = "5"
+        val inputView = InputView()
 
         // when
         setInput(testInput)
-        val inputRound = getInputRound()
+        val inputRound = inputView.getInputRound()
 
         // then
         assertThat(inputRound).isEqualTo(testInput)
@@ -53,10 +56,11 @@ public class InputTest {
     fun `차수 입력 기능 빈 문자열 테스트`() {
         // given
         val testInput = "\n"
+        val inputView = InputView()
 
         // when
         setInput(testInput)
-        val inputRound = getInputRound()
+        val inputRound = inputView.getInputRound()
 
         // then (it's Console.readLine() to blame)
         assertThat(inputRound).isEqualTo("")
