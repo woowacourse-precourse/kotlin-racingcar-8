@@ -1,7 +1,8 @@
 package racingcar
 
 data class OutputView(val attempt: Attempt) {
-    val path = (0..attempt.value).map { TRACE_SYMBOL.repeat(it) }
+    val maxPathLength: Int = attempt.value
+    val path = (0..maxPathLength).map { TRACE_SYMBOL.repeat(it) }
 
     private fun showStatus(round: Round) {
         for (car in round) {
