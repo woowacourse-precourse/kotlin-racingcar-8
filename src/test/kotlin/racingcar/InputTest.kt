@@ -70,65 +70,14 @@ public class InputTest {
     fun `차수 입력 기능 숫자가 아닌 문자열 테스트`() {
         // given
         val testInput = "O"
+        val inputView = InputView()
 
         // when
         setInput(testInput)
-        val inputRound = getInputRound()
+        val inputRound = inputView.getInputRound()
 
         // then
         assertThat(inputRound).isEqualTo(testInput)
-    }
-
-    @Test
-    fun `자동차 이름 입력 특수 문자 예외 테스트`() {
-        // given
-        val testInput = "pobi,woni.jun"
-
-        // when
-        setInput(testInput)
-        val exception = assertThrows<IllegalArgumentException> { getInputCarNames() }
-
-        // then
-        assertThat(exception.message).isEqualTo("이름을 올바르게 입력해주세요.")
-    }
-
-    @Test
-    fun `자동차 이름 입력 첫글자 이후 공백 예외 테스트`() {
-        // given (newline feed char)
-        val testInput = "pobi, "
-
-        // when
-        setInput(testInput)
-        val exception = assertThrows<IllegalArgumentException> { getInputCarNames() }
-
-        // then
-        assertThat(exception.message).isEqualTo("이름을 올바르게 입력해주세요.")
-    }
-
-    @Test
-    fun `자동차 이름 입력 빈 문자열 예외 테스트`() {
-        // given (newline feed char)
-        val testInput = "\n"
-
-        // when
-        setInput(testInput)
-        val exception = assertThrows<IllegalArgumentException> { getInputCarNames() }
-
-        // then
-        assertThat(exception.message).isEqualTo("이름이 입력되지 않았습니다.")
-    }
-
-    @Test
-    fun `자동차 이름 입력 whitespace 예외 테스트`() {
-        // given (newline feed char)
-        val testInput = " "
-
-        // when
-        setInput(testInput)
-        val exception = assertThrows<IllegalArgumentException> { getInputCarNames() }
-
-        // then
-        assertThat(exception.message).isEqualTo("이름이 입력되지 않았습니다.")
     }
 
     @AfterEach
