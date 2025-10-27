@@ -9,4 +9,10 @@ class CarRacingGame(
         }
     }
 
+    fun getCurrentCarDistances(): Map<String, String>{
+        return carList.associate { car ->
+            car.name to car.getDistanceWithHyphen()
+        }
+    }
+
 }
