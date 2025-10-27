@@ -15,4 +15,11 @@ class CarRacingGame(
         }
     }
 
+    fun getWinners(): List<String> {
+        val maxPosition = carList.maxOfOrNull { it.getDistance() } ?: 0
+        return carList
+            .filter { it.getDistance() == maxPosition }
+            .map { it.name }
+    }
+
 }
