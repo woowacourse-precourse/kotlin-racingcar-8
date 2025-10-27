@@ -37,6 +37,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `빈 값을 입력했을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+
+    @Test
+    fun `특정 차량만 빈 값을 입력했을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("abc,,ab", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
