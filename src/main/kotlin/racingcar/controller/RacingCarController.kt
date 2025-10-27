@@ -14,7 +14,7 @@ class RacingCarController(
         val names = racingCarService.parseCarNameInput(carNamesInput)
         val cars = racingCarService.getRacingPlayers(names)
         racingCarView.printCarRaceResultTitle()
-        repeat(carCountInput.toInt()) {
+        repeat(carCountInput) {
             racingCarService.playRace(cars)
             racingCarView.printCarRaceCurrentResult(cars)
         }

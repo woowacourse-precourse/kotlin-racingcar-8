@@ -9,9 +9,11 @@ class RacingCarView {
         return readLine()
     }
 
-    fun getCarRaceCountInput(): String {
+    fun getCarRaceCountInput(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        return readLine()
+        val count = readLine().toIntOrNull()
+        if (count == null || count <= 0) throw IllegalArgumentException()
+        return count
     }
 
     fun printCarRaceResultTitle() {
