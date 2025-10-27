@@ -1,5 +1,10 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val startRound = Round.startWith(InputView.getNamesFromUser())
+    val attempt = Attempt(InputView.getAttemptFromUser())
+    val racing = Racing.start(startRound, attempt)
+    val outputView = OutputView(attempt)
+    outputView.showStatus(racing)
+    outputView.showWinner(racing)
 }
