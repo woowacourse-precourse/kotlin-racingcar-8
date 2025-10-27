@@ -27,19 +27,11 @@ class RoundTest {
         }
     }
 
-    @Test
-    fun `특정 라운드의 우승자를 결정한다`() {
+    @ParameterizedTest
+    @MethodSource("roundAndWinner")
+    fun `특정 라운드의 우승자를 결정한다`(finalRound: Round, winners: List<Car>) {
         assertSimpleTest {
-            val finalRound = Round(listOf(Car("pobi", 1), Car("jun", 2), Car("woni", 3)))
-            assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("woni", 3)))
-        }
-    }
-
-    @Test
-    fun `여러명의 우승자가 있는 경우 공동 우승으로 결정한다`() {
-        assertSimpleTest {
-            val finalRound = Round(listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3)))
-            assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("pobi", 3), Car("woni", 3)))
+            assertThat(finalRound.getWinners()).isEqualTo(winners)
         }
     }
 
@@ -71,6 +63,20 @@ class RoundTest {
                     Round(listOf(Car("pobi", 0), Car("jun", 0))),
                     listOf(8, 9),
                     Round(listOf(Car("pobi", 1), Car("jun", 1))),
+                )
+            )
+        }
+
+        @JvmStatic
+        fun roundAndWinner(): List<Arguments> {
+            return listOf(
+                Arguments.of(
+                    Round(listOf(Car("pobi", 1), Car("jun", 2), Car("woni", 3))),
+                    listOf(Car("woni", 3))
+                ),
+                Arguments.of(
+                    Round(listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3))),
+                    listOf(Car("pobi", 3), Car("woni", 3))
                 )
             )
         }
