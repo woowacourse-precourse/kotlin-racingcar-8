@@ -2,6 +2,7 @@ package racingcar
 
 import racingcar.domain.Car
 import racingcar.domain.Judge
+import racingcar.domain.RandomNumberGenerator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -32,7 +33,12 @@ class RacingController(val inputView: InputView, val outputView: OutputView, val
     }
 
     fun race(carNames: List<String>, repeatTime: Int): List<Car> {
-        val cars: List<Car> = carNames.map(::Car)
+        val cars: List<Car> = carNames.map { carName ->
+            Car(
+                name = carName,
+                RandomNumberGenerator()
+            )
+        }
 
         for (i in 0 until repeatTime) {
             moveCar(cars)
