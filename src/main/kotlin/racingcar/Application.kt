@@ -33,7 +33,7 @@ class Car(val name: String, var position: Int = 0) {
 }
 
 fun invalidCarValueCheck(input: String) {
-    if (input.isEmpty() && input.length > 5) {
+    if (input.isEmpty() || input.length > 5) {
         throw IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.")
     }
 }
