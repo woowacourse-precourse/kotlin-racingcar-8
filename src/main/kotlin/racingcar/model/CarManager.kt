@@ -1,8 +1,6 @@
 package racingcar.model
 
 class CarManager(private val numberGenerator: NumberGenerator) {
-
-    private val cars: MutableSet<String> = mutableSetOf()
     private val gameBoard: MutableMap<String, Int> = mutableMapOf()
 
     fun addCar(carList: List<String>) {
