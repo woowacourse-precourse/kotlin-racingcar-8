@@ -6,8 +6,10 @@ class CarManager(private val numberGenerator: NumberGenerator) {
     private val gameBoard: MutableMap<String, Int> = mutableMapOf()
 
     fun addCar(carList: List<String>) {
-        for (car in carList) {
-            cars.add(car)
+        if (carList.size != carList.toSet().size) {
+            throw IllegalArgumentException("Duplicate name is not allowed")
+        }
+        carList.forEach { car ->
             gameBoard[car] = 0
         }
     }
