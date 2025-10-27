@@ -15,13 +15,17 @@ class RaceManager {
 
         val result = carNames.toMutableList()
         duplicateNameIndexes.forEach { (name, indexes) ->
-            var suffix = 'A'
-            indexes.forEach { index ->
-                result[index] = "$name$suffix"
-                suffix++
-            }
+            renameDuplicateNames(name, indexes, result)
         }
         return result
+    }
+
+    private fun renameDuplicateNames(name: String, indexes: Set<Int>, result: MutableList<String>) {
+        var suffix = 'A'
+        indexes.forEach { index ->
+            result[index] = "$name$suffix"
+            suffix++
+        }
     }
 
     fun createCar(carNames: List<String>) {
