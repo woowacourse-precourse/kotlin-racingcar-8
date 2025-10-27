@@ -1,12 +1,18 @@
 package racingcar.application.converter
 
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.error.ErrorCode.INVALID_CAR_NAME_LENGTH
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class StringToListConverterTest {
-    private val converter: Converter<List<String>> = StringToListConverter()
+    private lateinit var converter: Converter<Collection<String>>
+
+    @BeforeEach
+    fun setUp() {
+        converter = StringToListConverter()
+    }
 
     @Test
     fun `문자열을 리스트로 변환`() {
