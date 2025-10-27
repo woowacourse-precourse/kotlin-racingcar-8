@@ -17,7 +17,7 @@ class RacingService {
         }
 
         return RacingResultDto(
-            results.toList(),
+            results,
             cars.getWinners().map { it.name.value }
         )
     }
