@@ -58,9 +58,9 @@ src
 * [x] **RaceRound 클래스** : 한 라운드 전체 실행 및 상태 갱신
 * [x] **WinnerFinder 클래스** : 최대 position 기준 우승자 계산
 * [x] **OutputView** : 라운드별 결과 및 최종 우승자 출력
-* [ ] **예외 처리** : 잘못된 입력 시 `IllegalArgumentException` 발생
+* [x] **예외 처리** : 잘못된 입력 시 `IllegalArgumentException` 발생
 * [x] **Application.main** : 전체 흐름 연결 및 실행
-* [ ] **테스트 코드 작성** : JUnit5 + AssertJ 기반 단위 테스트
+* [x] **테스트 코드 작성** : JUnit5 + AssertJ 기반 단위 테스트
 
 > 기능을 완성하면 `[ ]` → `[x]` 로 바꿔 커밋하기.
 
