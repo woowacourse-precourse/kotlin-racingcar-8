@@ -7,6 +7,21 @@ class CarRacingGameViewModel {
 
     private lateinit var game: CarRacingGame
 
+    fun gameSetting(carName: String, tryCount: String) {
+        val validatedCars = validateCarName(carName)
+        val validatedTryCount = validateTryCount(tryCount)
+
+        game = CarRacingGame(validatedCars)
+        runAllGames(validatedTryCount)
+    }
+
+    fun runAllGames(tryCount: Int) {
+        repeat(tryCount) {
+            game.runRace()
+            game.getCurrentCarDistances()
+        }
+    }
+
     fun validateCarName(carNames: String): List<Car> {
         val carName = carNames.split(",").map { it.trim() }
         return carName.map { Car(it) }
