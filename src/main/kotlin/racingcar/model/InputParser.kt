@@ -16,7 +16,7 @@ class InputParser {
         return result ?: throw IllegalArgumentException("Invalid time input")
     }
 
-    fun validateCar(input: String): Boolean {
+    private fun validateCar(input: String): Boolean {
         return Regex(CAR_NAME_REGEX).matches(input)
     }
 
