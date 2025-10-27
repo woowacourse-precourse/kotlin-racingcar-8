@@ -4,21 +4,16 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.MethodSource
 
 class RoundTest {
-    @Test
-    fun `요구 조건을 만족하는 자동차들을 한칸 이동시킨다`() {
+    @ParameterizedTest
+    @MethodSource("movingConditionsAndExpectedCars")
+    fun `요구 조건을 만족하는 자동차들을 한칸 이동시킨다`(startRound: Round, randomNumbers: List<Int>, nextRound: Round) {
         assertSimpleTest {
-            val cars = Round.startWith(listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))
-            val expectedCars = Round(
-                listOf(
-                    Car("0", 0), Car("1", 0), Car("2", 0), Car("3", 0),
-                    Car("4", 0).moveForward(), Car("5", 0).moveForward(), Car("6", 0).moveForward(),
-                    Car("7", 0).moveForward(), Car("8", 0).moveForward(), Car("9", 0).moveForward(),
-                )
-            )
-            assertThat(cars.tryMoveForward((0..9).toList())).isEqualTo(expectedCars)
+            assertThat(startRound.tryMoveForward(randomNumbers)).isEqualTo(nextRound)
         }
     }
 
@@ -45,6 +40,39 @@ class RoundTest {
         assertSimpleTest {
             val finalRound = Round(listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3)))
             assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("pobi", 3), Car("woni", 3)))
+        }
+    }
+
+    companion object {
+        @JvmStatic
+        fun movingConditionsAndExpectedCars(): List<Arguments> {
+            return listOf(
+                Arguments.of(
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                    listOf(0, 1),
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                ),
+                Arguments.of(
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                    listOf(2, 3),
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                ),
+                Arguments.of(
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                    listOf(4, 5),
+                    Round(listOf(Car("pobi", 1), Car("jun", 1))),
+                ),
+                Arguments.of(
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                    listOf(6, 7),
+                    Round(listOf(Car("pobi", 1), Car("jun", 1))),
+                ),
+                Arguments.of(
+                    Round(listOf(Car("pobi", 0), Car("jun", 0))),
+                    listOf(8, 9),
+                    Round(listOf(Car("pobi", 1), Car("jun", 1))),
+                )
+            )
         }
     }
 }
