@@ -17,6 +17,9 @@ fun main() {
             getRandmoNum(name, cars)
         }
     }
+    val max = cars.values.maxOrNull()
+    val winner = cars.filter { it.value == max }.keys.joinToString(", ")
+    println("최종 우승자 : $winner")
 }
 private fun getRandmoNum(name: String, cars: MutableMap<String, Int>){
     val num = Random().nextInt(10)
