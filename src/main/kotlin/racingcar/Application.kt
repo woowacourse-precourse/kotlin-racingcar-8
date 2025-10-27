@@ -10,6 +10,8 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val tryCountInput = Console.readLine()
+
+    validateTryCount(tryCountInput)
 }
 
 private fun validateCarNames(carNamesInput: String?) {
@@ -23,5 +25,18 @@ private fun validateCarNames(carNamesInput: String?) {
         if (name.length > 5) {
             throw IllegalArgumentException("이름이 5자를 초과하였습니다.")
         }
+    }
+}
+
+private fun validateTryCount(tryCountInput: String?) {
+    if (tryCountInput.isNullOrBlank()) {
+        throw IllegalArgumentException("시도 횟수 입력을 안했습니다.")
+    }
+
+    val count = tryCountInput.toIntOrNull()
+        ?: throw IllegalArgumentException("입력된 시도 횟수가 정수가 아닙니다.")
+
+    if (count < 0) {
+        throw IllegalArgumentException("입력된 시도 횟수가 음수입니다.")
     }
 }
