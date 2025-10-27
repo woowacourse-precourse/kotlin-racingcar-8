@@ -7,12 +7,8 @@ class CarRacingGameViewModel {
 
     private lateinit var game: CarRacingGame
 
-    fun gameSetting(carName: String, tryCount: String) {
-        val validatedCars = validateCarName(carName)
-        val validatedTryCount = validateTryCount(tryCount)
-
-        game = CarRacingGame(validatedCars)
-        runAllGames(validatedTryCount)
+    fun gameSetting(cars: List<Car>) {
+        game = CarRacingGame(cars)
     }
 
     fun runAllGames(tryCount: Int): List<Map<String, String>> {
