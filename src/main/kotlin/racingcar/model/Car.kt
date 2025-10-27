@@ -2,13 +2,14 @@ package racingcar.model
 
 data class Car(
     val name: String,
-    var position: Int = 0,
+    val position: Int = 0,
 ) {
     private val threshold = 4
 
-    fun move(randomNumber: Int) {
+    fun move(randomNumber: Int): Car {
         if (randomNumber >= threshold) {
-            position++
+            return this.copy(position = position + 1)
         }
+        return this
     }
 }
