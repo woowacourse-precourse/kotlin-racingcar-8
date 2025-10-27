@@ -15,9 +15,9 @@
 - [x] **입력 값 검증 : (feature/KRP-4-validator)**
   - [x] 자동차 이름 값 검증
   - [x] 시도 횟수 입력 값 검증
-- [ ] **무작위 값 추출 : (feature/KRP-6-random)**
-    - [ ] 0~9 사이의 무작위 값 추출
-    - [ ] 4 이상일 경우, 전진(`true`)
+- [x] **무작위 값 추출 : (feature/KRP-6-random)**
+    - [x] 0~9 사이의 무작위 값 추출
+    - [x] 4 이상일 경우, 전진(`true`)
 - [ ] **자동차 전진 : (feature/KRP-7-advance)**
     - [ ] 전진일 경우, 위치 데이터를 수정하여 앞으로 전진
 - [ ] **최종 우승자 선발 : (feature/KRP-9-select-winner)**
@@ -68,11 +68,13 @@
     │           ├── model
     │           │   ├── domain
     │           │   │   ├── Attempt.kt
-    │           │   │   └── CarName.kt
+    │           │   │   ├── CarName.kt
+    │           │   │   └── Random.kt
     │           │   └── repository
     │           │       ├── AttemptRule.kt
     │           │       ├── Converter.kt
     │           │       ├── NameRule.kt
+    │           │       ├── RandomRule.kt
     │           │       └── Split.kt
     │           └── view
     │               ├── Constants.kt
@@ -89,10 +91,11 @@
                 ├── model
                 │   ├── AttemptValidatorTest.kt
                 │   ├── CarNameSplitTest.kt
-                │   └── CarNameValidatorTest.kt
+                │   ├── CarNameValidatorTest.kt
+                │   └── RandomTest.kt
                 └── view
                     ├── InputTest.kt
                     └── OutputTest.kt
                     
-76 directories, 259 files
+76 directories, 266 files
 ```
