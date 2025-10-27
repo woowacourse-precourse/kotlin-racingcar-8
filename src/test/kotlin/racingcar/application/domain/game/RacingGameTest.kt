@@ -16,11 +16,9 @@ class RacingGameTest {
         //given
         val game = RacingGame(listOf("pobi", "xodyd"))
 
-        val attemptCount = 5
-
         //when
         val ex = assertThrows<IllegalArgumentException> {
-            game.winnerResult(attemptCount)
+            game.winnerResult()
         }
         assertEquals(RACE_MUST_HAVE_PROGRESS, ex.message)
     }

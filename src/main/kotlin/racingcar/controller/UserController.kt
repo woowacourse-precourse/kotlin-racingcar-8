@@ -46,7 +46,7 @@ class UserController(
     }
 
     private fun winnerResult(racingGame: RacingGame, count: Int) {
-        val winnersResult: List<String> = racingGame.winnerResult(count)
+        val winnersResult: List<String> = racingGame.winnerResult()
         outputView.printWinner(winnersResult)
     }
 

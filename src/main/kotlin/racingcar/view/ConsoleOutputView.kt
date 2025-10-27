@@ -31,18 +31,14 @@ class ConsoleOutputView : OutputView {
         println(PROMPT_PLAY_RESULT);
     }
 
-    override fun printWinner(winners: Collection<String>?) {
+    override fun printWinner(winners: Collection<String>) {
         var winnersResult = ""
-        if (winners != null) {
-            for (s in winners) {
-                winnersResult += "$s, "
-            }
-        }
 
+        for (s in winners) {
+            winnersResult += "$s, "
+        }
         println(PROMPT_WINNER + " : " + winnersResult.substring(0, winnersResult.length - 2))
     }
-
-
 }
 
 

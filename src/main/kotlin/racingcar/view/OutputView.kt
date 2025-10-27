@@ -14,6 +14,6 @@ interface OutputView {
 
     fun printRoundResultPrompt()
 
-    fun printWinner(winnerResult: Collection<String>?)
+    fun printWinner(winnerResult: Collection<String>)
 
 }
