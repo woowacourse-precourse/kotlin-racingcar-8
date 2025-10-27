@@ -73,7 +73,12 @@ fun pickRandomNumber(): Int {
 }
 
 fun timeSetting() {
-    movingTime = input().toInt()
+    val inputTime = input()
+    movingTime = inputTime.toIntOrNull()
+        ?: throw IllegalArgumentException("숫자만 가능합니다.")
+    if (movingTime <= 0) {
+        throw IllegalArgumentException("횟수는 1 이상이어야 합니다.")
+    }
 }
 
 fun racing() {
