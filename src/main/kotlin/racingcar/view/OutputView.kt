@@ -23,7 +23,7 @@ class OutputView {
     }
 
     fun printWinner(winners: List<String>) {
-        val result = winners.joinToString(separator = ",")
+        val result = winners.joinToString(separator = ", ")
         print("최종 우승자 : $result")
     }
 }
