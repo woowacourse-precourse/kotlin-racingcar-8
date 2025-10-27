@@ -19,6 +19,8 @@ fun main() {
         printProgress(carList)
         println()
     }
+
+    raceResult(carList)
 }
 
 class Car(val name: String, var position: Int = 0) {
@@ -57,4 +59,11 @@ fun printProgress(carList: List<Car>){
         }
         println()
     }
+}
+
+fun raceResult(carList: List<Car>){
+    val maxPosition = carList.maxOf { it.position }
+    val winners = carList.filter { it.position == maxPosition }
+    val winnerNames = winners.joinToString(", ") { it.name }
+    println("최종 우승자 : $winnerNames")
 }
