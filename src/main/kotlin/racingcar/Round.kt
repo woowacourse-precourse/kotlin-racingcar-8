@@ -10,7 +10,11 @@ data class Round(val cars: List<Car>) : Iterable<Car> {
     }
 
     private fun getMaxPosition() = (cars.maxBy { it.position }).position
-    fun getWinners(): List<Car> = cars.filter { getMaxPosition() == it.position }
+    fun getWinners(): List<Car> {
+        val maxPosition = getMaxPosition()
+        return cars.filter { maxPosition == it.position }
+    }
+
     fun totalCars(): Int = cars.size
 
     companion object {
