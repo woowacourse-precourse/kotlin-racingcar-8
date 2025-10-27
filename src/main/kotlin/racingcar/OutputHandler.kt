@@ -17,6 +17,6 @@ class OutputHandler {
 
     fun printWinners(winners: List<String>) {
         val winnerNames = winners.joinToString(", ")
-        println("최종 우승자: $winnerNames")
+        println("최종 우승자 : $winnerNames")
     }
 }
