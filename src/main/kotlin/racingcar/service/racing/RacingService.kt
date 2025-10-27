@@ -2,34 +2,35 @@ package racingcar.service.racing
 
 import racingcar.domain.car.Car
 import racingcar.domain.car.Cars
-import racingcar.domain.racing.AttemptCount
 import racingcar.domain.racing.NumberPicker
 import racingcar.domain.racing.Racing
+import racingcar.domain.racing.Result
 import racingcar.domain.racing.Round
 
 class RacingService(
     private val numberPicker: NumberPicker = NumberPicker(),
-    private val racing: Racing = Racing()
 ) {
-    fun race(input: String, cars: Cars): Racing {
-        val attemptCount = AttemptCount.from(input)
-        repeat(attemptCount.value) {
-            val round = raceNewRound(cars)
+    fun race(input: String, cars: Cars): Result {
+        val racing = Racing.from(input)
+
+        repeat(racing.attemptCount.value) {
+            val round = raceNewRound(cars, racing)
             racing.saveRoundResults(round.roundResult)
         }
-        racing.saveWinners(cars.getWinners())
-        return racing
+
+        return Result(racing.roundResults, cars.getWinners())
     }
 
-    private fun raceNewRound(cars: Cars, round: Round = Round()): Round {
-        for (car in cars.cars) {
-            moveCar(car)
+    private fun raceNewRound(cars: Cars, racing: Racing): Round {
+        val round = Round()
+        cars.cars.forEach { car ->
+            moveCar(car, racing)
             round.saveRoundResult(car.name, car.distance)
         }
         return round
     }
 
-    private fun moveCar(car: Car) {
+    private fun moveCar(car: Car, racing: Racing) {
         if (racing.canMove(numberPicker.getRandomNumber())) {
             car.move()
         }

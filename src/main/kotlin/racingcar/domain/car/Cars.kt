@@ -3,10 +3,10 @@ package racingcar.domain.car
 class Cars private constructor(
     val cars: List<Car>
 ) {
-    fun getWinners(): List<String> {
+    fun getWinners(): String {
         val top = cars.maxOf { it.distance }
-        return cars.filter { it.distance  == top }
-            .map { it.name.value }
+        return cars.filter { it.distance == top }
+            .joinToString(", ") { it.name.value }
     }
 
     companion object {

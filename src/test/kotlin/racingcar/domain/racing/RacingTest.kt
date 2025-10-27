@@ -14,7 +14,7 @@ class RacingTest {
     @Test
     fun 자동차를_이동할_수_있는_경우_True를_반환한다() {
         // given
-        val racing = Racing()
+        val racing = Racing.from("1")
 
         // when
         val canMove = racing.canMove(4)
@@ -26,7 +26,7 @@ class RacingTest {
     @Test
     fun 차수별_실행_결과를_성공적으로_저장한다() {
         // given
-        val racing = Racing()
+        val racing = Racing.from("2")
 
         val round1 = Round()
         val round2 = Round()
@@ -54,7 +54,7 @@ class RacingTest {
     @Test
     fun 우승자를_성공적으로_반환한다() {
         // given
-        val racing = Racing()
+        val racing = Racing.from("2")
 
         val round1 = Round()
         val round2 = Round()
@@ -76,8 +76,9 @@ class RacingTest {
         round2.saveRoundResult(woniCar.name, woniCar.distance)
         racing.saveRoundResults(round2.roundResult)
 
-        racing.saveWinners(cars.getWinners())
+        val winners = cars.getWinners()
+
         // then
-        assertEquals(racing.winners, "pobi, woni")
+        assertEquals(winners, "pobi, woni")
     }
 }

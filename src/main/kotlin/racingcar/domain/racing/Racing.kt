@@ -1,11 +1,12 @@
 package racingcar.domain.racing
 
-class Racing(
+import racingcar.exception.ErrorMessage
+
+class Racing private constructor(
+    val attemptCount: AttemptCount,
     private val _roundResults: MutableList<String> = mutableListOf(),
-    private val _winners: MutableList<String> = mutableListOf()
 ) {
     val roundResults: String get() = _roundResults.joinToString("\n\n")
-    val winners: String get() = _winners.joinToString(", ")
 
     fun canMove(n: Int): Boolean {
         return n >= MIN
@@ -15,11 +16,23 @@ class Racing(
         _roundResults.add(roundResult)
     }
 
-    fun saveWinners(winners: List<String>) {
-        _winners.addAll(winners)
-    }
-
     companion object {
         private const val MIN: Int = 4
+
+        fun from(input: String): Racing {
+            return Racing(AttemptCount.from(input))
+        }
+    }
+}
+
+@JvmInline
+value class AttemptCount private constructor(val value: Int) {
+
+    companion object {
+        fun from(input: String): AttemptCount {
+            require(input.isNotBlank()) { ErrorMessage.ATTEMPT_COUNT_BLANK.message }
+            val n = input.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.ATTEMPT_COUNT_NOT_INTEGER.message)
+            return AttemptCount(n)
+        }
     }
 }

@@ -46,7 +46,6 @@ class CarsTest {
         val winners = cars.getWinners()
 
         // then
-        assertEquals(winners[0], "woni")
-        assertEquals(winners[1], "jun")
+        assertEquals(winners, "woni, jun")
     }
 }

@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.domain.racing.Racing
+import racingcar.domain.racing.Result
 
 object OutputView {
     private const val CAR_NAME_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
@@ -16,7 +16,7 @@ object OutputView {
         println(ATTEMPT_COUNT_PROMPT)
     }
 
-    fun displayResult(result: Racing) {
+    fun displayResult(result: Result) {
         println("\n$RACING_RESULT\n${result.roundResults}\n")
         println("$FINAL_WINNER ${result.winners}")
     }
