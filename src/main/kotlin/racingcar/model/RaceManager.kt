@@ -10,11 +10,11 @@ class RaceManager {
 
     fun getRaceCount(): Int = raceCount
 
-    fun addSuffixToDuplicateNames(carNames: List<String>, duplicateNameAndIndex: Map<String, Set<Int>>): List<String> {
-        if (duplicateNameAndIndex.isEmpty()) return carNames
+    fun addSuffixToDuplicateNames(carNames: List<String>, duplicateNameIndexes: Map<String, Set<Int>>): List<String> {
+        if (duplicateNameIndexes.isEmpty()) return carNames
 
         val result = carNames.toMutableList()
-        duplicateNameAndIndex.forEach { (name, indexes) ->
+        duplicateNameIndexes.forEach { (name, indexes) ->
             var suffix = 'A'
             indexes.forEach { index ->
                 result[index] = "$name$suffix"

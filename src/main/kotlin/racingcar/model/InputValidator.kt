@@ -13,11 +13,11 @@ object InputValidator {
     }
 
     fun findDuplicateName(carNames: List<String>): Map<String, Set<Int>> {
-        val indexMap = mutableMapOf<String, MutableSet<Int>>()
+        val duplicateNameIndexes = mutableMapOf<String, MutableSet<Int>>()
         carNames.forEachIndexed { index, value ->
-            indexMap.computeIfAbsent(value) { mutableSetOf() }.add(index)
+            duplicateNameIndexes.computeIfAbsent(value) { mutableSetOf() }.add(index)
         }
-        return indexMap.filterValues { it.size > 1 }
+        return duplicateNameIndexes.filterValues { it.size > 1 }
     }
 
     fun validateRaceCount(raceCount: String) {
