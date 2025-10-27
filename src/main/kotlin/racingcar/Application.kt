@@ -1,16 +1,23 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     RacingGame().start()
 }
 
+// 자동차의 상태(이름, 위치)를 관리하는 데이터 클래스
+data class Car(val name: String, var position: Int = 0)
+
 class RacingGame {
     fun start() {
         val carNames = getCarNames()
         val tryCount = getTryCount()
-        // TODO: 경주 진행 로직 구현
+        val cars = carNames.map { Car(it) } // 이름 목록을 Car 객체 리스트로 변환
+
+        runRace(cars, tryCount)
+        // TODO: 우승자 선정 및 출력 로직 구현
     }
 
     private fun getCarNames(): List<String> {
@@ -41,5 +48,37 @@ class RacingGame {
             throw IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.")
         }
         return count
+    }
+
+    // 경주 실행의 메인 루프
+    private fun runRace(cars: List<Car>, tryCount: Int) {
+        println("\n실행 결과")
+        repeat(tryCount) {
+            playRound(cars)
+            println() // 각 라운드 실행 후 한 줄 띄움
+        }
+    }
+
+    // 단일 라운드 실행 (모든 차 이동 시도 및 결과 출력)
+    private fun playRound(cars: List<Car>) {
+        cars.forEach { car ->
+            tryMove(car)
+        }
+        printRoundResult(cars)
+    }
+
+    // 개별 자동차의 이동 시도
+    private fun tryMove(car: Car) {
+        val randomValue = Randoms.pickNumberInRange(0, 9)
+        if (randomValue >= 4) { // 4 이상일 경우 전진
+            car.position++
+        }
+    }
+
+    // 현재 라운드의 결과 출력
+    private fun printRoundResult(cars: List<Car>) {
+        cars.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.position)}")
+        }
     }
 }
