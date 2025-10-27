@@ -13,7 +13,6 @@ data class Car(val name: String, val position: Int) {
     }
 
     fun moveForward(): Car = Car(name, position + MOVE_INCREMENT)
-
     fun tryMoveForward(number: Int): Car {
         if (number >= MOVING_THRESHOLD) {
             return moveForward()
