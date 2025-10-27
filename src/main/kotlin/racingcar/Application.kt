@@ -1,5 +1,10 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val names = readln().split(",")
+    var cars = mutableMapOf<String, Int>()
+    for (name in names) {
+        if (name.length >= 5) throw IllegalArgumentException()
+        cars[name] = 0
+    }
 }
