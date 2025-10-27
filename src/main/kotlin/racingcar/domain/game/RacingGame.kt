@@ -27,6 +27,6 @@ class RacingGame(carName: Collection<String>) {
     fun winnerResult(): List<String> {
         val max = racingCars.maxOf { it.position }
         require(max > 0) { RACE_MUST_HAVE_PROGRESS }
-        return racingCars.stream().filter { it.position == max }.map{it.name}.toList()
+        return racingCars.stream().filter { it.position == max }.map(Car::name).toList()
     }
 }
