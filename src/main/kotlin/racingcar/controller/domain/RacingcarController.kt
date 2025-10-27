@@ -2,6 +2,7 @@ package racingcar.controller.domain
 
 import racingcar.model.domain.Attempt
 import racingcar.model.domain.CarName
+import racingcar.model.domain.Winner
 import racingcar.view.domain.GuideView
 import racingcar.view.domain.InputView
 
@@ -18,6 +19,7 @@ object RacingcarController {
         carController.startRacing()
         val history = carController.history
 
+        val winner = Winner.find(history.last())
     }
 
     private fun inputCarNames(): String {
