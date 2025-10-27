@@ -93,21 +93,9 @@ private fun printTryResult(cars: List<Car>) {
 }
 
 private fun findWinners(cars: List<Car>): List<String> {
-    var maxPosition = 0
-
-    for (car in cars) {
-        if (car.position > maxPosition) {
-            maxPosition = car.position
-        }
-    }
-
-    val winners = mutableListOf<String>()
-    for (car in cars) {
-        if (car.position == maxPosition) {
-            winners.add(car.name)
-        }
-    }
-    return winners
+    val maxPosition = cars.maxOfOrNull { it.position } ?: 0
+    return cars.filter { it.position == maxPosition }
+        .map { it.name }
 }
 
 private fun printWinners(winners: List<String>) {
