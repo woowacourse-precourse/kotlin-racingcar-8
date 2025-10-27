@@ -5,24 +5,32 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.collections.all
 import kotlin.text.all
 
+val carNameAndTimeList = mutableMapOf<String, Int>()
+var cars = mutableListOf<String>()
+var movingTime: Int = 0
+var randomNumber: Int = 0
+var goalScore: Int = 0
+var barStatus = mutableMapOf<String, Int>()
+
 fun main() {
     // TODO: 프로그램 구현
-    carForRacingJudge()
+    game()
+
 }
 
-var movingTime: Int = 0
-
-fun infoMessage() {
+fun game() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    carNameSetting()
+    println("시도할 횟수는 몇 회인가요?")
+    timeSetting()
+    println()
     println("실행 결과")
+    stepControl()
+    winner()
 }
 
 fun input(): String {
     return Console.readLine()
-}
-
-fun output() {
-
 }
 
 fun processCarNaming(): List<String> {
@@ -33,83 +41,108 @@ fun carNameList(): List<String> {
     return listOf(processCarNaming().joinToString(","))
 }
 
-fun validateNamesLength() {
-    if (!carNameList().all { it.length <= 5 }) {
-        throw IllegalArgumentException()
+fun validateNamesLength(names: List<String>) {
+    if (!names.all { it.length <= 5 }) {
+        throw IllegalArgumentException("이름은 5자 이하여야 합니다.")
     }
-    if (!carNameList().all { it.isNotEmpty() }) {
-        throw IllegalArgumentException()
-    }
-}
-
-fun validateNamesDelimiter() {
-    if (!input().contains(",")) {
-        throw IllegalArgumentException()
+    if (!names.all { it.isNotEmpty() }) {
+        throw IllegalArgumentException("이름을 비워둘 수 없습니다.")
     }
 }
 
-fun validateNamesType() {
-    val names = carNameList()
+ fun validateNamesDelimiter(names: List<String>) {
+     if (!names.contains(",")) {
+         throw IllegalArgumentException("구분자를 반드시 적어주세요.")
+     }
+ }
+
+fun validateNamesType(names: List<String>) {
     for (name in names) {
         validateNamesCharType(name)
     }
 }
 
 private fun validateNamesCharType(name: String) {
-    val nameChar = name.filter { it != ',' }
-    if (!nameChar.all { it.isLetter() }) {
-        throw IllegalArgumentException()
+    if (!name.all { it.isLetter() }) {
+        throw IllegalArgumentException("이름은 알파벳만 입력 가능합니다.")
     }
 }
 
-fun racingBar(time: Int) {
-    for (barTime in 1..time) {
-        barCreator(barTime)
-    }
-}
-
-fun barCreator(time: Int) {
-    val bar = "-"
-    println()
-    for (i in 1..time) {
-        print(bar)
-    }
-}
-
-fun randomNumber(): Int {
+fun pickRandomNumber(): Int {
     return Randoms.pickNumberInRange(0, 9)
 }
 
-fun turnTime(): Int {
-    return input().toInt()
+fun timeSetting() {
+    movingTime = input().toInt()
 }
 
-fun racingRole(): Boolean {
-    return randomNumber() >= 4
-}
-
-fun carForRacingJudge() {
-    for (time in carNameAssignmentStepTime().values) {
-        judgeSingleCar(time)
+fun racing() {
+    for (time in 1..movingTime) {
+        carNameAssignmentStepTime()
+        println("각 자동차마다 랜덤숫자 = ${carNameAssignmentStepTime()}")
     }
 }
 
-private fun judgeSingleCar(time: Int) {
-    if (time >= 4) {
-        return stepControl(time)
+//fun racingBar(time: Int) {
+//    for (barTime in 1..time) {
+//        stepControl(barTime)
+//    }
+//}
+
+fun stepControl() {
+    for (i in 1..movingTime) {
+        racingFourMoreRole()
     }
-    return stepControl(0)
 }
 
-fun stepControl(trigger: Int) {
-    racingBar(trigger)
+fun racingFourMoreRole() {
+    for (carName in cars) {
+        judgeFourMoreRole(carName)
+    }
+}
+
+fun judgeFourMoreRole(car: String) {
+    if (carNameAssignmentStepTime()[car]!! >= 4 ) {
+        racingStatus()
+        println("carNameAndTimeList = ${carNameAndTimeList}")
+    }
+}
+
+fun racingStatus() {
+    goalScore += 1
+    for (carName in carNameAndTimeList.keys) {
+        barStatus[carName] = goalScore
+        barCreator(barStatus[carName])
+    }
+    println("goal $barStatus")
+    println("goalScore = ${goalScore}")
+}
+
+fun barCreator(time: Int?) {
+    val bar = "-"
+    for (i in 1..time!!) {
+        print(bar)
+    }
+    println()
+}
+
+
+fun carNameSetting() {
+    for (carName in processCarNaming()) {
+        cars.add(carName)
+        carNameAndTimeList[carName] = 0
+    }
+    println(" 자동차 입력된 자동차이름  = ${ cars }")
 }
 
 fun carNameAssignmentStepTime(): MutableMap<String, Int> {
-    val carNameAndTimeList = mutableMapOf<String, Int>()
-    for (carName in processCarNaming()) {
-        carNameAndTimeList[carName] = randomNumber()
+    for(car in cars) {
+        randomNumber = pickRandomNumber()
+        carNameAndTimeList[car] = randomNumber
     }
-    println("carNameAndTimeList $carNameAndTimeList")
     return carNameAndTimeList
+}
+
+fun winner() {
+
 }
