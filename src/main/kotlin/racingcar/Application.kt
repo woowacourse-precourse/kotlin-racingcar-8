@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val carInput = readLine()
@@ -11,6 +12,13 @@ fun main() {
     val moveInput = readLine()
     invalidMoveValueCheck(moveInput)
     val moveCount = moveInput.toInt()
+
+    println("실행 결과")
+    for (i in 0 until moveCount) {
+        moveCars(carList)
+        printProgress(carList)
+        println()
+    }
 }
 
 class Car(val name: String, var position: Int = 0) {
@@ -29,5 +37,24 @@ fun invalidMoveValueCheck(input: String){
     val count = input.toIntOrNull() ?: throw IllegalArgumentException("이동 횟수는 숫자여야 합니다.")
     if (count < 0) {
         throw IllegalArgumentException("이동 횟수는 0 이상이어야 합니다.")
+    }
+}
+
+fun moveCars(carList: List<Car>) {
+    carList.forEach { car ->
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        if(randomNumber >= 4) {
+            car.move()
+        }
+    }
+}
+
+fun printProgress(carList: List<Car>){
+    carList.forEach { car ->
+        print("${car.name} : ")
+        for(i in 0 until car.position) {
+            print("-")
+        }
+        println()
     }
 }
