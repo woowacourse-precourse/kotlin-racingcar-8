@@ -1,0 +1,85 @@
+package racingcar.model
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
+
+class RaceManagerTest {
+
+    @Test
+    fun `레이스 횟수 설정하기`() {
+        val raceManager = RaceManager()
+        raceManager.setRaceCount(3)
+        assertEquals(3, raceManager.getRaceCount())
+    }
+
+
+    @Test
+    fun `리스트로 Car 생성하기`() {
+        val raceManager = RaceManager()
+        val carNames = mutableListOf<String>("A", "B", "C")
+        val answer = mutableListOf<Car>(Car("A", 0), Car("B", 0), Car("C", 0))
+
+        raceManager.createCar(carNames)
+        assertEquals(answer, raceManager.getCars())
+    }
+
+    @Test
+    fun `레이싱 진행 후 차 위치 확인`() {
+        val raceManager = RaceManager()
+        raceManager.createCar(listOf("A", "B", "C"))
+        raceManager.startRound()
+
+        val carList = raceManager.getCars()
+
+        carList.forEach {
+            assertTrue(it.position >= 0)
+            println("${it.name}의 위치 : ${it.position}")
+        }
+    }
+
+    @Test
+    fun `중복 이름이 1개 있을 경우`() {
+        val raceManager = RaceManager()
+        val carNames = listOf("Joy", "Joy", "Alice")
+        val answer = listOf("JoyA", "JoyB", "Alice")
+        val map = mutableMapOf<String, Set<Int>>()
+        map["Joy"] = mutableSetOf(0, 1)
+        assertEquals(answer, raceManager.addSuffixToDuplicateNames(carNames, map))
+    }
+
+    @Test
+    fun `중복 이름이 2개 있고 순서가 섞여 있는 경우`() {
+        val raceManager = RaceManager()
+        val carNames = listOf("Joy","Alice" ,"Alice", "Joy", "Bob")
+        val answer = listOf("JoyA","AliceA" ,"AliceB", "JoyB", "Bob")
+        val map = mutableMapOf<String, Set<Int>>()
+        map["Joy"] = mutableSetOf(0, 3)
+        map["Alice"] = mutableSetOf(1, 2)
+        assertEquals(answer, raceManager.addSuffixToDuplicateNames(carNames, map))
+    }
+
+    @Test
+    fun `공동 우승자인 경우`() {
+        val raceManager = RaceManager()
+        val cars = listOf("A", "B", "C")
+        raceManager.createCar(cars)
+
+        raceManager.getCars()[0].position = 5
+        raceManager.getCars()[1].position = 5
+        raceManager.getCars()[2].position = 2
+        assertEquals(listOf("A","B"), raceManager.calculateWinners())
+    }
+
+    @Test
+    fun `단독 우승자인 경우`() {
+        val raceManager = RaceManager()
+        val cars = listOf("A", "B", "C")
+        raceManager.createCar(cars)
+
+        raceManager.getCars()[0].position = 5
+        raceManager.getCars()[1].position = 1
+        raceManager.getCars()[2].position = 2
+        assertEquals(listOf("A"), raceManager.calculateWinners())
+    }
+}

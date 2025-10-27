@@ -20,9 +20,34 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `동일한 이름 기능 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,pobi", "1")
+                assertThat(output()).contains("pobiA : -", "pobiB : ", "최종 우승자 : pobiA")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `빈 값을 입력했을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+
+    @Test
+    fun `특정 차량만 빈 값을 입력했을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("abc,,ab", "1") }
         }
     }
 
