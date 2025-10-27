@@ -46,12 +46,6 @@ fun validateNamesLength(names: List<String>) {
     }
 }
 
- fun validateNamesDelimiter(names: List<String>) {
-     if (!names.contains(",")) {
-         throw IllegalArgumentException("구분자를 반드시 적어주세요.")
-     }
- }
-
 fun validateNamesType(names: List<String>) {
     for (name in names) {
         validateNamesCharType(name)
@@ -117,7 +111,6 @@ fun carNameSetting() {
     val carNames = processCarNaming()
     validateNamesLength(carNames)
     validateNamesType(carNames)
-    validateNamesDelimiter(carNames)
 
     for (carName in carNames) {
         cars.add(carName)
