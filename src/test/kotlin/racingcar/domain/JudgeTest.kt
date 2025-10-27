@@ -8,9 +8,9 @@ class JudgeTest {
     fun `우승자를 판별한다`() {
         // given
         val cars = mutableListOf<Car>()
-        val car1 = Car("h1")
-        val car2 = Car("h2")
-        val car3 = Car("h3")
+        val car1 = Car("h1", RandomNumberGenerator())
+        val car2 = Car("h2", RandomNumberGenerator())
+        val car3 = Car("h3", RandomNumberGenerator())
 
         car1.distance = 1
         car2.distance = 2
