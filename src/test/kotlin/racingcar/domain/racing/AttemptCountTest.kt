@@ -40,6 +40,18 @@ class AttemptCountTest {
         val exception = assertThrows<IllegalArgumentException> { AttemptCount.from(input) }
 
         // then
-        assertEquals(exception.message, ErrorMessage.ATTEMPT_COUNT_NOT_INTEGER.message)
+        assertEquals(exception.message, ErrorMessage.ATTEMPT_COUNT_NOT_POSITIVE.message)
+    }
+
+    @Test
+    fun 입력값이_양수가_아니라면_llegalArgumentException이_발생한다() {
+        // given
+        val input = "-1"
+
+        // when
+        val exception = assertThrows<IllegalArgumentException> { AttemptCount.from(input) }
+
+        // then
+        assertEquals(exception.message, ErrorMessage.ATTEMPT_COUNT_NOT_POSITIVE.message)
     }
 }
