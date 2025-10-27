@@ -25,8 +25,8 @@
 - [x] **최종 우승자 선발 : (feature/KRP-9-select-winner)**
 - [x] **최종 우승자 이름 합치기 : (feature/KRP-11-join-name)**
     - [x] 쉼표(,)를 이용하여 이름을 합칩
-- [ ] **자동차 이름 및 전진도 출력 : (feature/KRP-8-output-race)**
-- [ ] **최종 우승자 출력 : (feature/KRP-10-output-winner)**
+- [x] **자동차 이름 및 전진도 출력 : (feature/KRP-8-output-race)**
+- [x] **최종 우승자 출력 : (feature/KRP-10-output-winner)**
 
 ![Jira Picture](res/Jira.png)
 
@@ -59,45 +59,51 @@
 └── src
     ├── main
     │   └── kotlin
-    │       └── calculator
-    │           ├── Application.kt
-    │           ├── common
-    │           │   └── ErrorMessages.kt
-    │           ├── controller
-    │           │   ├── domain
-    │           │   │   └── RacingcarController.kt
-    │           │   └── repository
-    │           ├── model
-    │           │   ├── domain
-    │           │   │   ├── Attempt.kt
-    │           │   │   ├── CarName.kt
-    │           │   │   └── Random.kt
-    │           │   └── repository
-    │           │       ├── AttemptRule.kt
-    │           │       ├── Converter.kt
-    │           │       ├── NameRule.kt
-    │           │       ├── RandomRule.kt
-    │           │       └── Split.kt
-    │           └── view
-    │               ├── Constants.kt
-    │               ├── domain
-    │               │   ├── ConsoleView.kt
-    │               │   └── Guide.kt
-    │               └── repository
-    │                   ├── Input.kt 
-    │                   └── Output.kt
-    └── test 
-       └── kotlin 
-            └── calculator 
-                ├── ApplicationTest.kt 
+    │       └── racingcar
+    │          ├── Application.kt
+    │          ├── common
+    │          │   └── ErrorMessages.kt
+    │          ├── controller
+    │          │   └── domain
+    │          │       ├── CarController.kt
+    │          │       └── RacingcarController.kt
+    │          ├── model
+    │          │   ├── domain
+    │          │   │   ├── Attempt.kt
+    │          │   │   ├── Car.kt
+    │          │   │   ├── CarName.kt
+    │          │   │   ├── Random.kt
+    │          │   │   └── Winner.kt
+    │          │   └── repository
+    │          │       ├── AttemptRule.kt
+    │          │       ├── Converter.kt
+    │          │       ├── NameRule.kt
+    │          │       ├── RandomRule.kt
+    │          │       ├── Split.kt
+    │          │       └── Win.kt
+    │          └── view
+    │              ├── Constants.kt
+    │              ├── domain
+    │              │   ├── ConsoleView.kt
+    │              │   ├── GuideView.kt
+    │              │   └── ResultView.kt
+    │              └── repository
+    │                  ├── Input.kt
+    │                  └── Output.kt
+    └── test
+        └── kotlin
+            └── racingcar
+                ├── ApplicationTest.kt
                 ├── model
                 │   ├── AttemptValidatorTest.kt
                 │   ├── CarNameSplitTest.kt
                 │   ├── CarNameValidatorTest.kt
-                │   └── RandomTest.kt
+                │   ├── CarTest.kt
+                │   ├── RandomTest.kt
+                │   └── WinnerTest.kt
                 └── view
                     ├── InputTest.kt
                     └── OutputTest.kt
-                    
-76 directories, 266 files
+
+75 directories, 287 files
 ```

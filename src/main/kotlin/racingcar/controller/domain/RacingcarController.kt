@@ -5,6 +5,7 @@ import racingcar.model.domain.CarName
 import racingcar.model.domain.Winner
 import racingcar.view.domain.GuideView
 import racingcar.view.domain.InputView
+import racingcar.view.domain.ResultView
 
 object RacingcarController {
     fun run() {
@@ -15,7 +16,6 @@ object RacingcarController {
         val checkedAttempt = Attempt.toInt(attempt)
 
         val carController = CarController(splitName, checkedAttempt)
-
         carController.startRacing()
         val history = carController.history
 
@@ -23,6 +23,9 @@ object RacingcarController {
         val winnerIndex = winner.find(history.last())
         val winnerString = winner.join(winnerIndex, splitName)
 
+        ResultView.consoleLine()
+        ResultView.consoleProgress(splitName, history)
+        ResultView.consoleWinner(winnerString)
     }
 
     private fun inputCarNames(): String {
