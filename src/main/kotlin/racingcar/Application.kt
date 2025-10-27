@@ -33,10 +33,6 @@ fun processCarNaming(): List<String> {
     return input().split(",")
 }
 
-fun carNameList(): List<String> {
-    return listOf(processCarNaming().joinToString(","))
-}
-
 fun validateNamesLength(names: List<String>) {
     if (!names.all { it.length <= 5 }) {
         throw IllegalArgumentException("이름은 5자 이하여야 합니다.")
