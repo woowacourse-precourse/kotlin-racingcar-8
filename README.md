@@ -49,17 +49,17 @@ src
 * [x] **입력 처리** : 자동차 이름 입력받기 (`Console.readLine()` 이용)
 * [x] **파싱 로직** : 쉼표 기준 split 및 trim 처리
 * [x] **입력 검증** : 이름 길이(1~5자), 빈 문자열, 공백-only 금지
-* [ ] **시도 횟수 입력/검증** : 자연수만 허용, 0 이하/문자 입력 시 예외
+* [x] **시도 횟수 입력/검증** : 자연수만 허용, 0 이하/문자 입력 시 예외
 * [x] **난수 생성 로직** : `Randoms.pickNumberInRange(0, 9)` 적용
 * [x] **전진 조건** : 랜덤 값이 4 이상이면 전진
 * [x] **Car 클래스** : 이름, 위치, 이동 로직(`moveIf`) 구현
 * [x] **MoveDecider 인터페이스** : `canMove()` 정의
 * [x] **RandomMoveDecider 구현체** : 랜덤 판단 로직 구현
 * [x] **RaceRound 클래스** : 한 라운드 전체 실행 및 상태 갱신
-* [ ] **WinnerFinder 클래스** : 최대 position 기준 우승자 계산
-* [ ] **OutputView** : 라운드별 결과 및 최종 우승자 출력
+* [x] **WinnerFinder 클래스** : 최대 position 기준 우승자 계산
+* [x] **OutputView** : 라운드별 결과 및 최종 우승자 출력
 * [ ] **예외 처리** : 잘못된 입력 시 `IllegalArgumentException` 발생
-* [ ] **Application.main** : 전체 흐름 연결 및 실행
+* [x] **Application.main** : 전체 흐름 연결 및 실행
 * [ ] **테스트 코드 작성** : JUnit5 + AssertJ 기반 단위 테스트
 
 > 기능을 완성하면 `[ ]` → `[x]` 로 바꿔 커밋하기.
