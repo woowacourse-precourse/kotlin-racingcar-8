@@ -5,12 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 import kotlin.collections.all
 import kotlin.text.all
 
-val carNameAndTimeList = mutableMapOf<String, Int>()
 var cars = mutableListOf<String>()
 var movingTime: Int = 0
-var randomNumber: Int = 0
-var goalScore: Int = 0
-var barStatus = mutableMapOf<String, Int>()
+var carRunStatus = mutableMapOf<String, Int>()
 
 fun main() {
     // TODO: 프로그램 구현
@@ -81,25 +78,12 @@ fun timeSetting() {
     }
 }
 
-fun racing() {
-    for (time in 1..movingTime) {
-        carNameAssignmentStepTime()
-        println("각 자동차마다 랜덤숫자 = ${carNameAssignmentStepTime()}")
-    }
-}
-
-//fun racingBar(time: Int) {
-//    for (barTime in 1..time) {
-//        stepControl(barTime)
-//    }
-//}
-
 fun stepControl() {
     for (i in 1..movingTime) {
         racingFourMoreRole()
+        currentResult()
     }
 }
-
 fun racingFourMoreRole() {
     for (carName in cars) {
         judgeFourMoreRole(carName)
@@ -107,20 +91,19 @@ fun racingFourMoreRole() {
 }
 
 fun judgeFourMoreRole(car: String) {
-    if (carNameAssignmentStepTime()[car]!! >= 4 ) {
-        racingStatus()
-        println("carNameAndTimeList = ${carNameAndTimeList}")
+    val randomNumber = pickRandomNumber()
+    if (randomNumber >= 4) {
+        val currentStatus = carRunStatus.getOrDefault(car, 0)
+        carRunStatus[car] = currentStatus + 1
     }
 }
 
-fun racingStatus() {
-    goalScore += 1
-    for (carName in carNameAndTimeList.keys) {
-        barStatus[carName] = goalScore
-        barCreator(barStatus[carName])
+fun currentResult() {
+    for (carName in cars) {
+        print("$carName : ")
+        barCreator(carRunStatus[carName])
     }
-    println("goal $barStatus")
-    println("goalScore = ${goalScore}")
+    println()
 }
 
 fun barCreator(time: Int?) {
@@ -130,7 +113,6 @@ fun barCreator(time: Int?) {
     }
     println()
 }
-
 
 fun carNameSetting() {
     for (carName in processCarNaming()) {
