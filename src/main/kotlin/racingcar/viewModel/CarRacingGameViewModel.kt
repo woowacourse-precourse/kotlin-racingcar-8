@@ -15,11 +15,14 @@ class CarRacingGameViewModel {
         runAllGames(validatedTryCount)
     }
 
-    fun runAllGames(tryCount: Int) {
+    fun runAllGames(tryCount: Int): List<Map<String, String>> {
+        val allGamesResult = mutableListOf<Map<String, String>>()
+
         repeat(tryCount) {
             game.runRace()
-            game.getCurrentCarDistances()
+            allGamesResult.add(game.getCurrentCarDistances())
         }
+        return allGamesResult
     }
 
     fun validateCarName(carNames: String): List<Car> {
