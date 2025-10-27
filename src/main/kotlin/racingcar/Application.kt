@@ -1,9 +1,10 @@
 package racingcar
 
 fun main() {
-    val startRound = Round.startWith(RacingView.getNamesFromUser())
-    val attempt = Attempt(RacingView.getAttemptFromUser())
+    val startRound = Round.startWith(InputView.getNamesFromUser())
+    val attempt = Attempt(InputView.getAttemptFromUser())
     val racing = Racing.start(startRound, attempt)
-    RacingView.showStatus(racing)
-    RacingView.showWinner(racing)
+    val outputView = OutputView(attempt)
+    outputView.showStatus(racing)
+    outputView.showWinner(racing)
 }

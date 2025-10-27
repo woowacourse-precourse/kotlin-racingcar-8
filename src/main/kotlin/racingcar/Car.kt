@@ -21,11 +21,6 @@ data class Car(val name: String, val position: Int) {
         return this
     }
 
-    fun status(): String {
-        val path: String = "-".repeat(position)
-        return "$name : $path"
-    }
-
     companion object {
         const val START_POSITION = 0
         const val NAME_LENGTH_LIMIT = 5
