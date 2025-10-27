@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 data class Racing(private val log: List<Round>) : Iterable<Round> {
     override fun iterator(): Iterator<Round> = log.iterator()
     fun totalRounds(): Int = log.size
+    fun getWinners(): List<Car> {
+        return last().getWinners()
+    }
 
     companion object {
         fun start(startRound: Round, attempt: Attempt = Attempt(0)): Racing {

@@ -31,8 +31,7 @@ object RacingView {
     }
 
     fun showWinner(racing: Racing) {
-        val lastRound = racing.last()
-        val carNames = lastRound.getWinners().map { car ->
+        val carNames = racing.getWinners().map { car ->
             car.name
         }
         println("최종 우승자 : ${carNames.joinToString(", ")}")
