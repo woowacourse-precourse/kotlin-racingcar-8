@@ -16,7 +16,7 @@ class OutputView {
 
     fun printCurrentLocation(name: String, distance: Int) {
         print("$name : ")
-        for (i in 1..distance) {
+        repeat(distance) {
             print("-")
         }
         println()
