@@ -26,6 +26,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차_이동_횟수_예외_테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "0") }
+        }
+    }
+
+    @Test
+    fun `자동차_이동_횟수_음수_예외_테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "-10") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
