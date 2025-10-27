@@ -18,4 +18,8 @@ class CarRacingGameViewModel {
 
         return tryCount
     }
+
+    fun getWinnerNames(): String {
+        return game.getWinners().joinToString(", ")
+    }
 }
