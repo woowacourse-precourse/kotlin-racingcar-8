@@ -50,7 +50,7 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             val cars = Round.startWith(listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))
             val expectedCars = Round(
-                1, listOf(
+                listOf(
                     Car("0", 0), Car("1", 0), Car("2", 0), Car("3", 0),
                     Car("4", 0).moveForward(), Car("5", 0).moveForward(), Car("6", 0).moveForward(),
                     Car("7", 0).moveForward(), Car("8", 0).moveForward(), Car("9", 0).moveForward(),
@@ -103,7 +103,7 @@ class ApplicationTest : NsTest() {
     @CsvSource("0,1", "1,2", "2,3")
     fun `시도 횟수 만큼 전진 시키거나 멈춘다`(userInput: Int, roundSize: Int) {
         assertSimpleTest {
-            val cars = Round(0, listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun")))
+            val cars = Round(listOf(Car.withStartPosition("pobi"), Car.withStartPosition("jun")))
             val racingGame = Racing.start(cars, attempt = Attempt(userInput))
             assertThat(racingGame.totalRounds()).isEqualTo(roundSize)
         }
@@ -112,7 +112,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `특정 라운드의 우승자를 결정한다`() {
         assertSimpleTest {
-            val finalRound = Round(0, listOf(Car("pobi", 1), Car("jun", 2), Car("woni", 3)))
+            val finalRound = Round(listOf(Car("pobi", 1), Car("jun", 2), Car("woni", 3)))
             assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("woni", 3)))
         }
     }
@@ -120,7 +120,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `여러명의 우승자가 있는 경우 공동 우승으로 결정한다`() {
         assertSimpleTest {
-            val finalRound = Round(0, listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3)))
+            val finalRound = Round(listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3)))
             assertThat(finalRound.getWinners()).isEqualTo(listOf(Car("pobi", 3), Car("woni", 3)))
         }
     }
@@ -163,27 +163,27 @@ class ApplicationTest : NsTest() {
         private fun slowMotionRacing(): List<Arguments> {
             return listOf(
                 Arguments.of(
-                    Round(0, listOf(Car("pobi", 0), Car("jun", 0), Car("woni", 0))),
+                    Round(listOf(Car("pobi", 0), Car("jun", 0), Car("woni", 0))),
                     listOf(4, 3, 4),
                     listOf(Car("pobi", 1), Car("woni", 1))
                 ),
                 Arguments.of(
-                    Round(0, listOf(Car("pobi", 1), Car("jun", 0), Car("woni", 1))),
+                    Round(listOf(Car("pobi", 1), Car("jun", 0), Car("woni", 1))),
                     listOf(4, 4, 4),
                     listOf(Car("pobi", 2), Car("woni", 2))
                 ),
                 Arguments.of(
-                    Round(0, listOf(Car("pobi", 2), Car("jun", 1), Car("woni", 2))),
+                    Round(listOf(Car("pobi", 2), Car("jun", 1), Car("woni", 2))),
                     listOf(4, 4, 4),
                     listOf(Car("pobi", 3), Car("woni", 3))
                 ),
                 Arguments.of(
-                    Round(0, listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3))),
+                    Round(listOf(Car("pobi", 3), Car("jun", 2), Car("woni", 3))),
                     listOf(4, 3, 4),
                     listOf(Car("pobi", 4), Car("woni", 4))
                 ),
                 Arguments.of(
-                    Round(0, listOf(Car("pobi", 4), Car("jun", 3), Car("woni", 4))),
+                    Round(listOf(Car("pobi", 4), Car("jun", 3), Car("woni", 4))),
                     listOf(4, 4, 4),
                     listOf(Car("pobi", 5), Car("woni", 5))
                 ),
