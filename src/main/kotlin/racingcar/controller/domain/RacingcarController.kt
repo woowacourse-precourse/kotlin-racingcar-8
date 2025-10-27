@@ -12,6 +12,12 @@ object RacingcarController {
 
         val splitName = CarName.split(carNames)
         val checkedAttempt = Attempt.toInt(attempt)
+
+        val carController = CarController(splitName, checkedAttempt)
+
+        carController.startRacing()
+        val history = carController.history
+
     }
 
     private fun inputCarNames(): String {

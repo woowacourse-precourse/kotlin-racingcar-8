@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import racingcar.model.domain.Randoms
-import kotlin.properties.Delegates
 
 class RandomTest : NsTest() {
 
