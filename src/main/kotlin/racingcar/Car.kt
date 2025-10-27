@@ -18,6 +18,12 @@ class Car(
         }
     }
 
+    fun tryMove(randomNumber: Int) {
+        if (randomNumber >= 4) {
+            position += 1
+        }
+    }
+
     fun getPosition(): Int {
         return position
     }
