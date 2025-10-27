@@ -1,5 +1,7 @@
 package racingcar.domain.game
 
+import racingcar.domain.error.ErrorCode.RACE_MUST_HAVE_PROGRESS
+
 class RacingGame(carName: Collection<String>) {
     private val cars: Collection<Car>
 
@@ -20,16 +22,16 @@ class RacingGame(carName: Collection<String>) {
     }
 
 
-    fun winnerResult(maxNumber: Int): List<String>? {
+    fun winnerResult(maxNumber: Int): List<String> {
         for (i in maxNumber downTo 1) {
             val finalI = i
             val list: List<String> = cars.stream()
-                .filter { car: Car? -> car!!.position == finalI }
+                .filter { car: Car -> car.position == finalI }
                 .map{ car: Car -> car.name }.toList()
             if (list.isNotEmpty()) {
                 return list
             }
         }
-        return null
+        throw IllegalArgumentException(RACE_MUST_HAVE_PROGRESS)
     }
 }
