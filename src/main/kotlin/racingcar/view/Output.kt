@@ -11,4 +11,8 @@ class Output {
         }
         println()
     }
+
+    fun finalWinners(winners: String) {
+        println("최종 우승자 : $winners")
+    }
 }
