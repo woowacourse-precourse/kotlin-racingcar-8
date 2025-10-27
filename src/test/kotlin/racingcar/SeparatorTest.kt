@@ -2,6 +2,9 @@ package racingcar
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
+import java.io.File.separator
 
 class SeparatorTest {
     @Test
@@ -15,5 +18,18 @@ class SeparatorTest {
 
         // then
         assertEquals(result, separator.separateName(testString))
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = ["cold,play,para,dise", "puth,one,call,away", "time,bomb,all"])
+    fun `이름을 ,를 기준으로 구분한다2`(testString: String) {
+        // given
+        val expectedAnswer = testString.split(",")
+
+        // when
+        val separator = Separator()
+
+        // then
+        assertEquals(expectedAnswer, separator.separateName(testString))
     }
 }
