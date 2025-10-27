@@ -10,6 +10,8 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
     }
 
     companion object {
+        private const val MAX_RANDOM_VALUE = 9
+        private const val MIN_RANDOM_VALUE = 0
         fun start(startRound: Round, attempt: Attempt = Attempt(0)): Racing {
             val log = mutableListOf(startRound)
             for (current in 1..attempt.value) {
@@ -22,7 +24,7 @@ data class Racing(private val log: List<Round>) : Iterable<Round> {
 
         private fun generateRandomList(size: Int): List<Int> {
             return (1..size).map {
-                Randoms.pickNumberInRange(0, 9)
+                Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE)
             }
         }
     }
