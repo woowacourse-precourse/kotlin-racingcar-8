@@ -4,11 +4,15 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     val carNames = getCarName()
-    val rountCount = getRoundCount()
+    val roundCount = getRoundCount()
 
     val cars = carNames.map{ Car(it) }
 
-    runRace(cars, rountCount)
+    runRace(cars, roundCount)
+
+    val winnersNames = formatWinnerNames(findWinner(cars))
+
+    println("최종 우승자 : ${winnersNames}")
 }
 
 fun getCarName(): List<String>{
@@ -52,4 +56,26 @@ fun runRound(cars: List<Car>){
         car.move()
         car.printState()
     }
+}
+
+fun findWinner(cars: List<Car>): List<Car>{
+    var maxPosition = cars[0].position
+    for(car in cars){
+        if(car.position > maxPosition){
+            maxPosition = car.position
+        }
+    }
+
+    val winners = mutableListOf<Car>()
+    for (car in cars) {
+        if (car.position == maxPosition) {
+            winners.add(car)
+        }
+    }
+
+    return winners
+}
+
+fun formatWinnerNames(winners: List<Car>): String {
+    return winners.joinToString(", ") { it.name }
 }
