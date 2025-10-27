@@ -1,9 +1,9 @@
 package racingcar.view
 
-object OutputView {
+object OutputView : Output {
 
-    fun printResult() {
-        printEnter()
+    override fun printResult() {
+        println()
         println("실행 결과")
     }
 
@@ -17,17 +17,13 @@ object OutputView {
         }
     }
 
-    fun processResult(car: String, location: Int) {
+    override fun processResult(car: String, location: Int) {
         carName(car)
         showCarLocation(location)
-        printEnter()
-    }
-
-    fun finalResult(winner: List<String>) {
-        println("최종 우승자 : ${winner.joinToString()}")
-    }
-
-    fun printEnter() {
         println()
+    }
+
+    override fun finalResult(winners: List<String>) {
+        println("최종 우승자 : ${winners.joinToString()}")
     }
 }

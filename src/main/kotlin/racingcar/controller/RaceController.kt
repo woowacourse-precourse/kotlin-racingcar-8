@@ -2,46 +2,49 @@ package racingcar.controller
 
 import racingcar.model.CarManager
 import racingcar.model.InputParser
-import racingcar.view.InputView
-import racingcar.view.OutputView
+import racingcar.view.Input
+import racingcar.view.Output
 
-object RaceController {
-    private val carManager = CarManager()
-    private val inputParser = InputParser()
+class RaceController(
+    private val carManager: CarManager,
+    private val inputParser: InputParser,
+    private val inputView: Input,
+    private val outputView: Output,
+) {
 
     fun startRace() {
-        val (carList, time) = initializeGame()
+        val (cars, time) = initializeGame()
 
-        carManager.addCar(carList)
-        runRace(carList, time)
+        carManager.addCar(cars)
+        runRace(cars, time)
 
         val winner = carManager.returnResult()
-        OutputView.finalResult(winner)
+        outputView.finalResult(winner)
     }
 
     private fun initializeGame(): Pair<List<String>, Int> {
-        val input = InputView.chooseCar()
-        val carList = inputParser.parseCar(input)
+        val input = inputView.chooseCar()
+        val cars = inputParser.parseCar(input)
 
-        val tryTime = InputView.tryTime()
+        val tryTime = inputView.tryTime()
         val time = inputParser.parseTime(tryTime)
 
-        return Pair(carList, time)
+        return Pair(cars, time)
     }
 
-    private fun runRace(carList: List<String>, time: Int) {
-        OutputView.printResult()
+    private fun runRace(cars: List<String>, time: Int) {
+        outputView.printResult()
         repeat(time) {
-            raceSingleTime(carList)
-            OutputView.printEnter()
+            raceSingleTime(cars)
+            println()
         }
     }
 
-    private fun raceSingleTime(carList: List<String>) {
-        carList.forEach { car ->
+    private fun raceSingleTime(cars: List<String>) {
+        cars.forEach { car ->
             carManager.moveCar(car)
             val location = carManager.getCarLocation(car)
-            OutputView.processResult(car, location)
+            outputView.processResult(car, location)
         }
     }
 }
