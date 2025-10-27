@@ -9,7 +9,7 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
+    fun `올바른 결과를 반환한다`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
@@ -20,9 +20,23 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 상황에서 예외가 발생한다`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수 입력이 숫자가 아니면 예외가 발생한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "abc") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수가 0이하이면 예외가 발생한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "-2") }
         }
     }
 
