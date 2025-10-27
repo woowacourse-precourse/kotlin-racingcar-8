@@ -7,19 +7,28 @@ import racingcar.view.OutputView
 
 class RacingController(val inputView: InputView, val outputView: OutputView, val judge: Judge) {
     fun run() {
-        outputView.printCarNameInputGuide()
-        val carName = inputView.getCarNameFromUser()
-        val carNames = Separator().separateName(carName)
-        InputValidator().validateCarName(carNames)
-
-        outputView.printMovementTimeInputGuide()
-        val repeatTime = inputView.getMovementTimeFromUser()
-        InputValidator().validateTotalMovement(repeatTime)
+        val carNames = handleCarNames()
+        val repeatTime = handleRepeatTime()
 
         outputView.printTextOfResult()
         val raceResult = race(carNames, repeatTime.toInt())
         val winners = judge.judgeWinner(raceResult)
         outputView.printWinner(winners)
+    }
+
+    fun handleCarNames(): List<String> {
+        outputView.printCarNameInputGuide()
+        val inputFromUser = inputView.getCarNameFromUser()
+        val carNames = Separator().separateName(inputFromUser)
+        InputValidator().validateCarName(carNames)
+        return carNames
+    }
+
+    fun handleRepeatTime(): String {
+        outputView.printMovementTimeInputGuide()
+        val repeatTime = inputView.getMovementTimeFromUser()
+        InputValidator().validateTotalMovement(repeatTime)
+        return repeatTime
     }
 
     fun race(carNames: List<String>, repeatTime: Int): List<Car> {
