@@ -2,36 +2,36 @@ package racingcar.service.racing
 
 import racingcar.domain.car.Car
 import racingcar.domain.car.Cars
+import racingcar.domain.racing.AttemptCount
 import racingcar.domain.racing.NumberPicker
-import racingcar.domain.racing.Racing
-import racingcar.domain.racing.Result
-import racingcar.domain.racing.Round
+import racingcar.domain.racing.RacingManager
+import racingcar.dto.RacingResultDto
+import racingcar.dto.RoundResultDto
+import racingcar.dto.toDto
 
-class RacingService(
-    private val numberPicker: NumberPicker = NumberPicker(),
-) {
-    fun race(input: String, cars: Cars): Result {
-        val racing = Racing.from(input)
-
-        repeat(racing.attemptCount.value) {
-            val round = raceNewRound(cars, racing)
-            racing.saveRoundResults(round.roundResult)
+class RacingService {
+    fun race(input: String, cars: Cars): RacingResultDto {
+        val attemptCount = AttemptCount.from(input)
+        val results = (1..attemptCount.value).map {
+            playRound(cars)
         }
 
-        return Result(racing.roundResults, cars.getWinners())
+        return RacingResultDto(
+            results.toList(),
+            cars.getWinners().map { it.name.value }
+        )
     }
 
-    private fun raceNewRound(cars: Cars, racing: Racing): Round {
-        val round = Round()
-        cars.cars.forEach { car ->
-            moveCar(car, racing)
-            round.saveRoundResult(car.name, car.distance)
+    private fun playRound(cars: Cars): RoundResultDto {
+        val results = cars.cars.map { car ->
+            tryMoveCar(car)
+            car.toDto()
         }
-        return round
+        return RoundResultDto(results)
     }
 
-    private fun moveCar(car: Car, racing: Racing) {
-        if (racing.canMove(numberPicker.getRandomNumber())) {
+    private fun tryMoveCar(car: Car) {
+        if (RacingManager.canMove(NumberPicker.getRandomNumber())) {
             car.move()
         }
     }

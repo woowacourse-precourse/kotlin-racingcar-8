@@ -81,7 +81,15 @@ class ApplicationTest : NsTest() {
     fun 시도할_횟수가_정수가_아니라면_llegalArgumentException이_발생한다() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
-            assertEquals(exception.message, ErrorMessage.ATTEMPT_COUNT_NOT_INTEGER.message)
+            assertEquals(exception.message, ErrorMessage.ATTEMPT_COUNT_NOT_POSITIVE.message)
+        }
+    }
+
+    @Test
+    fun 시도할_횟수가_양수가_아니라면_llegalArgumentException이_발생한다() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+            assertEquals(exception.message, ErrorMessage.ATTEMPT_COUNT_NOT_POSITIVE.message)
         }
     }
 
