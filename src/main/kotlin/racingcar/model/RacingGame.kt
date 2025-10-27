@@ -2,7 +2,7 @@ package racingcar.model
 
 import racingcar.view.OutputView
 
-class RacingGame (private val cars: List<Car>, private val count: Int){
+class RacingGame(private val cars: List<Car>, private val count: Int) {
     fun startGame() {
         println("실행 결과")
         repeat(count) {
@@ -13,7 +13,7 @@ class RacingGame (private val cars: List<Car>, private val count: Int){
     }
 
     private fun playRound() {
-        cars.forEach{ it.move() }
+        cars.forEach { it.move() }
     }
 
     private fun judgeResult() {

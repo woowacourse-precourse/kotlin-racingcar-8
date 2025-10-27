@@ -4,7 +4,7 @@ import racingcar.model.Car
 import racingcar.model.RacingGame
 import racingcar.view.InputView
 
-class RacingController (
+class RacingController(
     private val inputView: InputView = InputView()
 ) {
     fun run() {
