@@ -59,8 +59,8 @@
         - `camp.nextstep.edu.missionutils`의 `Randoms` API를 사용해서 4이상일 경우 전진
 - [ ] `Cars`: 자동차 경주에 참여하고 있는 Car의 이름을 저장하는 HashMap
 - [x] `parseCarNameInput()`: 입력받은 자동차 이름들을 쉼표를 기준으로 분리하고 저장하는 함수
-    - [ ] 중복된 자동차 이름이 있는 경우 예외 처리
-- [ ] `getRacingPlayers()`: 자동차 경주 참여 리스트를 만드는 함수
+    - [x] 중복된 자동차 이름이 있는 경우 예외 처리
+- [x] `getRacingPlayers()`: 자동차 경주 참여 리스트를 만드는 함수
 - [x] `playRace()`: 자동차 경주를 한번 실행하는 함수
 - [x] `getWinPlayers()`: 자동차 경주의 우승자를 구하는 함수
 
