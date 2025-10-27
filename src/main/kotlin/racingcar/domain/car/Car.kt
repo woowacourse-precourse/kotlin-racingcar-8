@@ -6,7 +6,5 @@ class Car(
 ) {
     val distance: Int get() = _distance
 
-    fun move() {
-        _distance++
-    }
+    fun move() = _distance++
 }
