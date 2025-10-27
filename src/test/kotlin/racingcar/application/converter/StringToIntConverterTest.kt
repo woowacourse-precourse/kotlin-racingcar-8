@@ -3,6 +3,7 @@ package racingcar.application.converter
 import org.junit.jupiter.api.Assertions.assertEquals
 import racingcar.domain.error.ErrorCode.INVALID_ATTEMPT_COUNT_NUMBER
 import org.junit.jupiter.api.assertThrows
+import racingcar.domain.error.ErrorCode.ATTEMPT_COUNT_MUST_BE_GREATER_THAN_ZERO
 import kotlin.test.Test
 
 class StringToIntConverterTest {
@@ -18,6 +19,34 @@ class StringToIntConverterTest {
 
         //then
         assertEquals(123, result)
+    }
+
+    @Test
+    fun `0 보다 작은 숫자는 예외 처리`() {
+        //given
+        val input = "-1"
+
+        //when
+        val ex = assertThrows<IllegalArgumentException> {
+            converter.convert(input)
+        }
+
+        //then
+        assertEquals(ATTEMPT_COUNT_MUST_BE_GREATER_THAN_ZERO, ex.message)
+    }
+
+    @Test
+    fun `빈 값일때 예외 처리`() {
+        //given
+        val input = ""
+
+        //when
+        val ex = assertThrows<IllegalArgumentException> {
+            converter.convert(input)
+        }
+
+        //then
+        assertEquals(INVALID_ATTEMPT_COUNT_NUMBER, ex.message)
     }
 
     @Test
