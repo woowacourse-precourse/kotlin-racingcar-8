@@ -12,13 +12,13 @@ class CarsTest {
     fun Car_리스트를_입력하면_Cars_객체가_생성된다() {
         // given
         val input = listOf(
-            Car.from("pobi"),
-            Car.from("woni"),
-            Car.from("jun")
+            Car(Name("pobi")),
+            Car(Name("woni")),
+            Car(Name("jun"))
         )
 
         // when
-        val cars = Cars.of(input)
+        val cars = Cars(input)
 
         // then
         assertEquals(cars.cars.size, 3)
@@ -27,10 +27,10 @@ class CarsTest {
     @Test
     fun 우승자를_성공적으로_반환한다() {
         // given
-        val cars = Cars.of(listOf(
-            Car.from("pobi"),
-            Car.from("woni"),
-            Car.from("jun")
+        val cars = Cars(listOf(
+            Car(Name("pobi")),
+            Car(Name("woni")),
+            Car(Name("jun"))
         ))
         repeat(3) {
             cars.cars[0].move()
