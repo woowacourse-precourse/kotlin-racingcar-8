@@ -7,9 +7,7 @@ fun main() {
     // TODO: 프로그램 구현
     val inputView = InputView()
     val carNamesInput = inputView.getInputCarNames()
-    require(carNamesInput.isNotBlank()) { "이름이 입력되지 않았습니다." }
-    val hasInvalidChar = carNamesInput.any { it != ',' && !it.isLetter() }
-    require(!hasInvalidChar) { "이름을 올바르게 입력해주세요." }
+    validateCarNamesInput(carNamesInput)
 
     val splitCarNames = splitCarName(carNamesInput)
     val roundInput = inputView.getInputRound()
@@ -24,6 +22,12 @@ fun main() {
 }
 
 fun createCars(splitCarNames: List<String>): List<Car> = splitCarNames.map { Car(it) }
+
+fun validateCarNamesInput(carNamesInput: String) {
+    require(carNamesInput.isNotBlank()) { "이름이 입력되지 않았습니다." }
+    val hasInvalidChar = carNamesInput.any { it != ',' && !it.isLetter() }
+    require(!hasInvalidChar) { "이름을 올바르게 입력해주세요." }
+}
 
 fun splitCarName(carNamesInput: String): List<String> {
     val splitCarNames = carNamesInput.split(",")
