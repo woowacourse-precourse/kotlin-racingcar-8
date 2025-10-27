@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayNameGeneration
 import org.junit.jupiter.api.DisplayNameGenerator
 import org.junit.jupiter.api.Test
-import racingcar.util.Util
+import racingcar.util.Parser
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores::class)
-class UtilTest {
+class ParserTest {
 
     @Test
     fun 입력값을_쉼표를_기준으로_올바르게_분리한다() {
@@ -15,7 +15,7 @@ class UtilTest {
         val input = "pobi,woni , jun"
 
         // when
-        val names = Util.splitByComma(input)
+        val names = Parser.splitByComma(input)
 
         // then
         assertEquals(names[0], "pobi")

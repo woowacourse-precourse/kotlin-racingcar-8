@@ -1,6 +1,6 @@
 package racingcar.util
 
-object Util {
+object Parser {
     fun splitByComma(input: String): List<String> {
         return input.split(",")
             .map { it.trim() }
