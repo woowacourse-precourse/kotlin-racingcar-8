@@ -17,7 +17,7 @@ class RacingGame {
         val cars = carNames.map { Car(it) } // 이름 목록을 Car 객체 리스트로 변환
 
         runRace(cars, tryCount)
-        // TODO: 우승자 선정 및 출력 로직 구현
+        printWinners(cars) // 우승자 선정 및 출력 로직 호출
     }
 
     private fun getCarNames(): List<String> {
@@ -80,5 +80,18 @@ class RacingGame {
         cars.forEach { car ->
             println("${car.name} : ${"-".repeat(car.position)}")
         }
+    }
+
+    // 최종 우승자 선정 및 출력
+    private fun printWinners(cars: List<Car>) {
+        // 가장 많이 전진한 위치(maxPosition)를 찾는다.
+        val maxPosition = cars.maxOfOrNull { it.position } ?: 0
+
+        // maxPosition과 동일한 위치를 가진 자동차들(우승자)의 이름만 추출한다.
+        val winners = cars.filter { it.position == maxPosition }
+            .map { it.name }
+
+        // 우승자 목록을 쉼표(,)로 연결하여 출력한다.
+        println("최종 우승자 : ${winners.joinToString(", ")}")
     }
 }
