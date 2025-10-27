@@ -23,8 +23,8 @@
 - [x] **자동차 전진 : (feature/KRP-7-advance)**
     - [x] 전진일 경우, 위치 데이터를 수정하여 앞으로 전진
 - [x] **최종 우승자 선발 : (feature/KRP-9-select-winner)**
-- [ ] **최종 우승자 이름 합치기 : (feature/KRP-11-join-name)**
-    - [ ] 쉼표(,)를 이용하여 이름을 합칩
+- [x] **최종 우승자 이름 합치기 : (feature/KRP-11-join-name)**
+    - [x] 쉼표(,)를 이용하여 이름을 합칩
 - [ ] **자동차 이름 및 전진도 출력 : (feature/KRP-8-output-race)**
 - [ ] **최종 우승자 출력 : (feature/KRP-10-output-winner)**
 

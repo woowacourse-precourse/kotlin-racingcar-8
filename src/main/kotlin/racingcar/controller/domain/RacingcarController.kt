@@ -19,7 +19,10 @@ object RacingcarController {
         carController.startRacing()
         val history = carController.history
 
-        val winner = Winner.find(history.last())
+        val winner = Winner
+        val winnerIndex = winner.find(history.last())
+        val winnerString = winner.join(winnerIndex, splitName)
+
     }
 
     private fun inputCarNames(): String {

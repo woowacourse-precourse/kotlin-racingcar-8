@@ -8,7 +8,6 @@ object Winner : Win {
         return position.indices.filter { position[it] == max }
     }
 
-    override fun join(winnerNumber: List<Int>, carNames: List<String>): String {
-        return ""
-    }
+    override fun join(winnerNumber: List<Int>, carNames: List<String>): String =
+        winnerNumber.map { carNames[it] }.joinToString(", ")
 }
