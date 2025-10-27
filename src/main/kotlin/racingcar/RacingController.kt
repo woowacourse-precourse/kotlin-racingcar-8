@@ -40,7 +40,7 @@ class RacingController(val inputView: InputView, val outputView: OutputView, val
             )
         }
 
-        for (i in 0 until repeatTime) {
+        repeat (repeatTime) {
             moveCar(cars)
             printCurrentCarState(cars)
         }
