@@ -42,10 +42,10 @@ class UserController(
             outputView.printPlayerRoundResult(cars);
             outputView.printBlankLine();
         }
-        winnerResult(racingGame, attemptCount);
+        winnerResult(racingGame);
     }
 
-    private fun winnerResult(racingGame: RacingGame, count: Int) {
+    private fun winnerResult(racingGame: RacingGame) {
         val winnersResult: List<String> = racingGame.winnerResult()
         outputView.printWinner(winnersResult)
     }
