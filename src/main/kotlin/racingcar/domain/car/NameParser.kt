@@ -1,6 +1,6 @@
-package racingcar.util
+package racingcar.domain.car
 
-object Parser {
+object NameParser {
     fun splitByComma(input: String): List<String> {
         return input.split(",")
             .map { it.trim() }
