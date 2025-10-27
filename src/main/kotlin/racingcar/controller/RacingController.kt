@@ -16,7 +16,7 @@ class RacingController(
         val cars = names.map { Car(it) }
         val game = RacingGame(cars)
 
-        println("실행 결과")
+        outputView.printGameStart()
         repeat(count) {
             game.playRound()
             outputView.printRoundResult(cars)
