@@ -9,12 +9,12 @@ object OutputView {
     }
 
     fun printPerRound(cars: List<Car>) {
-        val stringBuilder = StringBuilder()
+        val result = StringBuilder()
         cars.map {
             val location = "-".repeat(it.position)
-            stringBuilder.append("${it.name} : $location\n")
+            result.append("${it.name} : $location\n")
         }
-        println(stringBuilder.toString())
+        println(result.toString())
     }
 
     fun printWinners(winners: List<String>) {
