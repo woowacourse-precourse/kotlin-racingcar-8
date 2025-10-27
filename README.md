@@ -1,1 +1,68 @@
-# kotlin-racingcar-precourse
+# 🚗 자동차 경주 게임
+
+## 📝 기능 목록
+#### 1. 애플리케이션을 실행하면, '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)' 메시지를 출력한다.
+#### 2. 사용자로부터 경주할 자동차 이름을 입력 받는다.
+#### 3. 쉼표를 기준으로 문자열을 분리하고, 유효성을 검사한다.
+- 각 문자열이 비어 있거나 공백이라면 `IllegalArgumentException`을 발생시킨다.
+- 각 문자열이 5자 이하가 아니라면 `IllegalArgumentException`을 발생시킨다.
+#### 4. '시도할 횟수는 몇 회인가요?' 메시지를 출력한다.
+#### 5. 사용자로부터 시도할 횟수를 입력 받는다.
+#### 6. 정수로 변환한다.
+- 입력값이 비어 있다면 `IllegalArgumentException`을 발생시킨다.
+- 정수로 변환되지 않는다면 `IllegalArgumentException`을 발생시킨다.
+#### 7. 시도할 횟수만큼 각각의 자동차에 대해 0에서 9사이의 무작위 값을 구한 후, 무작위 값이 4 이상일 경우 전진한다.
+#### 8. 차수별 실행 결과를 출력한다.
+#### 9. 최종 우승자를 판단하여 그 결과를 출력한다.
+
+## 💡설계
+
+```declarative
+src
+├─ main
+│  └─ kotlin/racingcar
+│     ├─ controller
+│     │  └─ CarRacingController.kt
+│     ├─ domain
+│     │  ├─ car
+│     │  │  ├─ Car.kt
+│     │  │  ├─ Cars.kt
+│     │  │  ├─ Name.kt
+│     │  │  └─ NameParser.kt
+│     │  └─ racing
+│     │     ├─ AttemptCount.kt
+│     │     ├─ NumberPicker.kt
+│     │     └─ RacingManager.kt
+│     ├─ dto
+│     │  ├─ CarStatusDto.kt
+│     │  ├─ RacingResultDto.kt
+│     │  └─ RoundResultDto.kt
+│     ├─ exception
+│     │  └─ ErrorMessage.kt
+│     ├─ service
+│     │  ├─ car/CarService.kt
+│     │  └─ racing/RacingService.kt
+│     ├─ view
+│     │  ├─ InputView.kt
+│     │  └─ OutputView.kt
+│     └─ Application.kt
+└─ test
+   └─ kotlin
+      └─ racingcar
+         ├─ domain
+         │  ├─ car
+         │  │  ├─ CarTest.kt
+         │  │  ├─ CarsTest.kt
+         │  │  ├─ NameTest.kt
+         │  │  └─ NameParserTest.kt
+         │  └─ racing
+         │     ├─ AttemptCountTest.kt
+         │     ├─ NumberPickerTest.kt
+         │     └─ RacingManagerTest.kt
+         ├─ service
+         │  ├─ car
+         │  │  └─ CarServiceTest.kt
+         │  └─ racing
+         │     └─ RacingServiceTest.kt
+         └─ ApplicationTest.kt 
+```
