@@ -26,6 +26,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수 예외(음수)`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수 예외(문자)`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "abc") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
