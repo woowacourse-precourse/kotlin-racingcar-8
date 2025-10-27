@@ -14,20 +14,29 @@ class Race {
         endRace(raceManager)
     }
 
-    private fun initializeRace(): RaceManager {
-        val raceManager = RaceManager()
+    private fun readAndValidateNames(): List<String> {
         val rawCarNames = InputView.readCarNameInput()
         val parseCarNames = CarNameParser.parseCarsNames(rawCarNames)
         InputValidator.validateCarName(parseCarNames)
+        return parseCarNames
+    }
 
+    private fun readAndValidateRaceCount(): Int {
         val raceCount = InputView.readRaceCountInput()
         InputValidator.validateRaceCount(raceCount)
-        raceManager.setRaceCount(raceCount.toInt())
+        return raceCount.toInt()
+    }
 
-        val duplicateNameAndIndex = InputValidator.findDuplicateName(parseCarNames)
+    private fun initializeRace(): RaceManager {
+        val raceManager = RaceManager()
 
-        val renamedCarNames = raceManager.addSuffixToDuplicateNames(parseCarNames, duplicateNameAndIndex)
+        val carNames = readAndValidateNames()
+        val duplicateNameAndIndex = InputValidator.findDuplicateName(carNames)
+        val renamedCarNames = raceManager.addSuffixToDuplicateNames(carNames, duplicateNameAndIndex)
         raceManager.createCar(renamedCarNames)
+
+        val raceCount = readAndValidateRaceCount()
+        raceManager.setRaceCount(raceCount)
 
         return raceManager
     }
