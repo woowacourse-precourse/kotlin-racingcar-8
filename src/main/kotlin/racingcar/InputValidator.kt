@@ -7,7 +7,6 @@ class InputValidator {
             require(carName.isNotBlank()) { "자동차의 이름은 빈칸일 수 없습니다" }
             require(carName.length <= MAX_CAR_NAME_LENGTH) { "자동차의 이름은 5글자 이하여야 합니다" }
         }
-        require(carNames.toSet().size == carNames.size) { "자동차 이름을 중복해서 넣을 수 없습니다" }
     }
 
     fun validateTotalMovement(totalMovement: String) {
