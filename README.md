@@ -88,4 +88,4 @@
 
 ### Controller
 
-- [ ] `run()`: Service의 로직 처리, View에 결과 전달
+- [x] `run()`: Service의 로직 처리, View에 결과 전달
