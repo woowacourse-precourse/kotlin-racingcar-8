@@ -3,16 +3,14 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 object RacingView {
-    fun getNamesFromUser(): Round {
+    fun getNamesFromUser(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val names = Console.readLine().split(",")
-        return Round.startWith(names)
+        return Console.readLine().split(",")
     }
 
-    fun getAttemptFromUser(): Attempt {
+    fun getAttemptFromUser(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        val attempt = Console.readLine()
-        return Attempt(attempt.toInt())
+        return Console.readLine().toInt()
     }
 
     private fun showStatus(round: Round) {
